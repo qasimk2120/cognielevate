@@ -1,39 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>CogniElevate</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CogniElevate — Developing Intelligent Digital Solutions</title>
+  <meta name="description" content="CogniElevate builds intelligent, user-focused digital products grounded in behavioral design and modern UX." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <header>
-        <h1>Welcome to CogniElevate</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="privacy.html">Privacy Policy</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="landing">
-            <img src="/asset/cognielevate.png" alt="CogniElevate Image">
-            <h2>Your pathway to better cognition</h2>
-            <p>This is a premium landing page designed for a smooth user experience.</p>
-        </section>
-        <section id="features" class="grid">
-            <div class="card">
-                <img src="/asset/cognifocus.png" alt="Cognifocus">
-                <h3>Cognifocus</h3>
-                <p>Focus better, achieve more!</p>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Navbar (sticky) -->
+  <header class="nav" role="banner">
+    <div class="container nav__inner">
+      <a class="brand" href="#home" aria-label="CogniElevate home">
+        <img class="brand__logo" src="asset/cognielevate.png" alt="CogniElevate logo" />
+        <span class="brand__name">CogniElevate</span>
+      </a>
+
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#vision">Vision</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav__actions">
+        <a class="btn btn--primary" href="#contact">Get Started</a>
+        <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="nav__mobile" data-mobile-nav hidden>
+      <div class="container nav__mobileInner">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#vision">Vision</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn--primary btn--full" href="#contact">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section id="home" class="hero section">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__glow hero__glow--a"></div>
+        <div class="hero__glow hero__glow--b"></div>
+        <div class="hero__grid"></div>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="reveal">
+          <p class="eyebrow">COGNIELEVATE</p>
+          <h1 class="hero__title">CogniElevate</h1>
+          <p class="hero__subtitle">Developing Intelligent Digital Solutions</p>
+          <p class="hero__desc">
+            We build intelligent, user-focused digital products—designed with behavioral psychology,
+            crafted with modern UX, and engineered for real-world outcomes.
+          </p>
+
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#products">Explore Products</a>
+            <a class="btn btn--secondary" href="#contact">Talk to Us</a>
+          </div>
+
+          <div class="hero__meta">
+            <div class="pill">Dark theme UI</div>
+            <div class="pill">Behavioral design</div>
+            <div class="pill">Systems thinking</div>
+          </div>
+        </div>
+
+        <div class="hero__panel reveal" style="transition-delay: 120ms;">
+          <div class="heroCard">
+            <div class="heroCard__top">
+              <div>
+                <p class="heroCard__label">Featured Product</p>
+                <h2 class="heroCard__title">CogniFocus</h2>
+                <p class="heroCard__text">
+                  A character-driven focus companion designed to improve productivity
+                  through reactive motivation and deep work sessions.
+                </p>
+              </div>
+              <div class="heroCard__badge">Coming 2026</div>
             </div>
-            <!-- Additional card content can go here -->
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2026 CogniElevate. All rights reserved.</p>
-    </footer>
-    <script src="script.js"></script>
+            <div class="heroCard__media">
+              <img src="asset/cognifocus.png" alt="CogniFocus preview image" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" aria-label="About">
+      <div class="container">
+        <div class="split">
+          <div class="reveal">
+            <p class="eyebrow">ABOUT</p>
+            <h2>Intelligent systems, designed for behavior.</h2>
+          </div>
+          <div class="reveal" style="transition-delay: 90ms;">
+            <p class="lead">
+              CogniElevate builds intelligent digital products focused on productivity,
+              behavioral psychology, and user experience—turning good intent into consistent action.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products" class="section">
+      <div class="container">
+        <div class="sectionHead reveal">
+          <p class="eyebrow">PRODUCTS</p>
+          <h2>Built to help users stay consistent.</h2>
+          <p class="subtle">A focused lineup of intelligent products for productivity and personal systems.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card reveal">
+            <div class="card__icon"><span class="dot"></span></div>
+            <h3>CogniFocus</h3>
+            <p>A focus companion designed to support deep work, build consistency, and keep momentum.</p>
+            <div class="card__footer">
+              <span class="tag tag--accent">Featured</span>
+              <span class="tag">Productivity</span>
+            </div>
+          </article>
+
+          <article class="card reveal" style="transition-delay: 80ms;">
+            <div class="card__icon"><span class="dot dot--navy"></span></div>
+            <h3>Coming Soon</h3>
+            <p>A future product focused on behavioral consistency—designed to help users follow through.</p>
+            <div class="card__footer"><span class="tag">In Development</span></div>
+          </article>
+
+          <article class="card reveal" style="transition-delay: 160ms;">
+            <div class="card__icon"><span class="dot dot--navy"></span></div>
+            <h3>Coming Soon</h3>
+            <p>Another upcoming intelligent product aimed at clarity and momentum—turning steps into progress.</p>
+            <div class="card__footer"><span class="tag">In Development</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlight -->
+    <section class="highlight section">
+      <div class="container highlight__inner">
+        <div class="highlight__card reveal">
+          <p class="eyebrow">SYSTEMS</p>
+          <h2>We don’t just build apps. We build systems that influence behavior.</h2>
+          <p class="lead">
+            We craft calm, high-signal experiences that help users make better decisions,
+            build habits, and keep progress steady over time.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vision -->
+    <section id="vision" class="section">
+      <div class="container">
+        <div class="split">
+          <div class="reveal">
+            <p class="eyebrow">VISION</p>
+            <h2>Software that feels calm—and makes people stronger.</h2>
+          </div>
+          <div class="reveal" style="transition-delay: 90ms;">
+            <p class="lead">
+              We’re building a suite of intelligent products that respect attention, reduce friction,
+              and elevate performance—without feeling overwhelming.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="contact reveal">
+          <div>
+            <p class="eyebrow">CONTACT</p>
+            <h2>Let’s build something intelligent.</h2>
+            <p class="lead">Reach out for collaboration, questions, or early access updates.</p>
+          </div>
+
+          <div class="contact__card">
+            <div class="contact__line">
+              <span class="contact__label">Email</span>
+              <a class="contact__value" href="mailto:cognielevate@gmail.com">cognielevate@gmail.com</a>
+            </div>
+            <div class="contact__hint">Send a short note with what you’re building and what you need.</div>
+            <a class="btn btn--primary btn--full" href="mailto:cognielevate@gmail.com?subject=CogniElevate%20-%20Hello">
+              Email CogniElevate
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a class="brand brand--footer" href="#home">
+          <img class="brand__logo" src="asset/cognielevate.png" alt="CogniElevate logo" />
+          <span class="brand__name">CogniElevate</span>
+        </a>
+        <p class="footer__tagline">Developing Intelligent Digital Solutions</p>
+      </div>
+
+      <div class="footer__links">
+        <a href="#products">Products</a>
+        <a href="#vision">Vision</a>
+        <a href="#contact">Contact</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© <span id="year">2026</span> CogniElevate. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
