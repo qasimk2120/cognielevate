@@ -5,76 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CogniElevate</title>
 
-    <style>
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #0f1117;
-        color: #e8e9f0;
-      }
-
-      .container {
-        max-width: 1000px;
-        margin: auto;
-        padding: 40px 20px;
-      }
-
-      h1,
-      h2 {
-        margin-bottom: 10px;
-      }
-
-      .hero {
-        text-align: center;
-        padding: 100px 20px;
-      }
-
-      .hero h1 {
-        font-size: 48px;
-      }
-
-      .hero p {
-        color: #9a9bb0;
-      }
-
-      .section {
-        margin-top: 60px;
-      }
-
-      .card {
-        background: #1a1d27;
-        padding: 20px;
-        border-radius: 12px;
-        margin-top: 20px;
-      }
-
-      footer {
-        text-align: center;
-        margin-top: 80px;
-        color: #5c5e72;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
-    <div class="container">
-      <section class="hero">
-        <h1>CogniElevate</h1>
-        <p>Developing Intelligent Digital Solutions</p>
-      </section>
+    <header class="navbar">
+      <div class="nav-left">
+        <img
+          src="asset/cognielevate.png"
+          alt="CogniElevate Logo"
+          class="logo-img"
+        />
+        <span class="logo-text">CogniElevate</span>
+      </div>
 
-      <section class="section">
-        <h2>About</h2>
-        <p>
-          CogniElevate builds intelligent digital products focused on
-          productivity, behavioral psychology, and user experience.
-        </p>
-      </section>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-      <section class="section">
-        <h2>Products</h2>
+    <section class="hero">
+      <img src="asset/cognielevate.png" class="hero-logo" alt="CogniElevate" />
 
+      <h1>CogniElevate</h1>
+      <p>Developing Intelligent Digital Solutions</p>
+
+      <div class="hero-buttons">
+        <button>Explore Products</button>
+        <button class="secondary">Learn More</button>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>About</h2>
+      <p>
+        CogniElevate builds intelligent digital products focused on
+        productivity, behavioral psychology, and engaging user experiences.
+      </p>
+    </section>
+
+    <section class="section" id="products">
+      <h2>Products</h2>
+
+      <div class="cards">
+        <
         <div class="card">
+          <img
+            src="asset/cognifocus.png"
+            class="product-img"
+            alt="CogniFocus"
+          />
+
           <h3>CogniFocus</h3>
           <p>
             A character-driven focus companion designed to improve productivity
@@ -83,19 +70,25 @@
         </div>
 
         <div class="card">
-          <h3>More Coming Soon</h3>
-          <p>New intelligent products are in development.</p>
+          <h3>Coming Soon</h3>
+          <p>More intelligent products are in development.</p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="section">
-        <h2>Contact</h2>
-        <p>cognielevate@gmail.com</p>
-      </section>
+    <section class="highlight">
+      <h2>We don’t just build apps.</h2>
+      <p>We build systems that influence behavior and improve focus.</p>
+    </section>
 
-      <footer>
-        <p>© 2026 CogniElevate</p>
-      </footer>
-    </div>
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <p>cognielevate@gmail.com</p>
+    </section>
+
+    <footer>
+      <p>© 2026 CogniElevate</p>
+      <a href="privacy.html">Privacy Policy</a>
+    </footer>
   </body>
 </html>
