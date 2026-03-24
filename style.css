@@ -17,10 +17,15 @@ body {
 .navbar {
   display: flex;
   justify-content: space-between;
-  padding: 20px 40px;
-  background: rgba(15, 17, 23, 0.8);
+  align-items: center;
+  padding: 16px 32px;
+  background: rgba(15, 17, 23, 0.72);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
+  z-index: 20;
 }
 
 .navbar a {
@@ -37,6 +42,15 @@ body {
 .hero {
   text-align: center;
   padding: 120px 20px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(
+    165deg,
+    rgba(16, 26, 39, 0.92) 0%,
+    rgba(11, 18, 28, 0.96) 58%,
+    rgba(8, 13, 21, 1) 100%
+  );
 }
 
 .hero h1 {
@@ -45,6 +59,76 @@ body {
 
 .hero p {
   color: var(--muted);
+}
+
+.hero h1,
+.hero p,
+.hero-buttons,
+.hero-logo-wrap {
+  position: relative;
+  z-index: 4;
+}
+
+.hero-effects {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(52px);
+  opacity: 0.9;
+}
+
+.hero-glow-one {
+  width: 380px;
+  height: 380px;
+  top: -120px;
+  left: calc(50% - 250px);
+  background: radial-gradient(circle, rgba(94, 234, 212, 0.5), transparent 70%);
+}
+
+.hero-glow-two {
+  width: 340px;
+  height: 340px;
+  top: -80px;
+  right: calc(50% - 300px);
+  background: radial-gradient(circle, rgba(46, 144, 255, 0.4), transparent 72%);
+}
+
+.hero-blur-band {
+  position: absolute;
+  inset: 34% -12% auto;
+  height: 170px;
+  background: linear-gradient(
+    90deg,
+    rgba(94, 234, 212, 0.12),
+    rgba(32, 95, 161, 0.1)
+  );
+  filter: blur(36px);
+}
+
+.hero-logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 132px;
+  height: 132px;
+  margin-bottom: 22px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(94, 234, 212, 0.32),
+    rgba(10, 18, 27, 0.2) 72%
+  );
+  box-shadow:
+    0 0 0 1px rgba(94, 234, 212, 0.25),
+    0 20px 58px rgba(0, 0, 0, 0.45);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
 
 .hero-buttons button {
@@ -113,68 +197,47 @@ footer a {
   display: flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
+  margin-left: 0;
 }
 
 .logo-img {
-  height: 32px;
+  height: 36px;
   width: auto;
+  display: block;
 }
 
 .logo-text {
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.01em;
+  color: var(--text);
 }
 .hero-logo {
-  width: 80px;
-  margin-bottom: 20px;
+  width: 86px;
+  height: auto;
 }
 .product-img {
   width: 60px;
   margin-bottom: 10px;
 }
-.hero-logo {
-  width: 80px;
-  margin-bottom: 20px;
-  position: relative;
-  z-index: 1;
-}
 
-.hero-logo::before {
-  content: "";
-  position: absolute;
-  inset: -20px;
-  background: radial-gradient(
-    circle,
-    rgba(94, 234, 212, 0.25),
-    transparent 70%
+.product-placeholder {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  line-height: 1;
+  color: rgba(94, 234, 212, 0.82);
+  border: 1px solid rgba(94, 234, 212, 0.3);
+  background: linear-gradient(
+    145deg,
+    rgba(94, 234, 212, 0.12),
+    rgba(18, 30, 40, 0.2)
   );
-  filter: blur(20px);
-  z-index: -1;
-}
-.hero {
-  text-align: center;
-  padding: 120px 20px;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(
-      circle at 20% 30%,
-      rgba(94, 234, 212, 0.12),
-      transparent 40%
-    ),
-    radial-gradient(circle at 80% 20%, rgba(11, 42, 74, 0.4), transparent 50%);
-  z-index: 0;
-}
-
-.hero * {
-  position: relative;
-  z-index: 1;
 }
 .fade-in {
   opacity: 0;
@@ -185,4 +248,34 @@ footer a {
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (max-width: 760px) {
+  .navbar {
+    padding: 14px 18px;
+  }
+
+  .navbar nav {
+    display: none;
+  }
+
+  .hero {
+    padding: 90px 18px;
+  }
+
+  .hero-glow-one {
+    width: 260px;
+    height: 260px;
+    left: calc(50% - 180px);
+  }
+
+  .hero-glow-two {
+    width: 250px;
+    height: 250px;
+    right: calc(50% - 190px);
+  }
+
+  .cards {
+    flex-direction: column;
+  }
 }

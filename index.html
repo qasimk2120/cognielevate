@@ -14,14 +14,14 @@
 
   <body>
     <header class="navbar">
-      <div class="nav-left">
+      <a href="index.html" class="nav-left" aria-label="CogniElevate home">
         <img
           src="asset/cognielevate.png"
           alt="CogniElevate Logo"
           class="logo-img"
         />
         <span class="logo-text">CogniElevate</span>
-      </div>
+      </a>
 
       <nav>
         <a href="#">Home</a>
@@ -31,7 +31,19 @@
     </header>
 
     <section class="hero">
-      <img src="assets/cognielevate.png" class="hero-logo" alt="CogniElevate" />
+      <div class="hero-effects" aria-hidden="true">
+        <span class="hero-glow hero-glow-one"></span>
+        <span class="hero-glow hero-glow-two"></span>
+        <span class="hero-blur-band"></span>
+      </div>
+
+      <div class="hero-logo-wrap">
+        <img
+          src="assets/cognielevate.png"
+          class="hero-logo"
+          alt="CogniElevate"
+        />
+      </div>
 
       <h1>CogniElevate</h1>
       <p>Developing Intelligent Digital Solutions</p>
