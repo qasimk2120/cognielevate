@@ -279,3 +279,128 @@ footer a {
     flex-direction: column;
   }
 }
+/* Product card arrow link */
+.product-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-link {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(94, 234, 212, 0.15);
+  color: var(--accent);
+  font-size: 18px;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.product-card:hover .product-link {
+  transform: translateX(6px) scale(1.1);
+  background: var(--accent);
+  color: black;
+}
+
+/* Optional glow */
+.product-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(94, 234, 212, 0.4);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.product-card:hover .product-link::after {
+  opacity: 1;
+}
+/* Modern card layout */
+.modern-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 24px;
+  border-radius: 16px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(26, 29, 39, 0.9),
+    rgba(18, 20, 30, 0.95)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Left content */
+.card-content {
+  max-width: 75%;
+}
+
+.product-icon {
+  width: 40px;
+  margin-bottom: 14px;
+}
+
+.modern-card h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.modern-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Arrow button */
+.product-link {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(94, 234, 212, 0.1);
+  color: var(--accent);
+  font-size: 18px;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+/* Hover interaction */
+.modern-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(94, 234, 212, 0.25);
+}
+
+.modern-card:hover .product-link {
+  transform: translateY(-50%) translateX(6px) scale(1.05);
+  background: var(--accent);
+  color: black;
+}
+.modern-card:hover {
+  box-shadow: 0 10px 40px rgba(94, 234, 212, 0.08);
+}
