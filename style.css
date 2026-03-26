@@ -404,3 +404,72 @@ footer a {
 .modern-card:hover {
   box-shadow: 0 10px 40px rgba(94, 234, 212, 0.08);
 }
+/* Social links */
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.socials a {
+  font-size: 14px;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+/* Hover effect */
+.socials a:hover {
+  color: var(--accent);
+  background: rgba(94, 234, 212, 0.1);
+}
+/* Floating social bar */
+.floating-socials {
+  position: fixed;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  z-index: 100;
+}
+
+/* Icon style */
+.floating-socials a {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+
+  transition: all 0.3s ease;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* Icon image */
+.floating-socials img {
+  width: 18px;
+  height: 18px;
+  filter: invert(1) opacity(0.8);
+}
+
+/* Hover effect */
+.floating-socials a:hover {
+  transform: translateX(6px) scale(1.1);
+  background: rgba(94, 234, 212, 0.15);
+}
+
+.floating-socials a:hover img {
+  filter: invert(1) brightness(1.2);
+}
