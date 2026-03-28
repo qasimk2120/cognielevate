@@ -136,3 +136,56 @@ footer {
   color: var(--color-text-muted);
   font-size: 13px;
 }
+/* NAV (minimal glass style) */
+.nav-lite {
+  padding: 16px 24px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background: rgba(15, 17, 23, 0.6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-lite a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+/* HERO HEADER */
+.policy-header {
+  text-align: center;
+  padding: 60px 20px;
+  background: radial-gradient(
+    circle at top,
+    rgba(83, 198, 255, 0.12),
+    transparent 60%
+  );
+}
+
+/* GLOW BACKGROUND (matches your app) */
+body {
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(84, 255, 196, 0.12),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 0%,
+      rgba(83, 198, 255, 0.12),
+      transparent 40%
+    ),
+    var(--color-bg);
+}
+
+/* LIST FIX */
+ul {
+  margin-top: 10px;
+  padding-left: 20px;
+  color: var(--color-text-secondary);
+}
+
+/* FOOTER */
+.policy-footer {
+  text-align: center;
+  padding: 40px 20px;
+}
