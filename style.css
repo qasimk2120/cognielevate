@@ -566,3 +566,9 @@ footer a {
     opacity: 0;
   }
 }
+.tagline {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
