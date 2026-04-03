@@ -506,6 +506,12 @@ footer {
   font-weight: 700;
 }
 
+.contact-icon {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
 .contact-label,
 .contact-note {
   margin: 0;
