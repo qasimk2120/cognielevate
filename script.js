@@ -6,33 +6,31 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  {
-    threshold: 0.1, // trigger earlier
-  },
+  { threshold: 0.12 },
 );
 
-document.querySelectorAll(".fade-in").forEach((el) => {
-  observer.observe(el);
+document.querySelectorAll(".fade-in").forEach((element) => {
+  observer.observe(element);
 
-  // 🔥 FORCE fallback (important)
-  const rect = el.getBoundingClientRect();
+  const rect = element.getBoundingClientRect();
   if (rect.top < window.innerHeight) {
-    el.classList.add("visible");
+    element.classList.add("visible");
   }
 });
+
 let lastScrollY = window.scrollY;
 const socials = document.getElementById("floatingSocials");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > lastScrollY) {
-    // scrolling down → hide
-    socials.style.opacity = "0";
-    socials.style.transform = "translateY(-50%) translateX(-20px)";
-  } else {
-    // scrolling up → show
-    socials.style.opacity = "1";
-    socials.style.transform = "translateY(-50%) translateX(0)";
-  }
+if (socials) {
+  window.addEventListener(
+    "scroll",
+    () => {
+      const scrollingDown = window.scrollY > lastScrollY;
+      const awayFromTop = window.scrollY > 120;
 
-  lastScrollY = window.scrollY;
-});
+      socials.style.opacity = scrollingDown && awayFromTop ? "0.2" : "1";
+      lastScrollY = window.scrollY;
+    },
+    { passive: true },
+  );
+}
