@@ -1,3 +1,11 @@
+/* Email icon next to email address */
+.email-icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 7px;
+  opacity: 0.85;
+}
 .product-link {
   display: inline-flex;
   align-items: center;
