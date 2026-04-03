@@ -1,3 +1,26 @@
+/* Glass-like link style for readability */
+.glass-link {
+  position: relative;
+  z-index: 1;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 2px 8px;
+  background: rgba(94, 234, 212, 0.1);
+  box-shadow: 0 2px 16px 0 rgba(94, 234, 212, 0.08);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.glass-link:hover,
+.glass-link:focus {
+  background: rgba(94, 234, 212, 0.22);
+  color: #111;
+  text-decoration: underline;
+}
 /* Email icon next to email address */
 .email-icon {
   width: 20px;
