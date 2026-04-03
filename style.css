@@ -1,3 +1,29 @@
+.product-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2em;
+  height: 2.2em;
+  border-radius: 50%;
+  background: var(--color-primary, #2b2d42);
+  color: #fff;
+  font-size: 1.35em;
+  text-decoration: none;
+  transition:
+    background 0.2s,
+    color 0.2s;
+  margin-left: 0.5em;
+  position: relative;
+}
+.product-link:focus,
+.product-link:hover {
+  background: #444;
+  color: #fff;
+}
+
+.product-link {
+  transform: translateX(0.5px);
+}
 :root {
   --bg: #0f1117;
   --surface: #1a1d27;
