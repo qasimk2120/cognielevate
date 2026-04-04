@@ -21,6 +21,13 @@ html {
   scroll-behavior: smooth;
 }
 
+.navbar-nav .nav-link {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.container-xl {
+  max-width: 1200px;
+}
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
@@ -99,7 +106,11 @@ a {
   height: 420px;
   top: -140px;
   left: calc(50% - 300px);
-  background: radial-gradient(circle, rgba(94, 234, 212, 0.45), transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(94, 234, 212, 0.45),
+    transparent 70%
+  );
 }
 
 .hero-glow-two {
@@ -107,7 +118,11 @@ a {
   height: 380px;
   top: -100px;
   right: calc(50% - 320px);
-  background: radial-gradient(circle, rgba(61, 139, 255, 0.34), transparent 72%);
+  background: radial-gradient(
+    circle,
+    rgba(61, 139, 255, 0.34),
+    transparent 72%
+  );
 }
 
 .hero-blur-band {
