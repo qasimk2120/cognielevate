@@ -753,3 +753,28 @@ a {
     width: 100%;
   }
 }
+.footer-social {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.footer-social img {
+  width: 18px;
+  height: 18px;
+  filter: invert(1) opacity(0.85);
+}
+
+.footer-social:hover,
+.footer-social:focus-visible {
+  background: rgba(94, 234, 212, 0.12);
+  transform: translateY(-2px);
+}
