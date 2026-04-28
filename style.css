@@ -827,3 +827,10 @@ a {
     flex-wrap: wrap;
   }
 }
+.product-cta i {
+  transition: transform 0.2s ease;
+}
+
+.product-cta:hover i {
+  transform: translate(2px, -2px);
+}
