@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Why CogniFocus Uses a Goblin Companion Instead of a Plain Timer",
+      "description": "CogniFocus uses a reactive Goblin companion because focus apps work better when they notice drift, react in the moment, and help you recover quickly.",
+      "image": "https://cognielevate.co/assets/og-image.png",
+      "datePublished": "2026-05-27T00:00:00Z",
+      "dateModified": "2026-05-27T00:00:00Z",
+      "author": { "@type": "Organization", "name": "CogniElevate", "url": "https://cognielevate.co/" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "CogniElevate",
+        "url": "https://cognielevate.co/",
+        "logo": { "@type": "ImageObject", "url": "https://cognielevate.co/assets/cognielevate.png" }
+      },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://cognielevate.co/blog/why-cognifocus-uses-a-goblin-companion" },
+      "keywords": ["CogniFocus Goblin", "focus companion app", "focus timer", "app blocker", "digital accountability"],
+      "articleSection": "Product"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cognielevate.co/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://cognielevate.co/blog" },
+        { "@type": "ListItem", "position": 3, "name": "Why CogniFocus Uses a Goblin Companion", "item": "https://cognielevate.co/blog/why-cognifocus-uses-a-goblin-companion" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the Goblin in CogniFocus?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Goblin is CogniFocus's reactive character companion. It changes mood during focus sessions, reacts when distractions happen, and helps turn focus into a visible accountability loop."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why not use a normal focus timer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A normal timer can be ignored. CogniFocus combines a timer, app blocking, recovery nudges, streaks, XP, and the Goblin companion so the session reacts when attention drifts."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Why CogniFocus Uses a Goblin Companion Instead of a Plain Timer | CogniElevate"
+  description="CogniFocus uses a reactive Goblin companion because focus apps work better when they notice drift, react in the moment, and help you recover quickly."
+  canonical="https://cognielevate.co/blog/why-cognifocus-uses-a-goblin-companion"
+  ogType="article"
+  activePage="blog"
+  schema={schema}
+>
+
+  <article style="padding: clamp(3.5rem,7vw,6rem) 0;">
+    <div class="container" style="max-width:780px;">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="/blog">Blog</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Why CogniFocus Uses a Goblin Companion</span>
+      </nav>
+
+      <header style="margin-bottom:2.5rem;">
+        <p class="kicker" style="margin-bottom:0.75rem;">Product</p>
+        <h1 style="font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;line-height:1.1;margin-bottom:1rem;">
+          Why CogniFocus Uses a Goblin Companion Instead of a Plain Timer
+        </h1>
+        <p class="post-meta" style="margin-bottom:1rem;">By CogniElevate &nbsp;|&nbsp; May 27, 2026 &nbsp;|&nbsp; 5 min read</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+          {['CogniFocus','Goblin','Focus companion','App blocking','Accountability'].map((t) => <span class="tag">{t}</span>)}
+        </div>
+      </header>
+
+      <div class="card card-p-lg article-body">
+        <p>A plain focus timer is easy to start and even easier to ignore. You press start, promise yourself this session will be different, and then one quick check turns into a lost chunk of the day.</p>
+
+        <p>That is why CogniFocus is built around more than a countdown. It combines a timer, Distraction Shield, recovery nudges, streaks, XP, and a reactive companion called the Goblin.</p>
+
+        <p>The point is simple: focus works better when the system notices what is happening while it is happening.</p>
+
+        <hr />
+
+        <h2>The problem with passive timers</h2>
+
+        <p>Most focus timers assume the hard part is starting. For a lot of people, starting is not the problem. Staying inside the session is.</p>
+
+        <p>If your hand opens TikTok, Instagram, YouTube, or another distracting app out of habit, a timer sitting quietly in the background does not push back. It keeps counting while your attention leaves.</p>
+
+        <p>CogniFocus was designed for that exact moment. During an active session, Distraction Shield can interrupt selected apps, and the Goblin reacts so the slip does not stay invisible.</p>
+
+        <h2>Why a companion changes the feeling</h2>
+
+        <p>The Goblin gives the session a sense of presence. It is calm when you are on track, annoyed when Shield catches a distraction, more intense when the pattern repeats, and cheerful when you finish cleanly.</p>
+
+        <p>That mood shift matters because it happens at the moment your attention is at risk. Instead of noticing 20 minutes later, you get a signal right away: you drifted, come back.</p>
+
+        <p>It is not about shame. It is about making the hidden loop visible.</p>
+
+        <h2>Reactive focus beats perfect focus</h2>
+
+        <p>People slip. Good focus systems should expect that. CogniFocus uses recovery nudges so a small drift does not have to ruin the whole session.</p>
+
+        <p>That is one reason the Goblin works as a companion instead of just decoration. It helps create a loop:</p>
+
+        <ul>
+          <li>You start a session with a clear time window.</li>
+          <li>Shield protects the session from selected apps.</li>
+          <li>The Goblin reacts when attention drifts.</li>
+          <li>Recovery nudges help you return instead of quitting.</li>
+          <li>Clean sessions build streaks, XP, and momentum.</li>
+        </ul>
+
+        <h2>Why this fits CogniElevate</h2>
+
+        <p>CogniElevate builds products around one larger idea: intelligent systems should give people time back. CogniFocus is the first public product built from that philosophy.</p>
+
+        <p>The Goblin is not just a mascot. It is a product decision. It turns focus from a quiet timer into an active system that responds when the real problem appears.</p>
+
+        <div class="article-cta">
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+            <img src="https://cognifocus.app/assets/logo/app-logo.png" alt="CogniFocus app logo" width="44" height="44" style="border-radius:10px;flex-shrink:0;" />
+            <h3 style="margin:0;">Try the focus app with a reactive companion</h3>
+          </div>
+          <p>CogniFocus is live on Android with focus sessions, app blocking, Goblin reactions, streaks, XP, and recovery nudges.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+            <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary">
+              Visit CogniFocus
+            </a>
+            <a href="https://cognifocus.app/blog/focus-friend-app-android.html" target="_blank" rel="noopener" class="btn btn-outline">
+              Read the companion guide
+            </a>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2>Frequently asked questions</h2>
+
+        <div>
+          {[
+            {
+              q: 'What is the Goblin in CogniFocus?',
+              a: 'The Goblin is the reactive character companion inside CogniFocus. It changes mood during a session, reacts when distractions happen, and makes the focus loop feel visible instead of silent.',
+            },
+            {
+              q: 'Does the Goblin replace app blocking?',
+              a: 'No. The Goblin works with Distraction Shield. Shield handles blocking selected apps during active sessions, while the Goblin gives feedback and accountability around what happened.',
+            },
+            {
+              q: 'Who is this useful for?',
+              a: 'It is useful for students, workers, and anyone who starts focus sessions but drifts into social apps out of habit. It is especially helpful when passive timers are too easy to ignore.',
+            },
+          ].map(({ q, a }) => (
+            <div class="faq-qa">
+              <p class="faq-q">{q}</p>
+              <p class="faq-a">{a}</p>
+            </div>
+          ))}
+        </div>
+
+        <hr />
+
+        <p style="font-size:0.88rem;color:var(--muted);">
+          Written by <a href="/" style="color:var(--accent);">CogniElevate</a>. CogniFocus is built by CogniElevate and available now on Android. &nbsp;|&nbsp;
+          <a href="/blog" style="color:var(--accent);">More articles</a>
+        </p>
+      </div>
+    </div>
+  </article>
+
+</BaseLayout>

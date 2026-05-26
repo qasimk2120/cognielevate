@@ -4,9 +4,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://cognielevate.co',
   integrations: [
-    sitemap({
-      filter: (page) => !page.includes('/privacy'),
-    }),
+    sitemap(),
   ],
   output: 'static',
   trailingSlash: 'never',
