@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "CogniElevate",
+  "url": "https://cognielevate.co/",
+  "email": "cognielevate@gmail.com",
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "email": "cognielevate@gmail.com",
+    "contactType": "customer support"
+  }]
+};
+
+const topics = [
+  'Partnerships',
+  'Product feedback',
+  'CogniFocus support or interest',
+  'Future solution ideas',
+  'Media or listing requests',
+  'General enquiries',
+];
+---
+
+<BaseLayout
+  title="Contact CogniElevate | Partnerships, Feedback and Product Interest"
+  description="Contact CogniElevate for partnerships, product feedback, future solution ideas, or interest in CogniFocus and upcoming intelligent products."
+  canonical="https://cognielevate.co/contact"
+  activePage="contact"
+  schema={schema}
+>
+
+  <section class="hero bg-dots" aria-labelledby="contact-title">
+    <div class="glow-top" aria-hidden="true"></div>
+    <div class="container" style="position:relative;">
+      <div style="max-width:700px;" class="fade-up">
+        <p class="kicker" style="margin-bottom:1rem;">Contact</p>
+        <h1 id="contact-title" class="hero-title">Contact CogniElevate</h1>
+        <p class="lead" style="margin-top:1.25rem;">
+          Reach out for partnerships, feedback, product interest, or future solution ideas. We read everything.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMAIL -->
+  <section class="section" aria-labelledby="email-heading">
+    <div class="container" style="max-width:700px;">
+      <div class="section-head">
+        <p class="kicker">Get in touch</p>
+        <h2 id="email-heading" class="display-sm">Drop us a message</h2>
+      </div>
+
+      <div class="card card-p-lg no-hover" style="display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap;">
+        <div class="contact-icon-wrap" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3.75 6.75h16.5a1.5 1.5 0 0 1 1.5 1.5v7.5a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3v-7.5a1.5 1.5 0 0 1 1.5-1.5Z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+            <path d="m4.5 8.25 6.53 5.22a1.55 1.55 0 0 0 1.94 0l6.53-5.22" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+          </svg>
+        </div>
+        <div>
+          <p class="kicker" style="margin-bottom:0.4rem;">Email</p>
+          <a href="mailto:cognielevate@gmail.com" style="font-size:1.15rem;font-weight:600;color:var(--accent);text-decoration:none;">
+            cognielevate@gmail.com
+          </a>
+          <p style="margin-top:0.5rem;font-size:0.92rem;">
+            Reach out for partnerships, feedback, product interest, or future solution ideas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPICS -->
+  <section class="section" style="background:var(--surface);" aria-labelledby="topics-heading">
+    <div class="container" style="max-width:700px;">
+      <div class="section-head">
+        <p class="kicker">What to contact us about</p>
+        <h2 id="topics-heading" class="display-sm">Ways we can collaborate</h2>
+      </div>
+      <div class="grid-2">
+        {topics.map((topic) => (
+          <div class="card card-p" style="font-size:0.92rem;font-weight:500;color:var(--text-2);">
+            {topic}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <section class="section" aria-labelledby="social-heading">
+    <div class="container" style="max-width:700px;">
+      <div class="section-head">
+        <p class="kicker">Social links</p>
+        <h2 id="social-heading" class="display-sm">Connect with CogniElevate</h2>
+      </div>
+      <div class="socials">
+        {[
+          { href: 'https://www.tiktok.com/@cognielevate',        icon: 'tiktok',    label: 'TikTok'    },
+          { href: 'https://www.instagram.com/cognifocus.app/',   icon: 'instagram', label: 'Instagram' },
+          { href: 'https://www.facebook.com/share/1Am7kCzkjG/', icon: 'facebook',  label: 'Facebook'  },
+          { href: 'https://x.com/cognielevate',                  icon: 'x',         label: 'X'         },
+          { href: 'https://discord.gg/HbU3XYyFCz',              icon: 'discord',   label: 'Discord'   },
+          { href: 'https://wa.me/923262878356',                  icon: 'whatsapp',  label: 'WhatsApp'  },
+        ].map(({ href, icon, label }) => (
+          <a href={href} target="_blank" rel="noopener noreferrer" class="social-link" aria-label={label}>
+            <img src={`https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/${icon}.svg`} alt="" width="16" height="16" aria-hidden="true" />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="cta-panel card card-p-lg" style="border-radius:var(--radius-lg);">
+        <h2 class="display-sm" style="margin-bottom:0.75rem;">Want to see what we have built first?</h2>
+        <div class="cta-actions">
+          <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Visit CogniFocus</a>
+          <a href="/products" class="btn btn-outline btn-lg">All products</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const guides = [
+  {
+    title: 'How to Stop App Switching',
+    excerpt: 'A practical guide to reducing app switching, protecting deep work, and recovering focus faster.',
+    href: 'https://cognifocus.app/blog/how-to-stop-app-switching.html',
+  },
+  {
+    title: 'Top 7 Best Focus Apps for ADHD',
+    excerpt: 'A comparison of focus apps for people who need more than a passive timer — tools for app blocking, streaks, and momentum.',
+    href: 'https://cognifocus.app/blog/best-focus-apps-for-adhd.html',
+  },
+  {
+    title: 'CogniFocus vs Forest',
+    excerpt: 'A practical comparison between gentle visual focus timers and reactive focus systems built to stop distractions.',
+    href: 'https://cognifocus.app/blog/cognifocus-vs-forest.html',
+  },
+];
+---
+
+<BaseLayout
+  title="Resources | CogniElevate — Focus guides and productivity reads"
+  description="Practical focus guides and product resources from CogniFocus, the first public product from CogniElevate, built to help people protect attention and recover wasted time."
+  canonical="https://cognielevate.co/resources"
+  activePage="resources"
+>
+
+  <section class="hero bg-dots" aria-labelledby="resources-title">
+    <div class="glow-top" aria-hidden="true"></div>
+    <div class="container" style="position:relative;">
+      <div style="max-width:700px;" class="fade-up">
+        <p class="kicker" style="margin-bottom:1rem;">Resources</p>
+        <h1 id="resources-title" class="hero-title">Focus guides from the CogniElevate ecosystem</h1>
+        <p class="lead" style="margin-top:1.25rem;">
+          Practical reads from CogniFocus — the first public product from CogniElevate — built to help people reduce app switching, protect attention, and recover wasted time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDES -->
+  <section class="section" aria-labelledby="guides-heading">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">CogniFocus guides</p>
+        <h2 id="guides-heading" class="display-sm">Practical reads</h2>
+      </div>
+      <div class="grid-3">
+        {guides.map(({ title, excerpt, href }) => (
+          <article class="card card-p" style="display:flex;flex-direction:column;">
+            <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">{title}</h3>
+            <p style="font-size:0.9rem;flex:1;">{excerpt}</p>
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener"
+              class="btn btn-ghost btn-sm"
+              style="margin-top:1.25rem;align-self:flex-start;"
+            >
+              Read on CogniFocus →
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR BLOG -->
+  <section class="section" style="background:var(--surface);" aria-labelledby="blog-res-heading">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">CogniElevate blog</p>
+        <h2 id="blog-res-heading" class="display-sm">From us directly</h2>
+        <p>Insights on productivity, focus, and intelligent systems from the CogniElevate team.</p>
+      </div>
+      <a href="/blog" class="card card-p" style="display:block;text-decoration:none;max-width:600px;">
+        <p class="kicker" style="margin-bottom:0.5rem;">Latest post</p>
+        <h3 style="font-size:1.15rem;color:var(--text);margin-bottom:0.5rem;">
+          How to Stay Focused at Work and Stop Getting Distracted
+        </h3>
+        <p style="font-size:0.9rem;">
+          Proven strategies to block distractions, protect your attention, and get more done — including how CogniFocus helps.
+        </p>
+        <span class="read-more" style="margin-top:0.75rem;">Read article →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="cta-panel card card-p-lg" style="border-radius:var(--radius-lg);">
+        <h2 class="display-sm" style="margin-bottom:0.75rem;">See the product behind the guides</h2>
+        <p>CogniFocus turns focus sessions into a reactive system with app blocking, streaks, XP, recovery nudges, and accountability.</p>
+        <div class="cta-actions">
+          <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Visit CogniFocus</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

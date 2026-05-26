@@ -91,10 +91,40 @@
         "@graph": [
           {
             "@type": "Organization",
+            "@id": "https://cognielevate.co/#organization",
             "name": "CogniElevate",
             "url": "https://cognielevate.co/",
-            "logo": "https://cognielevate.co/assets/cognielevate.png",
-            "description": "CogniElevate builds intelligent products and systems that reduce wasted time across productivity, shopping, healthcare, robotics and future markets"
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://cognielevate.co/assets/cognielevate.png",
+              "width": 512,
+              "height": 512
+            },
+            "description": "CogniElevate builds intelligent products and systems that reduce wasted time across productivity, shopping, healthcare, robotics and future markets",
+            "email": "cognielevate@gmail.com",
+            "sameAs": [
+              "https://www.tiktok.com/@cognielevate",
+              "https://www.instagram.com/cognifocus.app/",
+              "https://x.com/cognielevate",
+              "https://www.facebook.com/share/1Am7kCzkjG/",
+              "https://discord.gg/HbU3XYyFCz"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://cognielevate.co/#website",
+            "url": "https://cognielevate.co/",
+            "name": "CogniElevate",
+            "publisher": { "@id": "https://cognielevate.co/#organization" }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://cognielevate.co/#webpage",
+            "url": "https://cognielevate.co/",
+            "name": "CogniElevate | Intelligent solutions that give people their time back",
+            "description": "CogniElevate builds intelligent products and systems that reduce wasted time across productivity, shopping, healthcare, robotics and future markets",
+            "isPartOf": { "@id": "https://cognielevate.co/#website" },
+            "about": { "@id": "https://cognielevate.co/#organization" }
           },
           {
             "@type": "SoftwareApplication",
@@ -102,12 +132,37 @@
             "applicationCategory": "ProductivityApplication",
             "operatingSystem": "Android",
             "url": "https://cognifocus.app/",
-            "publisher": {
-              "@type": "Organization",
-              "name": "CogniElevate",
-              "url": "https://cognielevate.co/"
-            },
-            "description": "CogniFocus helps users protect attention, block distractions and build focus momentum"
+            "publisher": { "@id": "https://cognielevate.co/#organization" },
+            "description": "CogniFocus is a focus app that reacts to your behavior, calls you out when you slip, and builds pressure to stay focused. Block distractions, protect attention and build focus momentum."
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is CogniElevate?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "CogniElevate is a technology company building intelligent products and systems that reduce wasted time across several markets including productivity, shopping, healthcare and robotics."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is CogniElevate only CogniFocus?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. CogniFocus is the first launched product from CogniElevate, but the company is building a wider platform of intelligent products for future markets including shopping, healthcare and robotics."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the long-term vision of CogniElevate?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The long-term vision is to create intelligent systems that remove friction and improve outcomes wherever people lose time — across productivity, shopping, healthcare, and robotics."
+                }
+              }
+            ]
           }
         ]
       }

@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://cognielevate.co/#organization",
+      "name": "CogniElevate",
+      "url": "https://cognielevate.co/",
+      "logo": { "@type": "ImageObject", "url": "https://cognielevate.co/assets/cognielevate.png" },
+      "description": "CogniElevate builds intelligent products and systems that reduce wasted time across productivity, shopping, healthcare, robotics, and future markets.",
+      "sameAs": [
+        "https://www.tiktok.com/@cognielevate",
+        "https://www.instagram.com/cognifocus.app/",
+        "https://x.com/cognielevate",
+        "https://www.facebook.com/share/1Am7kCzkjG/",
+        "https://discord.gg/HbU3XYyFCz"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is CogniElevate?",
+          "acceptedAnswer": { "@type": "Answer", "text": "CogniElevate is a technology company building intelligent products and systems that reduce wasted time across several markets." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is CogniElevate only CogniFocus?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. CogniFocus is the first launched product, but CogniElevate is building a wider company platform for future markets." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the long-term vision of CogniElevate?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The long-term vision is to create intelligent systems that remove friction and improve outcomes wherever people lose time." }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="About CogniElevate | Building Systems That Give People Their Time Back"
+  description="Learn about CogniElevate, a company building intelligent products and systems that reduce wasted time across productivity, shopping, healthcare, robotics, and future markets."
+  canonical="https://cognielevate.co/about"
+  activePage="about"
+  schema={schema}
+>
+
+  <!-- PAGE HERO -->
+  <section class="hero bg-dots" aria-labelledby="about-title">
+    <div class="glow-top" aria-hidden="true"></div>
+    <div class="container" style="position:relative;">
+      <div style="max-width:700px;" class="fade-up">
+        <p class="kicker" style="margin-bottom:1rem;">About CogniElevate</p>
+        <h1 id="about-title" class="hero-title">Building systems that give people their time back</h1>
+        <p class="lead" style="margin-top:1.25rem;">
+          CogniElevate creates intelligent products that remove friction, speed up decisions, and reduce wasted time across everyday life and complex industries.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="section" id="problem" aria-labelledby="problem-heading">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">The problem we care about</p>
+        <h2 id="problem-heading" class="display-sm">Time gets lost in small moments</h2>
+        <p>Distractions, wrong purchases, waiting rooms, admin work, and slow systems all create the same cost: wasted time.</p>
+      </div>
+      <div class="grid-4">
+        {[
+          { title: 'Attention lost',    body: 'Small interruptions break focus and drain momentum before meaningful work begins.' },
+          { title: 'Decisions delayed', body: 'Unclear choices create hesitation and slow action across personal and professional life.' },
+          { title: 'Returns & rework',  body: 'Mistakes turn into extra time, cost, and repeated effort that compounds over time.' },
+          { title: 'Operations slowed', body: 'Manual workflows create drag inside everyday systems, from clinics to warehouses.' },
+        ].map(({ title, body }) => (
+          <article class="card card-p">
+            <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">{title}</h3>
+            <p style="font-size:0.9rem;">{body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPLE -->
+  <section class="section" id="principle" style="background:var(--surface);" aria-labelledby="principle-heading">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Our principle</p>
+        <h2 id="principle-heading" class="display-sm">We look for friction, then build the system that removes it</h2>
+        <p>Every CogniElevate product starts with a simple question: where are people losing time, and what system would make that moment faster, clearer, or automatic?</p>
+      </div>
+      <div class="process-flow">
+        <article class="card process-step">
+          <span class="process-num">01</span>
+          <h3>Find wasted time</h3>
+          <p style="font-size:0.9rem;">Identify the task, moment, or workflow that keeps slowing people down.</p>
+        </article>
+        <div class="process-arrow" aria-hidden="true">→</div>
+        <article class="card process-step">
+          <span class="process-num">02</span>
+          <h3>Build intelligent support</h3>
+          <p style="font-size:0.9rem;">Use software, automation, or prediction to simplify the work.</p>
+        </article>
+        <div class="process-arrow" aria-hidden="true">→</div>
+        <article class="card process-step">
+          <span class="process-num">03</span>
+          <h3>Create a faster outcome</h3>
+          <p style="font-size:0.9rem;">Turn friction into clarity, speed, and less wasted effort.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOMES -->
+  <section class="section" id="outcomes" aria-labelledby="outcomes-heading">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Outcomes</p>
+        <h2 id="outcomes-heading" class="display-sm">Less wasted time means better outcomes</h2>
+      </div>
+      <div class="grid-3">
+        {[
+          { title: 'Faster decisions',             body: 'Less hesitation, clearer next steps, faster momentum.' },
+          { title: 'Fewer repeated mistakes',      body: 'Systems can prevent the same error from happening again.' },
+          { title: 'More attention for real work', body: 'People spend time on important work instead of drag.' },
+        ].map(({ title, body }) => (
+          <article class="card card-p">
+            <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">{title}</h3>
+            <p style="font-size:0.9rem;">{body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" aria-labelledby="faq-about-heading" style="background:var(--surface);">
+    <div class="container" style="max-width:800px;">
+      <div class="section-head">
+        <p class="kicker">FAQ</p>
+        <h2 id="faq-about-heading" class="display-sm">Questions about CogniElevate</h2>
+      </div>
+      <div class="faq-list">
+        {[
+          { q: 'What is CogniElevate?', a: 'CogniElevate is a technology company building intelligent products and systems that reduce wasted time across several markets.' },
+          { q: 'Is CogniElevate only CogniFocus?', a: 'No. CogniFocus is the first launched product, but CogniElevate is building a wider company platform for future markets.' },
+          { q: 'What is the long-term vision?', a: 'The long-term vision is to create intelligent systems that remove friction and improve outcomes wherever people lose time.' },
+        ].map(({ q, a }) => (
+          <div class="faq-item">
+            <h3>{q}</h3>
+            <p>{a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="cta-panel card card-p-lg" style="border-radius:var(--radius-lg);">
+        <h2 class="display-sm" style="margin-bottom:0.75rem;">See what we have built first</h2>
+        <p>CogniFocus is live now and represents the first step in the CogniElevate product ecosystem.</p>
+        <div class="cta-actions">
+          <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Visit CogniFocus</a>
+          <a href="/products" class="btn btn-outline btn-lg">See all products</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://cognielevate.co/#organization",
+      "name": "CogniElevate",
+      "url": "https://cognielevate.co/"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "CogniFocus",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Android",
+      "url": "https://cognifocus.app/",
+      "publisher": { "@id": "https://cognielevate.co/#organization" },
+      "description": "CogniFocus is a focus system that helps users protect attention, block distractions, build momentum, and recover wasted time."
+    }
+  ]
+};
+
+const markets = [
+  {
+    title: 'Focus & productivity',
+    body: 'People lose hours to distraction every day. CogniElevate explores tools designed to protect attention and improve daily output.',
+    status: 'live',
+    product: 'CogniFocus',
+    link: 'https://cognifocus.app/',
+  },
+  {
+    title: 'Clothing & shopping',
+    body: 'Shopping decisions are uncertain and time-consuming. Future direction: fit prediction and smarter buying support.',
+    status: 'future',
+  },
+  {
+    title: 'Healthcare systems',
+    body: 'Time is lost across care delivery. Future direction: intelligent systems that reduce friction in real-world healthcare workflows.',
+    status: 'future',
+  },
+  {
+    title: 'Robotics systems',
+    body: 'Time is lost in complex coordination. Future direction: intelligent systems that improve perception and efficiency in robotic operations.',
+    status: 'future',
+  },
+];
+---
+
+<BaseLayout
+  title="Products | CogniElevate — Intelligent systems built to reduce wasted time"
+  description="Explore CogniElevate products and market directions, starting with CogniFocus — a focus system built to protect attention and reduce distractions."
+  canonical="https://cognielevate.co/products"
+  activePage="products"
+  schema={schema}
+>
+
+  <section class="hero bg-dots" aria-labelledby="products-title">
+    <div class="glow-top" aria-hidden="true"></div>
+    <div class="container" style="position:relative;">
+      <div style="max-width:700px;" class="fade-up">
+        <p class="kicker" style="margin-bottom:1rem;">Products</p>
+        <h1 id="products-title" class="hero-title">Products built to reduce wasted time</h1>
+        <p class="lead" style="margin-top:1.25rem;">
+          CogniElevate is starting with productivity and expanding toward markets where better systems can save time, reduce friction, and improve outcomes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COGNIFOCUS -->
+  <section class="section" id="cognifocus" aria-labelledby="cf-heading">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">First launched product</p>
+        <h2 id="cf-heading" class="display-sm">CogniFocus</h2>
+        <p>The first public product from CogniElevate, built to test the core belief that software should reduce friction and help people recover wasted time.</p>
+      </div>
+
+      <article class="card card-p-lg" style="max-width:780px;">
+        <div style="display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap;margin-bottom:1.5rem;">
+          <img src="https://cognifocus.app/assets/logo/app-logo.png" alt="CogniFocus app logo" class="product-logo" />
+          <div style="flex:1;min-width:220px;">
+            <h3 style="font-size:1.4rem;margin-bottom:0.5rem;">What CogniFocus includes</h3>
+            <p>Focus system that reacts to user behavior, Distraction Shield app blocking, streaks and XP, recovery nudges, and character-driven accountability.</p>
+          </div>
+        </div>
+        <div class="product-pills">
+          <span class="outcome-pill">Protect attention</span>
+          <span class="outcome-pill">Block distractions</span>
+          <span class="outcome-pill">Build momentum</span>
+          <span class="outcome-pill">Streaks & XP</span>
+          <span class="outcome-pill">Recovery nudges</span>
+        </div>
+        <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="margin-top:1.5rem;">
+          Visit CogniFocus
+          <svg class="icon-sm" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 2h10m0 0v10m0-10L2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <!-- MARKETS -->
+  <section class="section" id="markets" aria-labelledby="markets-heading" style="background:var(--surface);">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Markets we are exploring</p>
+        <h2 id="markets-heading" class="display-sm">Where we are building next</h2>
+        <p>CogniElevate is building a model that can move across categories wherever time is commonly lost.</p>
+      </div>
+      <div class="grid-4">
+        {markets.map(({ title, body, status, product, link }) => (
+          <article class="card market-card card-p">
+            <span class={`market-badge ${status === 'live' ? '' : 'future'}`}>
+              {status === 'live' ? 'Live now' : 'Future'}
+            </span>
+            <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">{title}</h3>
+            <p style="font-size:0.88rem;margin-bottom:auto;">{body}</p>
+            {product && link && (
+              <a href={link} target="_blank" rel="noopener" class="read-more" style="margin-top:1rem;">
+                {product} →
+              </a>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="cta-panel card card-p-lg" style="border-radius:var(--radius-lg);">
+        <h2 class="display-sm" style="margin-bottom:0.75rem;">Follow the first product</h2>
+        <p>CogniFocus is live now and represents the first step in the CogniElevate product ecosystem.</p>
+        <div class="cta-actions">
+          <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Visit CogniFocus</a>
+          <a href="/contact" class="btn btn-outline btn-lg">Partner with us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

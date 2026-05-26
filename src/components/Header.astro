@@ -1,0 +1,71 @@
+---
+interface Props {
+  activePage?: string;
+}
+const { activePage } = Astro.props;
+
+const links = [
+  { href: '/',          label: 'Home'      },
+  { href: '/about',     label: 'About'     },
+  { href: '/products',  label: 'Products'  },
+  { href: '/blog',      label: 'Blog'      },
+  { href: '/resources', label: 'Resources' },
+  { href: '/contact',   label: 'Contact'   },
+];
+---
+
+<header class="nav" role="banner">
+  <div class="container">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="/" class="nav-logo" aria-label="CogniElevate home">
+        <img src="/assets/cognielevate.png" alt="CogniElevate" width="120" height="28" />
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links" id="navLinks" role="menubar">
+        {links.map(({ href, label }) => (
+          <a
+            href={href}
+            class={`nav-link ${activePage === label.toLowerCase() ? 'active' : ''}`}
+            role="menuitem"
+          >
+            {label}
+          </a>
+        ))}
+        <a
+          href="https://cognifocus.app/"
+          class="nav-cta"
+          target="_blank"
+          rel="noopener"
+          aria-label="Try CogniFocus (opens in new tab)"
+        >
+          Try CogniFocus
+          <svg class="icon-sm" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 2h10m0 0v10m0-10L2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links  = document.getElementById('navLinks');
+  toggle?.addEventListener('click', () => {
+    const open = links?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!toggle?.contains(e.target as Node) && !links?.contains(e.target as Node)) {
+      links?.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>

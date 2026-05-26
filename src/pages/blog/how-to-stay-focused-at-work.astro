@@ -1,0 +1,229 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to Stay Focused at Work and Stop Getting Distracted",
+      "description": "Struggling to stay focused at work? Learn proven strategies to block distractions, protect your attention and get more done.",
+      "image": "https://cognielevate.co/assets/og-image.png",
+      "datePublished": "2026-05-26T00:00:00Z",
+      "dateModified": "2026-05-26T00:00:00Z",
+      "author": { "@type": "Organization", "name": "CogniElevate", "url": "https://cognielevate.co/" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "CogniElevate",
+        "url": "https://cognielevate.co/",
+        "logo": { "@type": "ImageObject", "url": "https://cognielevate.co/assets/cognielevate.png" }
+      },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://cognielevate.co/blog/how-to-stay-focused-at-work" },
+      "keywords": ["how to stay focused at work", "focus app", "block distractions", "productivity", "CogniFocus"],
+      "articleSection": "Productivity"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",  "item": "https://cognielevate.co/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog",  "item": "https://cognielevate.co/blog" },
+        { "@type": "ListItem", "position": 3, "name": "How to Stay Focused at Work", "item": "https://cognielevate.co/blog/how-to-stay-focused-at-work" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I stop getting distracted at work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The most effective way is to remove the source of distraction before you start. Turn off notifications, use a focus app like CogniFocus to block distracting apps, set a clear time window for work, and create an environment that signals focus."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best app to help you focus at work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CogniFocus is a focus app that responds to your behavior in real time — blocking distractions, calling you out when you slip, and building momentum. Unlike simple timers, it adapts to how you actually work."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long should a focus session be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "25 to 90 minutes works for most people. Shorter blocks (25 min) suit tasks requiring frequent switching. Longer blocks (60–90 min) suit deep work. Consistency matters more than the exact length."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="How to Stay Focused at Work and Stop Getting Distracted | CogniElevate"
+  description="Struggling to stay focused at work? Learn proven strategies to block distractions, protect your attention and get more done — including how CogniFocus can help."
+  canonical="https://cognielevate.co/blog/how-to-stay-focused-at-work"
+  ogType="article"
+  activePage="blog"
+  schema={schema}
+>
+
+  <article style="padding: clamp(3.5rem,7vw,6rem) 0;">
+    <div class="container" style="max-width:780px;">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="/blog">Blog</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>How to Stay Focused at Work</span>
+      </nav>
+
+      <!-- Header -->
+      <header style="margin-bottom:2.5rem;">
+        <p class="kicker" style="margin-bottom:0.75rem;">Productivity</p>
+        <h1 style="font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em;margin-bottom:1rem;">
+          How to Stay Focused at Work and Stop Getting Distracted
+        </h1>
+        <p class="post-meta" style="margin-bottom:1rem;">By CogniElevate &nbsp;·&nbsp; May 26, 2026 &nbsp;·&nbsp; 7 min read</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+          {['Productivity','Focus','Distractions','Deep work','CogniFocus'].map((t) => <span class="tag">{t}</span>)}
+        </div>
+      </header>
+
+      <!-- Body -->
+      <div class="card card-p-lg article-body">
+
+        <p>Staying focused at work has never been harder. Between constant notifications, social media and the sheer volume of things competing for your attention, your brain is being pulled in dozens of directions before you even start meaningful work.</p>
+
+        <p>The result is predictable: tasks take longer than they should, quality dips, and by the end of the day you feel exhausted but unsatisfied — as if you worked all day but got nothing important done.</p>
+
+        <p>The good news is that focus is not a fixed trait. It is a skill, and like any skill, it responds to the right environment and the right systems.</p>
+
+        <hr />
+
+        <h2>Why focus is so hard right now</h2>
+
+        <p>The average person checks their phone <strong>96 times a day</strong> — roughly once every ten minutes. Every check is a context switch, and every context switch carries a cognitive cost. Research from the University of California, Irvine found that it takes an average of <strong>23 minutes to fully regain deep focus</strong> after an interruption.</p>
+
+        <p>That means a single notification mid-task does not cost you 30 seconds — it costs you nearly half an hour of peak mental performance. At that rate, even two or three interruptions an hour can wipe out all your productive time.</p>
+
+        <p>Most people try to solve this with willpower. It does not work, because the problem is not willpower — it is that distractions are actively designed to capture attention. The solution has to be structural, not motivational.</p>
+
+        <hr />
+
+        <h2>The biggest sources of distraction at work</h2>
+
+        <h3>External distractions</h3>
+        <ul>
+          <li><strong>Notifications</strong> — messages, emails, app alerts arriving in real time</li>
+          <li><strong>Social media</strong> — short-loop content designed to be checked compulsively</li>
+          <li><strong>Open office noise</strong> — conversations, phones, general activity around you</li>
+          <li><strong>Unnecessary meetings</strong> — interrupting flow at arbitrary times</li>
+        </ul>
+
+        <h3>Internal distractions</h3>
+        <ul>
+          <li><strong>Task avoidance</strong> — subconsciously drifting toward easier tasks</li>
+          <li><strong>Mental fatigue</strong> — trying to focus without enough recovery</li>
+          <li><strong>Unclear priorities</strong> — not knowing what to work on, so you drift</li>
+          <li><strong>Anxiety and rumination</strong> — thoughts pulling you away from the present task</li>
+        </ul>
+
+        <hr />
+
+        <h2>Strategies that actually work</h2>
+
+        <h3>1. Design your environment before you start</h3>
+        <p>The most powerful focus techniques happen before you sit down to work. Put your phone in another room or turn on Do Not Disturb. Close every tab you do not need. Set a specific time window with a clear end point. Your brain performs best when the signals around it reflect that this window is for work.</p>
+
+        <h3>2. Work in focused blocks</h3>
+        <p>Trying to focus for an entire day is not realistic. Work in defined blocks — 25 to 90 minutes depending on the task — and take deliberate breaks between them. The exact length matters less than consistency.</p>
+
+        <h3>3. Single-task ruthlessly</h3>
+        <p>Multitasking is largely a myth. What you are actually doing is switching rapidly between tasks — and every switch costs you. For complex work, pick one thing and stay on it until the block ends. If something else comes up, write it down and return to it later.</p>
+
+        <h3>4. Block distracting apps and sites</h3>
+        <p>If you know you are prone to checking certain apps mid-focus session, the fastest fix is to make them temporarily unavailable. Blocking tools remove the temptation entirely rather than relying on you to resist it every time.</p>
+
+        <h3>5. Use accountability and pressure</h3>
+        <p>One of the most underrated focus techniques is accountability — having something that calls you out when you slip rather than letting the distraction pass unnoticed. When there are no consequences for breaking focus, it is much easier to rationalize just one quick check.</p>
+
+        <h3>6. Protect your high-focus hours</h3>
+        <p>Most people have a window of two to four hours each day when their attention and cognitive performance peak — often in the morning. Guard these hours aggressively. Schedule your most demanding work here and push meetings, email, and admin into lower-energy periods.</p>
+
+        <hr />
+
+        <!-- CogniFocus CTA -->
+        <div class="article-cta">
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+            <img src="https://cognifocus.app/assets/logo/app-logo.png" alt="CogniFocus" width="44" height="44" style="border-radius:10px;flex-shrink:0;" />
+            <h3 style="margin:0;">Try CogniFocus — the focus app that reacts to you</h3>
+          </div>
+          <p>CogniFocus tracks your behavior in real time, calls you out when you slip, and builds momentum to keep you on task. It is not a timer — it is a system that adapts to how you actually work.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+            <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary">
+              Try CogniFocus →
+            </a>
+            <a href="/products" class="btn btn-outline">Learn more</a>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2>Building a focus habit that sticks</h2>
+
+        <p>Individual tactics help, but what really moves the needle is building a consistent routine around focused work.</p>
+
+        <ul>
+          <li><strong>Start smaller than feels necessary.</strong> A 15-minute focus block you actually do is worth more than a 2-hour block you avoid.</li>
+          <li><strong>Anchor it to an existing habit.</strong> Pair your focus session with something you already do — right after your first coffee, right after a morning stand-up.</li>
+          <li><strong>Track your streaks.</strong> Consistency is motivating. Even a simple note of days you focused creates progress you want to maintain.</li>
+          <li><strong>Plan for disruption.</strong> Life will interrupt your focus routine. Plan what you will do when it happens rather than letting a missed day break the habit entirely.</li>
+        </ul>
+
+        <p>Over time, focused work stops feeling like a battle against distraction and starts feeling like a natural mode you return to. That is the goal.</p>
+
+        <hr />
+
+        <h2>Frequently asked questions</h2>
+
+        <div>
+          {[
+            {
+              q: 'How do I stop getting distracted at work?',
+              a: 'The most effective way is to remove the source of distraction before you start. Turn off notifications, use a tool like CogniFocus to block distracting apps, set a clear time window for focused work, and create an environment that signals it is time to work — not browse.',
+            },
+            {
+              q: 'What is the best app to help you focus at work?',
+              a: 'CogniFocus is a focus app that responds to your behavior in real time — blocking distractions, calling you out when you slip, and building momentum. Unlike simple timers, it adapts to how you actually work. You can try it at cognifocus.app.',
+            },
+            {
+              q: 'How long should a focus session be?',
+              a: '25 to 90 minutes works for most people. Shorter blocks (25 min) suit tasks requiring frequent switching. Longer blocks (60–90 min) suit deep creative or analytical work. Consistency matters more than the exact length — pick one and protect it.',
+            },
+          ].map(({ q, a }) => (
+            <div class="faq-qa">
+              <p class="faq-q">{q}</p>
+              <p class="faq-a">{a}</p>
+            </div>
+          ))}
+        </div>
+
+        <hr />
+
+        <p style="font-size:0.88rem;color:var(--muted);">
+          Written by <a href="/" style="color:var(--accent);">CogniElevate</a> — building intelligent systems that give people their time back. &nbsp;·&nbsp;
+          <a href="/blog" style="color:var(--accent);">More articles →</a>
+        </p>
+
+      </div>
+    </div>
+  </article>
+
+</BaseLayout>
