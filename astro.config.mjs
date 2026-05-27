@@ -7,5 +7,5 @@ export default defineConfig({
     sitemap(),
   ],
   output: 'static',
-  trailingSlash: 'never',
+  trailingSlash: 'always',
 });
