@@ -1,18 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "Blog",
-  "name": "CogniElevate Blog",
-  "url": "https://cognielevate.co/blog/",
-  "description": "Insights on productivity, focus, distraction blocking and intelligent systems from the CogniElevate team.",
-  "publisher": {
-    "@type": "Organization",
-    "name": "CogniElevate",
-    "url": "https://cognielevate.co/"
-  }
-};
+import {
+  coreKeywords,
+  organizationSchema,
+  websiteSchema,
+  webPageSchema,
+  breadcrumbSchema,
+} from '../../data/seo.js';
 
 const posts = [
   {
@@ -32,12 +26,47 @@ const posts = [
     tags: ['Productivity', 'Focus', 'CogniFocus'],
   },
 ];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema({
+      id: 'https://cognielevate.co/blog/#webpage',
+      url: 'https://cognielevate.co/blog/',
+      name: 'Blog | CogniElevate - Productivity, Focus and Intelligent Systems',
+      description: 'Insights on productivity, focus, distraction blocking and intelligent systems from the team building CogniFocus and the CogniElevate ecosystem.',
+      breadcrumb: true,
+    }),
+    breadcrumbSchema({
+      id: 'https://cognielevate.co/blog/#breadcrumb',
+      items: [
+        { name: 'Home', url: 'https://cognielevate.co/' },
+        { name: 'Blog', url: 'https://cognielevate.co/blog/' },
+      ],
+    }),
+    {
+      "@type": "Blog",
+      "@id": "https://cognielevate.co/blog/#blog",
+      "name": "CogniElevate Blog",
+      "url": "https://cognielevate.co/blog/",
+      "description": "Insights on productivity, focus, distraction blocking and intelligent systems from the CogniElevate team.",
+      "publisher": { "@id": "https://cognielevate.co/#organization" },
+      "blogPost": [
+        { "@id": "https://cognielevate.co/blog/why-cognifocus-uses-a-goblin-companion/#article" },
+        { "@id": "https://cognielevate.co/blog/how-to-stay-focused-at-work/#article" }
+      ]
+    },
+  ]
+};
 ---
 
 <BaseLayout
   title="Blog | CogniElevate - Productivity, Focus and Intelligent Systems"
   description="Insights on productivity, focus, distraction blocking and intelligent systems from the team building CogniFocus and the CogniElevate ecosystem."
   canonical="https://cognielevate.co/blog/"
+  keywords={[...coreKeywords, 'CogniElevate blog', 'focus blog', 'productivity blog', 'AI systems blog']}
   activePage="blog"
   schema={schema}
 >

@@ -1,72 +1,75 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  coreKeywords,
+  organizationSchema,
+  websiteSchema,
+  webPageSchema,
+  breadcrumbSchema,
+  faqSchema,
+} from '../../data/seo.js';
+
+const articleUrl = 'https://cognielevate.co/blog/how-to-stay-focused-at-work/';
+const faqItems = [
+  {
+    question: 'How do I stop getting distracted at work?',
+    answer: 'The most effective way is to remove the source of distraction before you start. Turn off notifications, use a focus app like CogniFocus to block distracting apps, set a clear time window for work, and create an environment that signals focus.',
+  },
+  {
+    question: 'What is the best app to help you focus at work?',
+    answer: 'CogniFocus is a focus app that responds to your behavior in real time by blocking distractions, calling you out when you slip, and building momentum. Unlike simple timers, it adapts to how you actually work.',
+  },
+  {
+    question: 'How long should a focus session be?',
+    answer: '25 to 90 minutes works for most people. Shorter blocks suit tasks requiring frequent switching. Longer blocks suit deep work. Consistency matters more than the exact length.',
+  },
+];
 
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema({
+      id: `${articleUrl}#webpage`,
+      url: articleUrl,
+      name: 'How to Stay Focused at Work and Stop Getting Distracted | CogniElevate',
+      description: 'Struggling to stay focused at work? Learn proven strategies to block distractions, protect your attention and get more done, including how CogniFocus can help.',
+      breadcrumb: true,
+    }),
+    breadcrumbSchema({
+      id: `${articleUrl}#breadcrumb`,
+      items: [
+        { name: 'Home', url: 'https://cognielevate.co/' },
+        { name: 'Blog', url: 'https://cognielevate.co/blog/' },
+        { name: 'How to Stay Focused at Work', url: articleUrl },
+      ],
+    }),
     {
-      "@type": "Article",
+      "@type": "BlogPosting",
+      "@id": `${articleUrl}#article`,
       "headline": "How to Stay Focused at Work and Stop Getting Distracted",
       "description": "Struggling to stay focused at work? Learn proven strategies to block distractions, protect your attention and get more done.",
       "image": "https://cognielevate.co/assets/og-image.png",
       "datePublished": "2026-05-26T00:00:00Z",
-      "dateModified": "2026-05-26T00:00:00Z",
-      "author": { "@type": "Organization", "name": "CogniElevate", "url": "https://cognielevate.co/" },
-      "publisher": {
-        "@type": "Organization",
-        "name": "CogniElevate",
-        "url": "https://cognielevate.co/",
-        "logo": { "@type": "ImageObject", "url": "https://cognielevate.co/assets/cognielevate.png" }
-      },
-      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://cognielevate.co/blog/how-to-stay-focused-at-work/" },
+      "dateModified": "2026-05-27T00:00:00Z",
+      "author": { "@id": "https://cognielevate.co/#organization" },
+      "publisher": { "@id": "https://cognielevate.co/#organization" },
+      "mainEntityOfPage": { "@id": `${articleUrl}#webpage` },
       "keywords": ["how to stay focused at work", "focus app", "block distractions", "productivity", "CogniFocus"],
-      "articleSection": "Productivity"
+      "articleSection": "Productivity",
+      "inLanguage": "en"
     },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home",  "item": "https://cognielevate.co/" },
-        { "@type": "ListItem", "position": 2, "name": "Blog",  "item": "https://cognielevate.co/blog/" },
-        { "@type": "ListItem", "position": 3, "name": "How to Stay Focused at Work", "item": "https://cognielevate.co/blog/how-to-stay-focused-at-work/" }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How do I stop getting distracted at work?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The most effective way is to remove the source of distraction before you start. Turn off notifications, use a focus app like CogniFocus to block distracting apps, set a clear time window for work, and create an environment that signals focus."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the best app to help you focus at work?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "CogniFocus is a focus app that responds to your behavior in real time — blocking distractions, calling you out when you slip, and building momentum. Unlike simple timers, it adapts to how you actually work."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How long should a focus session be?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "25 to 90 minutes works for most people. Shorter blocks (25 min) suit tasks requiring frequent switching. Longer blocks (60–90 min) suit deep work. Consistency matters more than the exact length."
-          }
-        }
-      ]
-    }
+    faqSchema(faqItems),
   ]
 };
 ---
 
 <BaseLayout
   title="How to Stay Focused at Work and Stop Getting Distracted | CogniElevate"
-  description="Struggling to stay focused at work? Learn proven strategies to block distractions, protect your attention and get more done — including how CogniFocus can help."
+  description="Struggling to stay focused at work? Learn proven strategies to block distractions, protect your attention and get more done, including how CogniFocus can help."
   canonical="https://cognielevate.co/blog/how-to-stay-focused-at-work/"
+  keywords={[...coreKeywords, 'how to stay focused at work', 'block distractions at work', 'deep work app', 'focus app for work']}
   ogType="article"
   activePage="blog"
   schema={schema}

@@ -1,17 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  coreKeywords,
+  organizationSchema,
+  websiteSchema,
+  webPageSchema,
+  breadcrumbSchema,
+} from '../data/seo.js';
 
 const schema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "CogniElevate",
-  "url": "https://cognielevate.co/",
-  "email": "cognielevate@gmail.com",
-  "contactPoint": [{
-    "@type": "ContactPoint",
-    "email": "cognielevate@gmail.com",
-    "contactType": "customer support"
-  }]
+  "@graph": [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema({
+      id: 'https://cognielevate.co/contact/#webpage',
+      url: 'https://cognielevate.co/contact/',
+      name: 'Contact CogniElevate | Partnerships, Feedback and Product Interest',
+      description: 'Contact CogniElevate for partnerships, product feedback, future solution ideas, or interest in CogniFocus and upcoming intelligent products.',
+      breadcrumb: true,
+    }),
+    breadcrumbSchema({
+      id: 'https://cognielevate.co/contact/#breadcrumb',
+      items: [
+        { name: 'Home', url: 'https://cognielevate.co/' },
+        { name: 'Contact', url: 'https://cognielevate.co/contact/' },
+      ],
+    }),
+  ]
 };
 
 const topics = [
@@ -28,6 +44,7 @@ const topics = [
   title="Contact CogniElevate | Partnerships, Feedback and Product Interest"
   description="Contact CogniElevate for partnerships, product feedback, future solution ideas, or interest in CogniFocus and upcoming intelligent products."
   canonical="https://cognielevate.co/contact/"
+  keywords={[...coreKeywords, 'contact CogniElevate', 'CogniElevate partnerships', 'product feedback', 'startup contact']}
   activePage="contact"
   schema={schema}
 >
@@ -121,7 +138,7 @@ const topics = [
         <h2 class="display-sm" style="margin-bottom:0.75rem;">Want to see what we have built first?</h2>
         <div class="cta-actions">
           <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Visit CogniFocus</a>
-          <a href="/products" class="btn btn-outline btn-lg">All products</a>
+          <a href="/products/" class="btn btn-outline btn-lg">All products</a>
         </div>
       </div>
     </div>

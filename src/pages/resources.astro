@@ -1,5 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  coreKeywords,
+  organizationSchema,
+  websiteSchema,
+  webPageSchema,
+  breadcrumbSchema,
+} from '../data/seo.js';
 
 const guides = [
   {
@@ -31,13 +38,37 @@ const localPosts = [
     href: '/blog/how-to-stay-focused-at-work/',
   },
 ];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema({
+      id: 'https://cognielevate.co/resources/#webpage',
+      url: 'https://cognielevate.co/resources/',
+      name: 'Resources | CogniElevate - Focus guides and productivity reads',
+      description: 'Practical focus guides and product resources from CogniFocus, the first public product from CogniElevate, built to help people protect attention and recover wasted time.',
+      breadcrumb: true,
+    }),
+    breadcrumbSchema({
+      id: 'https://cognielevate.co/resources/#breadcrumb',
+      items: [
+        { name: 'Home', url: 'https://cognielevate.co/' },
+        { name: 'Resources', url: 'https://cognielevate.co/resources/' },
+      ],
+    }),
+  ]
+};
 ---
 
 <BaseLayout
   title="Resources | CogniElevate - Focus guides and productivity reads"
   description="Practical focus guides and product resources from CogniFocus, the first public product from CogniElevate, built to help people protect attention and recover wasted time."
   canonical="https://cognielevate.co/resources/"
+  keywords={[...coreKeywords, 'focus guides', 'productivity resources', 'CogniFocus guides', 'app blocker articles']}
   activePage="resources"
+  schema={schema}
 >
 
   <section class="hero bg-dots" aria-labelledby="resources-title">

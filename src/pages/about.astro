@@ -1,44 +1,49 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  coreKeywords,
+  organizationSchema,
+  websiteSchema,
+  webPageSchema,
+  breadcrumbSchema,
+  faqSchema,
+} from '../data/seo.js';
+
+const faqItems = [
+  {
+    question: 'What is CogniElevate?',
+    answer: 'CogniElevate is a technology company building intelligent products and systems that reduce wasted time across several markets.',
+  },
+  {
+    question: 'Is CogniElevate only CogniFocus?',
+    answer: 'No. CogniFocus is the first launched product, but CogniElevate is building a wider company platform for future markets.',
+  },
+  {
+    question: 'What is the long-term vision of CogniElevate?',
+    answer: 'The long-term vision is to create intelligent systems that remove friction and improve outcomes wherever people lose time.',
+  },
+];
 
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://cognielevate.co/#organization",
-      "name": "CogniElevate",
-      "url": "https://cognielevate.co/",
-      "logo": { "@type": "ImageObject", "url": "https://cognielevate.co/assets/cognielevate.png" },
-      "description": "CogniElevate builds intelligent products and systems that reduce wasted time across productivity, shopping, healthcare, robotics, and future markets.",
-      "sameAs": [
-        "https://www.tiktok.com/@cognielevate",
-        "https://www.instagram.com/cognifocus.app/",
-        "https://x.com/cognielevate",
-        "https://www.facebook.com/share/1Am7kCzkjG/",
-        "https://discord.gg/HbU3XYyFCz"
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is CogniElevate?",
-          "acceptedAnswer": { "@type": "Answer", "text": "CogniElevate is a technology company building intelligent products and systems that reduce wasted time across several markets." }
-        },
-        {
-          "@type": "Question",
-          "name": "Is CogniElevate only CogniFocus?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. CogniFocus is the first launched product, but CogniElevate is building a wider company platform for future markets." }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the long-term vision of CogniElevate?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The long-term vision is to create intelligent systems that remove friction and improve outcomes wherever people lose time." }
-        }
-      ]
-    }
+    organizationSchema,
+    websiteSchema,
+    webPageSchema({
+      id: 'https://cognielevate.co/about/#webpage',
+      url: 'https://cognielevate.co/about/',
+      name: 'About CogniElevate | Building Systems That Give People Their Time Back',
+      description: 'Learn about CogniElevate, a company building intelligent products and systems that reduce wasted time across productivity, shopping, healthcare, robotics, and future markets.',
+      breadcrumb: true,
+    }),
+    breadcrumbSchema({
+      id: 'https://cognielevate.co/about/#breadcrumb',
+      items: [
+        { name: 'Home', url: 'https://cognielevate.co/' },
+        { name: 'About', url: 'https://cognielevate.co/about/' },
+      ],
+    }),
+    faqSchema(faqItems),
   ]
 };
 ---
@@ -47,6 +52,7 @@ const schema = {
   title="About CogniElevate | Building Systems That Give People Their Time Back"
   description="Learn about CogniElevate, a company building intelligent products and systems that reduce wasted time across productivity, shopping, healthcare, robotics, and future markets."
   canonical="https://cognielevate.co/about/"
+  keywords={[...coreKeywords, 'about CogniElevate', 'technology startup Pakistan', 'intelligent products company']}
   activePage="about"
   schema={schema}
 >
@@ -171,7 +177,7 @@ const schema = {
         <p>CogniFocus is live now and represents the first step in the CogniElevate product ecosystem.</p>
         <div class="cta-actions">
           <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Visit CogniFocus</a>
-          <a href="/products" class="btn btn-outline btn-lg">See all products</a>
+          <a href="/products/" class="btn btn-outline btn-lg">See all products</a>
         </div>
       </div>
     </div>

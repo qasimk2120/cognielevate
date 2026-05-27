@@ -1,24 +1,34 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  coreKeywords,
+  organizationSchema,
+  websiteSchema,
+  cognifocusSoftwareSchema,
+  webPageSchema,
+  breadcrumbSchema,
+} from '../data/seo.js';
 
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://cognielevate.co/#organization",
-      "name": "CogniElevate",
-      "url": "https://cognielevate.co/"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "name": "CogniFocus",
-      "applicationCategory": "ProductivityApplication",
-      "operatingSystem": "Android",
-      "url": "https://cognifocus.app/",
-      "publisher": { "@id": "https://cognielevate.co/#organization" },
-      "description": "CogniFocus is a focus system that helps users protect attention, block distractions, build momentum, and recover wasted time."
-    }
+    organizationSchema,
+    websiteSchema,
+    webPageSchema({
+      id: 'https://cognielevate.co/products/#webpage',
+      url: 'https://cognielevate.co/products/',
+      name: 'Products | CogniElevate - Intelligent systems built to reduce wasted time',
+      description: 'Explore CogniElevate products and market directions, starting with CogniFocus, a focus system built to protect attention and reduce distractions.',
+      breadcrumb: true,
+    }),
+    breadcrumbSchema({
+      id: 'https://cognielevate.co/products/#breadcrumb',
+      items: [
+        { name: 'Home', url: 'https://cognielevate.co/' },
+        { name: 'Products', url: 'https://cognielevate.co/products/' },
+      ],
+    }),
+    cognifocusSoftwareSchema,
   ]
 };
 
@@ -49,9 +59,10 @@ const markets = [
 ---
 
 <BaseLayout
-  title="Products | CogniElevate — Intelligent systems built to reduce wasted time"
-  description="Explore CogniElevate products and market directions, starting with CogniFocus — a focus system built to protect attention and reduce distractions."
+  title="Products | CogniElevate - Intelligent systems built to reduce wasted time"
+  description="Explore CogniElevate products and market directions, starting with CogniFocus, a focus system built to protect attention and reduce distractions."
   canonical="https://cognielevate.co/products/"
+  keywords={[...coreKeywords, 'CogniFocus product', 'focus app product', 'future AI products', 'productivity startup products']}
   activePage="products"
   schema={schema}
 >
@@ -138,7 +149,7 @@ const markets = [
         <p>CogniFocus is live now and represents the first step in the CogniElevate product ecosystem.</p>
         <div class="cta-actions">
           <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Visit CogniFocus</a>
-          <a href="/contact" class="btn btn-outline btn-lg">Partner with us</a>
+          <a href="/contact/" class="btn btn-outline btn-lg">Partner with us</a>
         </div>
       </div>
     </div>

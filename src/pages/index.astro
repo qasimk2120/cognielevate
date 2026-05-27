@@ -1,70 +1,42 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  coreKeywords,
+  organizationSchema,
+  websiteSchema,
+  cognifocusSoftwareSchema,
+  webPageSchema,
+  faqSchema,
+} from '../data/seo.js';
+
+const faqItems = [
+  {
+    question: 'What is CogniElevate?',
+    answer: 'CogniElevate is a technology company building intelligent products and systems that reduce wasted time across several markets, starting with CogniFocus in the focus and productivity space.',
+  },
+  {
+    question: 'Is CogniElevate only CogniFocus?',
+    answer: 'No. CogniFocus is the first launched product, but CogniElevate is building a wider ecosystem of intelligent products across productivity, shopping, healthcare, and robotics.',
+  },
+  {
+    question: 'What is the long-term vision?',
+    answer: 'The long-term vision is to create intelligent systems that remove friction and improve outcomes wherever people lose time, making everyday moments faster, clearer, and more effective.',
+  },
+];
 
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://cognielevate.co/#organization",
-      "name": "CogniElevate",
-      "url": "https://cognielevate.co/",
-      "logo": { "@type": "ImageObject", "url": "https://cognielevate.co/assets/cognielevate.png" },
-      "description": "CogniElevate builds intelligent products and systems that reduce wasted time across productivity, shopping, healthcare, robotics and future markets.",
-      "email": "cognielevate@gmail.com",
-      "sameAs": [
-        "https://www.tiktok.com/@cognielevate",
-        "https://www.instagram.com/cognifocus.app/",
-        "https://x.com/cognielevate",
-        "https://www.facebook.com/share/1Am7kCzkjG/",
-        "https://discord.gg/HbU3XYyFCz"
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://cognielevate.co/#website",
-      "url": "https://cognielevate.co/",
-      "name": "CogniElevate",
-      "publisher": { "@id": "https://cognielevate.co/#organization" }
-    },
-    {
-      "@type": "SoftwareApplication",
-      "name": "CogniFocus",
-      "applicationCategory": "ProductivityApplication",
-      "operatingSystem": "Android",
-      "url": "https://cognifocus.app/",
-      "publisher": { "@id": "https://cognielevate.co/#organization" },
-      "description": "CogniFocus is a focus app that reacts to your behavior, calls you out when you slip, and builds pressure to stay focused. Block distractions, protect attention, build momentum."
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is CogniElevate?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "CogniElevate is a technology company building intelligent products and systems that reduce wasted time across productivity, shopping, healthcare and robotics."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is CogniElevate only CogniFocus?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. CogniFocus is the first launched product from CogniElevate, but the company is building a wider platform for future markets including shopping, healthcare and robotics."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the long-term vision of CogniElevate?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The long-term vision is to create intelligent systems that remove friction and improve outcomes wherever people lose time — across productivity, shopping, healthcare, and robotics."
-          }
-        }
-      ]
-    }
+    organizationSchema,
+    websiteSchema,
+    webPageSchema({
+      id: 'https://cognielevate.co/#webpage',
+      url: 'https://cognielevate.co/',
+      name: 'CogniElevate | Intelligent systems that give people their time back',
+      description: 'CogniElevate builds intelligent products that remove friction, speed up decisions and reduce wasted time across productivity, shopping, healthcare and robotics.',
+    }),
+    cognifocusSoftwareSchema,
+    faqSchema(faqItems),
   ]
 };
 ---
@@ -73,6 +45,7 @@ const schema = {
   title="CogniElevate | Intelligent systems that give people their time back"
   description="CogniElevate builds intelligent products that remove friction, speed up decisions and reduce wasted time across productivity, shopping, healthcare and robotics."
   canonical="https://cognielevate.co/"
+  keywords={[...coreKeywords, 'CogniElevate startup', 'AI productivity tools', 'focus systems for Android']}
   activePage="home"
   schema={schema}
 >
@@ -100,7 +73,7 @@ const schema = {
                 <path d="M2 2h10m0 0v10m0-10L2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
               </svg>
             </a>
-            <a href="/about" class="btn btn-outline btn-lg">Our vision</a>
+            <a href="/about/" class="btn btn-outline btn-lg">Our vision</a>
           </div>
         </div>
 
@@ -314,7 +287,7 @@ const schema = {
           <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
             Try CogniFocus
           </a>
-          <a href="/contact" class="btn btn-outline btn-lg">Get in touch</a>
+          <a href="/contact/" class="btn btn-outline btn-lg">Get in touch</a>
         </div>
       </div>
     </div>
