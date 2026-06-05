@@ -1,0 +1,12 @@
+---
+description: CogniElevate website context — read before any work in this repo
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# CogniElevate Website — Cursor Rules
+Read `AI_CONTEXT.md` in this repo root before doing any work here.
+
+Stack: Astro 4 · static · cognielevate.co
+Rules: static output only · trailingSlash always · all pages need title/canonical/meta/OG · never commit .env
+CogniElevate is the parent company brand — not a generic tech company.

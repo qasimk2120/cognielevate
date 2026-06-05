@@ -7,7 +7,7 @@ export const OG_IMAGE_URL = `${SITE_URL}assets/og-image.png`;
 export const sameAs = [
   'https://www.tiktok.com/@cognielevate',
   'https://www.instagram.com/cognifocus.app/',
-  'https://x.com/cognielevate',
+  'https://x.com/iqasim_explores',
   'https://www.facebook.com/share/1Am7kCzkjG/',
   'https://discord.gg/HbU3XYyFCz',
   'https://cognifocus.app/',
