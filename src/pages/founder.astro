@@ -16,7 +16,7 @@ const schema = {
     webPageSchema({
       id: 'https://cognielevate.co/founder/#webpage',
       url: 'https://cognielevate.co/founder/',
-      name: 'Qasim Khan — Founder of CogniElevate',
+      name: 'Qasim Khan, Founder of CogniElevate',
       description: 'Qasim Khan is the founder of CogniElevate and creator of CogniFocus, building intelligent products that give people their time back.',
       breadcrumb: true,
     }),
@@ -67,7 +67,7 @@ const building = [
   {
     label: 'Next',
     title: 'CogniElevate Platform',
-    body: 'A wider product ecosystem built around reducing wasted time — across productivity, shopping decisions, healthcare workflows, and more.',
+    body: 'A wider product ecosystem built around reducing wasted time across productivity, shopping decisions, healthcare workflows and more.',
     href: '/products/',
     tag: 'In development',
     accent: false,
@@ -76,11 +76,11 @@ const building = [
 ---
 
 <BaseLayout
-  title="Qasim Khan — Founder of CogniElevate"
+  title="Qasim Khan, Founder of CogniElevate"
   description="Qasim Khan is the founder of CogniElevate and creator of CogniFocus, building intelligent products that give people their time back."
   twitterCreator="@iqasim_explores"
   canonical="https://cognielevate.co/founder/"
-  keywords={[...coreKeywords, 'Qasim Khan', 'CogniElevate founder', 'indie founder Pakistan', 'CogniFocus creator', 'founder page']}
+  keywords={[...coreKeywords, 'Qasim Khan', 'CogniElevate founder', 'CogniFocus creator', 'technology startup founder', 'intelligent systems builder']}
   activePage="founder"
   schema={schema}
 >
@@ -109,13 +109,12 @@ const building = [
 
         <!-- Identity -->
         <div class="founder-identity fade-up fade-up-1">
-          <p class="kicker" style="margin-bottom:0.75rem;">Founder &amp; Builder</p>
+          <p class="kicker" style="margin-bottom:0.75rem;">Founder, CogniElevate</p>
           <h1 id="founder-name" class="hero-title" style="margin-bottom:0.75rem;">
             Qasim Khan
           </h1>
           <p class="lead" style="max-width:44ch; margin-bottom:2rem;">
-            Building intelligent systems that give people their time back.<br />
-            One product at a time, from Pakistan to the world.
+            CogniElevate started with a simple question: where are people losing time, and what system would take that problem away?
           </p>
 
           <!-- Social links -->
@@ -149,9 +148,9 @@ const building = [
   <section class="section" id="building" aria-labelledby="building-heading">
     <div class="container">
       <div class="section-head fade-up">
-        <p class="kicker">What I build</p>
-        <h2 id="building-heading" class="display-sm">Products that solve a real friction</h2>
-        <p>Every product starts with a moment where people are losing time. Then I build the system that removes it.</p>
+        <p class="kicker">What we build</p>
+        <h2 id="building-heading" class="display-sm">Products built around a real friction</h2>
+        <p>Every CogniElevate product starts with the same question: where are people losing time? Then we build the system that removes it.</p>
       </div>
       <div class="grid-2 fade-up fade-up-1">
         {building.map(({ label, title, body, href, tag, accent }) => (
@@ -175,7 +174,7 @@ const building = [
   <section class="section" id="approach" style="background:var(--surface);" aria-labelledby="approach-heading">
     <div class="container">
       <div class="section-head fade-up">
-        <p class="kicker">How I work</p>
+        <p class="kicker">How CogniElevate builds</p>
         <h2 id="approach-heading" class="display-sm">Find friction. Build the fix. Ship it.</h2>
       </div>
       <div class="grid-3 fade-up fade-up-1">
@@ -183,17 +182,17 @@ const building = [
           {
             num: '01',
             title: 'Spot the wasted moment',
-            body: 'I look for where people keep losing time — focus sessions that collapse, decisions that stall, workflows that drag.',
+            body: 'Start where people keep losing time: focus sessions that collapse, decisions that stall, workflows that drag.',
           },
           {
             num: '02',
             title: 'Build the intelligent layer',
-            body: 'Software that reacts, adapts, and reduces the friction — not passive tools but active systems that push back.',
+            body: 'Software that reacts and adapts. Active systems that push back, not passive tools that sit there.',
           },
           {
             num: '03',
             title: 'Ship, learn, iterate',
-            body: 'Get it live fast. Real users surface what matters. Then improve relentlessly until the product earns its place.',
+            body: 'Get it live fast. Real users show what actually matters. Then improve until people rely on it.',
           },
         ].map(({ num, title, body }) => (
           <article class="card card-p">
@@ -211,7 +210,7 @@ const building = [
     <div class="container">
       <div class="section-head fade-up">
         <p class="kicker">So far</p>
-        <h2 id="proof-heading" class="display-sm">Early, but building in public</h2>
+        <h2 id="proof-heading" class="display-sm">Early, but moving fast</h2>
       </div>
       <div class="grid-4 fade-up fade-up-1">
         {[
@@ -261,16 +260,14 @@ const building = [
       <div class="cta-panel card card-p-lg" style="border-radius:var(--radius-lg);">
         <p class="kicker" style="margin-bottom:0.75rem;">Get in touch</p>
         <h2 class="display-sm" style="margin-bottom:0.75rem;">
-          Partnerships, ideas, or just a conversation
+          Partnerships, ideas, or a friction problem worth solving
         </h2>
         <p style="max-width:52ch; margin:0 auto 2rem;">
-          If you're building something interesting, want to partner, or have a friction problem worth solving — reach out.
+          If you're building something interesting or want to work with CogniElevate, reach out.
         </p>
         <div class="cta-actions">
-          <a href="https://own.page/iqasimexplores" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
-            View full profile
-          </a>
-          <a href="/contact/" class="btn btn-outline btn-lg">Contact CogniElevate</a>
+          <a href="/contact/" class="btn btn-primary btn-lg">Contact CogniElevate</a>
+          <a href="/products/" class="btn btn-outline btn-lg">See our products</a>
         </div>
       </div>
     </div>
@@ -362,3 +359,4 @@ const building = [
   font-family: var(--mono);
 }
 </style>
+

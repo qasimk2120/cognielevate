@@ -10,20 +10,19 @@ export const sameAs = [
   'https://x.com/iqasim_explores',
   'https://www.facebook.com/share/1Am7kCzkjG/',
   'https://discord.gg/HbU3XYyFCz',
-  'https://cognifocus.app/',
 ];
 
 export const coreKeywords = [
   'CogniElevate',
   'CogniFocus',
-  'productivity apps',
-  'focus app',
-  'Android focus app',
-  'app blocker',
-  'distraction blocker',
   'intelligent systems',
+  'focus app Android',
+  'app blocker Android',
+  'distraction blocker',
+  'time management app',
+  'productivity software startup',
+  'focus timer app',
   'time-saving software',
-  'startup building productivity tools',
 ];
 
 export const organizationSchema = {
@@ -38,7 +37,7 @@ export const organizationSchema = {
     height: 512,
   },
   image: OG_IMAGE_URL,
-  description: 'CogniElevate builds intelligent products and systems that reduce wasted time across productivity, shopping, healthcare, robotics, and future markets.',
+  description: 'CogniElevate builds intelligent products and systems that reduce wasted time across productivity, shopping, healthcare, robotics and future markets.',
   email: 'cognielevate@gmail.com',
   sameAs,
   foundingLocation: {
@@ -81,7 +80,7 @@ export const websiteSchema = {
   '@id': WEBSITE_ID,
   url: SITE_URL,
   name: 'CogniElevate',
-  description: 'CogniElevate builds intelligent products that remove friction, speed up decisions, and reduce wasted time.',
+  description: 'CogniElevate builds intelligent products that remove friction, speed up decisions and reduce wasted time.',
   publisher: { '@id': ORG_ID },
   inLanguage: 'en',
 };
