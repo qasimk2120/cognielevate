@@ -5,7 +5,7 @@ export const LOGO_URL = `${SITE_URL}assets/cognielevate.png`;
 export const OG_IMAGE_URL = `${SITE_URL}assets/og-image.png`;
 
 export const sameAs = [
-  'https://www.tiktok.com/@cognielevate',
+  'https://www.tiktok.com/@cognifocus.app',
   'https://www.instagram.com/cognifocus.app/',
   'https://x.com/iqasim_explores',
   'https://www.facebook.com/share/1Am7kCzkjG/',
