@@ -33,7 +33,7 @@ const schema = {
     webPageSchema({
       id: `${articleUrl}#webpage`,
       url: articleUrl,
-      name: 'How to Stay Focused at Work and Stop Getting Distracted | CogniElevate',
+      name: 'How to Stay Focused at Work | CogniElevate',
       description: 'Struggling to stay focused at work? Learn proven strategies to block distractions, protect your attention and get more done, including how CogniFocus can help.',
       breadcrumb: true,
     }),
@@ -66,7 +66,8 @@ const schema = {
 ---
 
 <BaseLayout
-  title="How to Stay Focused at Work and Stop Getting Distracted | CogniElevate"
+  title="How to Stay Focused at Work | CogniElevate"
+  twitterCreator="@iqasim_explores"
   description="Struggling to stay focused at work? Learn proven strategies to block distractions, protect your attention and get more done, including how CogniFocus can help."
   canonical="https://cognielevate.co/blog/how-to-stay-focused-at-work/"
   keywords={[...coreKeywords, 'how to stay focused at work', 'block distractions at work', 'deep work app', 'focus app for work']}
@@ -93,7 +94,7 @@ const schema = {
         <h1 style="font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em;margin-bottom:1rem;">
           How to Stay Focused at Work and Stop Getting Distracted
         </h1>
-        <p class="post-meta" style="margin-bottom:1rem;">By CogniElevate &nbsp;·&nbsp; May 26, 2026 &nbsp;·&nbsp; 7 min read</p>
+        <p class="post-meta" style="margin-bottom:1rem;">By CogniElevate &nbsp;·&nbsp; <time datetime="2026-05-26">May 26, 2026</time> &nbsp;·&nbsp; 7 min read</p>
         <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
           {['Productivity','Focus','Distractions','Deep work','CogniFocus'].map((t) => <span class="tag">{t}</span>)}
         </div>
@@ -165,7 +166,7 @@ const schema = {
         <!-- CogniFocus CTA -->
         <div class="article-cta">
           <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
-            <img src="https://cognifocus.app/assets/logo/app-logo.png" alt="CogniFocus" width="44" height="44" style="border-radius:10px;flex-shrink:0;" />
+            <img src="https://cognifocus.app/assets/logo/app-logo.png" alt="CogniFocus" width="44" height="44" style="border-radius:10px;flex-shrink:0;" loading="lazy" />
             <h3 style="margin:0;">Try CogniFocus — the focus app that reacts to you</h3>
           </div>
           <p>CogniFocus tracks your behavior in real time, calls you out when you slip, and builds momentum to keep you on task. It is not a timer — it is a system that adapts to how you actually work.</p>

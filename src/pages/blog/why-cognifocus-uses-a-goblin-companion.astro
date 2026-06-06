@@ -33,7 +33,7 @@ const schema = {
     webPageSchema({
       id: `${articleUrl}#webpage`,
       url: articleUrl,
-      name: 'Why CogniFocus Uses a Goblin Companion Instead of a Plain Timer | CogniElevate',
+      name: 'Why CogniFocus Uses a Goblin Companion | CogniElevate',
       description: 'CogniFocus uses a reactive Goblin companion because focus apps work better when they notice drift, react in the moment, and help you recover quickly.',
       breadcrumb: true,
     }),
@@ -66,7 +66,8 @@ const schema = {
 ---
 
 <BaseLayout
-  title="Why CogniFocus Uses a Goblin Companion Instead of a Plain Timer | CogniElevate"
+  title="Why CogniFocus Uses a Goblin Companion | CogniElevate"
+  twitterCreator="@iqasim_explores"
   description="CogniFocus uses a reactive Goblin companion because focus apps work better when they notice drift, react in the moment, and help you recover quickly."
   canonical="https://cognielevate.co/blog/why-cognifocus-uses-a-goblin-companion/"
   keywords={[...coreKeywords, 'CogniFocus Goblin', 'focus companion app', 'focus friend app', 'body doubling app']}
@@ -91,7 +92,7 @@ const schema = {
         <h1 style="font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;line-height:1.1;margin-bottom:1rem;">
           Why CogniFocus Uses a Goblin Companion Instead of a Plain Timer
         </h1>
-        <p class="post-meta" style="margin-bottom:1rem;">By CogniElevate &nbsp;|&nbsp; May 27, 2026 &nbsp;|&nbsp; 5 min read</p>
+        <p class="post-meta" style="margin-bottom:1rem;">By CogniElevate &nbsp;|&nbsp; <time datetime="2026-05-27">May 27, 2026</time> &nbsp;|&nbsp; 5 min read</p>
         <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
           {['CogniFocus','Goblin','Focus companion','App blocking','Accountability'].map((t) => <span class="tag">{t}</span>)}
         </div>
@@ -144,7 +145,7 @@ const schema = {
 
         <div class="article-cta">
           <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
-            <img src="https://cognifocus.app/assets/logo/app-logo.png" alt="CogniFocus app logo" width="44" height="44" style="border-radius:10px;flex-shrink:0;" />
+            <img src="https://cognifocus.app/assets/logo/app-logo.png" alt="CogniFocus app logo" width="44" height="44" style="border-radius:10px;flex-shrink:0;" loading="lazy" />
             <h3 style="margin:0;">Try the focus app with a reactive companion</h3>
           </div>
           <p>CogniFocus is live on Android with focus sessions, app blocking, Goblin reactions, streaks, XP, and recovery nudges.</p>

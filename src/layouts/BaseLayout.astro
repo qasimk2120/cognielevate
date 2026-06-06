@@ -12,6 +12,7 @@ interface Props {
   robots?: string;
   activePage?: string;
   schema?: object | object[];
+  twitterCreator?: string;
 }
 
 const {
@@ -23,6 +24,7 @@ const {
   robots = 'index, follow',
   activePage,
   schema,
+  twitterCreator,
 } = Astro.props;
 
 const ogImage = 'https://cognielevate.co/assets/og-image.png';
@@ -63,6 +65,7 @@ const ogImage = 'https://cognielevate.co/assets/og-image.png';
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    {twitterCreator && <meta name="twitter:creator" content={twitterCreator} />}
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

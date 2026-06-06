@@ -6,6 +6,7 @@ import {
   websiteSchema,
   cognifocusSoftwareSchema,
   webPageSchema,
+  breadcrumbSchema,
   faqSchema,
 } from '../data/seo.js';
 
@@ -34,6 +35,13 @@ const schema = {
       url: 'https://cognielevate.co/',
       name: 'CogniElevate | Intelligent systems that give people their time back',
       description: 'CogniElevate builds intelligent products that remove friction, speed up decisions and reduce wasted time across productivity, shopping, healthcare and robotics.',
+      breadcrumb: true,
+    }),
+    breadcrumbSchema({
+      id: 'https://cognielevate.co/#breadcrumb',
+      items: [
+        { name: 'Home', url: 'https://cognielevate.co/' },
+      ],
     }),
     cognifocusSoftwareSchema,
     faqSchema(faqItems),
@@ -104,7 +112,7 @@ const schema = {
             </div>
             <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="time-card-cta">
               <span style="display:flex;align-items:center;gap:0.5rem;">
-                <img src="https://cognifocus.app/assets/logo/app-logo.png" alt="" width="20" height="20" style="border-radius:5px;" />
+                <img src="https://cognifocus.app/assets/logo/app-logo.png" alt="" width="20" height="20" style="border-radius:5px;" aria-hidden="true" />
                 CogniFocus recovers this
               </span>
               <span class="arrow">→</span>
@@ -224,7 +232,7 @@ const schema = {
       </div>
       <article class="card card-p-lg" style="max-width:720px;margin:0 auto;">
         <div style="display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap;margin-bottom:1.5rem;">
-          <img src="https://cognifocus.app/assets/logo/app-logo.png" alt="CogniFocus app logo" class="product-logo" />
+          <img src="https://cognifocus.app/assets/logo/app-logo.png" alt="CogniFocus app logo" class="product-logo" loading="lazy" />
           <div>
             <h3 style="font-size:1.4rem;margin-bottom:0.5rem;">CogniFocus</h3>
             <p>A focus system that reacts to your behavior, calls you out when you slip and builds pressure to stay focused.</p>
