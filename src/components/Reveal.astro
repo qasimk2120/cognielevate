@@ -1,0 +1,18 @@
+---
+/** Scroll-reveal wrapper. Children render normally without JS or with reduced motion.
+ *  mode: "up" (default) | "bloom" | "stagger"  */
+interface Props {
+  mode?: 'up' | 'bloom' | 'stagger';
+  delay?: number;        // seconds
+  as?: string;
+  class?: string;
+  [key: string]: any;
+}
+const { mode = 'up', delay = 0, as: Tag = 'div', class: className = '', ...rest } = Astro.props;
+const attrs: Record<string, any> = { ...rest };
+if (mode === 'stagger') attrs['data-reveal-stagger'] = '';
+else if (mode === 'bloom') attrs['data-reveal'] = 'bloom';
+else attrs['data-reveal'] = '';
+if (delay) attrs.style = `${attrs.style ? attrs.style + ';' : ''}--rd:${delay}s`;
+---
+<Tag class={className} {...attrs}><slot /></Tag>

@@ -1,0 +1,17 @@
+---
+/** Standard section header: kicker + h2 + optional intro paragraph.
+ *  Renders the exact markup pattern used across the site. */
+interface Props {
+  kicker?: string;
+  title: string;
+  id?: string;
+  intro?: string;
+  align?: 'left' | 'center';
+}
+const { kicker, title, id, intro, align = 'left' } = Astro.props;
+---
+<div class={`section-head${align === 'center' ? ' text-center' : ''}`} data-reveal>
+  <h2 id={id} class="display-sm">{title}</h2>
+  {intro && <p>{intro}</p>}
+  <slot />
+</div>

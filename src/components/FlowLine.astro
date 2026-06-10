@@ -1,0 +1,73 @@
+---
+/** Friction-to-flow visual: a tangled line resolves into a clean glowing path.
+ *  Driven by --p (0..1) from a scrubbed Scene. Default --p is 1, so the
+ *  resolved state shows for no-JS and reduced-motion users. Decorative.
+ *  orientation: "h" (homepage, horizontal) | "v" (about, vertical spine) */
+interface Props {
+  orientation?: 'h' | 'v';
+  class?: string;
+}
+const { orientation = 'h', class: className = '' } = Astro.props;
+---
+{orientation === 'h' ? (
+  <svg class={`flowline ${className}`} viewBox="0 0 900 260" fill="none" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+    <!-- tangle: fades out as p rises -->
+    <g class="tangle">
+      <path d="M20 130 C 90 40, 120 220, 200 120 S 290 30, 340 150 S 420 250, 470 110 S 560 20, 610 160 S 700 240, 760 100 S 850 60, 880 130"
+            stroke="rgba(165,210,245,0.35)" stroke-width="1.6" />
+      <path d="M20 140 C 100 230, 150 50, 230 160 S 330 240, 390 90 S 480 30, 540 180 S 640 250, 710 90 S 810 40, 880 140"
+            stroke="rgba(165,210,245,0.22)" stroke-width="1.2" />
+      <path d="M20 120 C 80 60, 170 200, 260 100 S 360 50, 430 170 S 530 230, 600 110 S 720 40, 880 120"
+            stroke="rgba(15,76,130,0.6)" stroke-width="2" />
+    </g>
+    <!-- clean path: draws itself as p rises -->
+    <path class="clean" pathLength="1"
+          d="M20 130 C 250 130, 650 130, 880 130"
+          stroke="url(#flow-grad)" stroke-width="2.5" stroke-linecap="round" />
+    <circle class="flow-head" r="5" cx="880" cy="130" fill="#64FEDA" />
+    <defs>
+      <linearGradient id="flow-grad" x1="0" y1="0" x2="900" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#0F4C82" />
+        <stop offset="0.55" stop-color="#A5D2F5" />
+        <stop offset="1" stop-color="#64FEDA" />
+      </linearGradient>
+    </defs>
+  </svg>
+) : (
+  <svg class={`flowline flowline-v ${className}`} viewBox="0 0 120 900" fill="none" aria-hidden="true" preserveAspectRatio="xMidYMin meet">
+    <g class="tangle">
+      <path d="M60 10 C 10 80, 110 130, 50 210 S 10 320, 70 390 S 110 500, 40 580 S 20 700, 60 890"
+            stroke="rgba(165,210,245,0.25)" stroke-width="1.4" />
+    </g>
+    <path class="clean" pathLength="1"
+          d="M60 10 C 60 250, 60 650, 60 890"
+          stroke="url(#flow-grad-v)" stroke-width="2.5" stroke-linecap="round" />
+    <defs>
+      <linearGradient id="flow-grad-v" x1="0" y1="0" x2="0" y2="900" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#0F4C82" />
+        <stop offset="0.55" stop-color="#A5D2F5" />
+        <stop offset="1" stop-color="#64FEDA" />
+      </linearGradient>
+    </defs>
+  </svg>
+)}
+
+<style>
+  .flowline {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .tangle {
+    opacity: calc(0.85 - var(--p, 1) * 0.75);
+  }
+  .clean {
+    stroke-dasharray: 1;
+    stroke-dashoffset: calc(1 - var(--p, 1));
+    filter: drop-shadow(0 0 6px rgba(100, 254, 218, 0.5));
+  }
+  .flow-head {
+    opacity: calc((var(--p, 1) - 0.92) * 12.5);
+    filter: drop-shadow(0 0 8px rgba(100, 254, 218, 0.8));
+  }
+</style>

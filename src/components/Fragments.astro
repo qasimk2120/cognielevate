@@ -1,0 +1,109 @@
+---
+/** Time fragments — floating shards and icon chips representing lost moments.
+ *  Inside a scrubbed Scene they converge from chaos (--p:0) to an ordered
+ *  line (--p:1). Default --p is 1, so no-JS and reduced-motion users see
+ *  the organized state. Purely decorative.
+ *
+ *  density: "full" (hero) | "sparse" (subpage heros)  */
+interface Props {
+  density?: 'full' | 'sparse';
+}
+const { density = 'full' } = Astro.props;
+
+/* Each fragment: final position (left%, top%), chaos offset (dx, dy px),
+   size px, kind. Final positions form a loose horizontal band. */
+const all = [
+  { l: 8,  t: 78, dx: -120, dy: -260, s: 34, icon: 'bell' },
+  { l: 16, t: 80, dx: 90,   dy: -180, s: 22, icon: null },
+  { l: 24, t: 77, dx: -60,  dy: -320, s: 28, icon: 'clock' },
+  { l: 32, t: 80, dx: 150,  dy: -90,  s: 18, icon: null },
+  { l: 40, t: 78, dx: -200, dy: -150, s: 30, icon: 'smartphone' },
+  { l: 48, t: 80, dx: 60,   dy: -340, s: 16, icon: null },
+  { l: 56, t: 77, dx: -90,  dy: -220, s: 26, icon: 'zap-off' },
+  { l: 64, t: 80, dx: 180,  dy: -260, s: 20, icon: null },
+  { l: 72, t: 78, dx: -150, dy: -100, s: 32, icon: 'timer' },
+  { l: 80, t: 80, dx: 70,   dy: -300, s: 18, icon: null },
+  { l: 88, t: 77, dx: -40,  dy: -180, s: 24, icon: 'bell-off' },
+  { l: 12, t: 79, dx: 220,  dy: -240, s: 14, icon: null },
+  { l: 60, t: 79, dx: -250, dy: -300, s: 15, icon: null },
+  { l: 84, t: 79, dx: 120,  dy: -140, s: 13, icon: null },
+  { l: 36, t: 79, dx: -80,  dy: -380, s: 17, icon: null },
+  { l: 68, t: 79, dx: 40,   dy: -120, s: 21, icon: 'rotate-ccw' },
+];
+const frags = density === 'sparse' ? all.filter((_, i) => i % 3 === 0) : all;
+---
+<div class="frag-field" aria-hidden="true">
+  {frags.map((f, i) => (
+    <span
+      class="frag"
+      style={`left:${f.l}%;top:${f.t}%;--dx:${f.dx}px;--dy:${f.dy}px;--fs:${f.s}px;`}
+    >
+      <span class="frag-core drift" style={`--drift-dur:${7 + (i % 5)}s;--drift-delay:${(i % 7) * -1.3}s;`}>
+        {f.icon
+          ? <img src={`/assets/icons/${f.icon}.svg`} alt="" width="14" height="14" loading="lazy" />
+          : <i class="shard" />}
+      </span>
+    </span>
+  ))}
+  <span class="frag-rail" />
+</div>
+
+<style>
+  .frag-field {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .frag {
+    position: absolute;
+    width: var(--fs);
+    height: var(--fs);
+    /* converge: at --p 0 fragment sits at chaos offset, at 1 it rests on the rail */
+    transform: translate3d(
+      calc((1 - var(--p, 1)) * var(--dx)),
+      calc((1 - var(--p, 1)) * var(--dy)),
+      0
+    );
+    opacity: calc(0.45 + var(--p, 1) * 0.45);
+  }
+  .frag-core {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(165, 210, 245, 0.06);
+    border: 1px solid rgba(165, 210, 245, 0.18);
+    border-radius: 6px;
+    box-shadow: 0 0 12px rgba(100, 254, 218, 0.08);
+    backdrop-filter: blur(2px);
+  }
+  .frag-core img {
+    width: 55%;
+    height: 55%;
+    opacity: 0.8;
+    filter: invert(88%) sepia(18%) saturate(642%) hue-rotate(177deg) brightness(102%);
+  }
+  .shard {
+    display: block;
+    width: 45%;
+    height: 45%;
+    background: linear-gradient(135deg, rgba(100,254,218,0.55), rgba(165,210,245,0.25));
+    border-radius: 2px;
+    transform: rotate(45deg);
+  }
+  .frag-rail {
+    position: absolute;
+    left: 6%;
+    right: 6%;
+    top: calc(78% + var(--fs, 24px));
+    top: 82%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(100,254,218,calc(var(--p, 1) * 0.35)), transparent);
+  }
+  @media (max-width: 900px) {
+    .frag { display: none; }
+    .frag:nth-child(-n+7) { display: block; }
+    .frag-field { opacity: 0.6; }
+  }
+</style>

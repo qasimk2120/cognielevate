@@ -1,5 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Scene from '../components/Scene.astro';
+import Fragments from '../components/Fragments.astro';
+import SectionHead from '../components/SectionHead.astro';
+import FlowLine from '../components/FlowLine.astro';
+import ContainmentReveal from '../components/ContainmentReveal.astro';
+import OrbitMap from '../components/OrbitMap.astro';
+import FaqList from '../components/FaqList.astro';
+import CtaPanel from '../components/CtaPanel.astro';
 import {
   coreKeywords,
   organizationSchema,
@@ -47,6 +55,20 @@ const schema = {
     faqSchema(faqItems),
   ]
 };
+
+const frictionZones = [
+  { icon: 'bell-off',   title: 'Attention lost',    body: 'Small interruptions break focus and drain momentum before meaningful work begins.' },
+  { icon: 'timer',      title: 'Decisions delayed', body: 'Unclear choices create hesitation and slow action across personal and professional life.' },
+  { icon: 'rotate-ccw', title: 'Returns & rework',  body: 'Mistakes turn into extra time, cost and repeated effort that compounds over time.' },
+  { icon: 'activity',   title: 'Operations slowed', body: 'Manual workflows create drag inside everyday systems, from clinics to warehouses.' },
+];
+
+const markets = [
+  { title: 'Focus & productivity', body: 'People lose hours to distraction. Building tools designed to protect attention and improve daily output.', live: true  },
+  { title: 'Clothing & shopping',  body: 'Shopping decisions are uncertain. Future direction: fit prediction and smarter buying support.',              live: false },
+  { title: 'Healthcare systems',   body: 'Time is lost across care delivery. Future direction: intelligent systems that reduce friction in healthcare workflows.', live: false },
+  { title: 'Robotics systems',     body: 'Time is lost in complex coordination. Future direction: systems that improve perception and efficiency in robotic operations.', live: false },
+];
 ---
 
 <BaseLayout
@@ -58,13 +80,18 @@ const schema = {
   schema={schema}
 >
 
-  <!-- HERO -->
-  <section class="hero bg-dots" aria-labelledby="hero-title">
-    <div class="glow-top" aria-hidden="true"></div>
+  <!-- SCENE 1 — OPENING: HERO -->
+  <Scene class="hero hero-scene bg-dots" aria-labelledby="hero-title" scrub sceneLen={1.3}>
+    <Fragment slot="far">
+      <div class="glow-field primary" style="width:70vw;height:50vh;top:-15%;left:-10%;"></div>
+      <div class="glow-field accent" style="width:40vw;height:35vh;top:5%;right:-5%;"></div>
+    </Fragment>
+    <Fragment slot="mid">
+      <Fragments density="full" />
+    </Fragment>
     <div class="container" style="position:relative;">
       <div class="hero-grid">
         <div class="hero-content fade-up">
-          <p class="kicker hero-kicker">Intelligent systems</p>
           <h1 class="hero-title" id="hero-title">
             Building systems that give people their
             <span class="accent"> time back</span>
@@ -86,7 +113,7 @@ const schema = {
         </div>
 
         <!-- Time Waste Dashboard Card -->
-        <div class="hero-visual fade-up fade-up-2" aria-hidden="true">
+        <div class="hero-visual tilt-panel fade-up fade-up-2" aria-hidden="true">
           <div class="time-card">
             <div class="time-card-header">
               <span class="status-dot warn"></span>
@@ -121,97 +148,127 @@ const schema = {
         </div>
       </div>
     </div>
-  </section>
+  </Scene>
 
-  <!-- STATS -->
-  <section class="section-sm" aria-label="Key statistics">
+  <!-- SCENE 2 — THE FRICTION FIELD: stats + problem -->
+  <Scene class="section friction-scene bg-grid" id="problem" aria-labelledby="problem-heading">
+    <Fragment slot="far">
+      <div class="glow-field primary" style="width:50vw;height:40vh;bottom:-10%;right:-15%;opacity:0.4;"></div>
+    </Fragment>
     <div class="container">
-      <div class="stats-row">
+      <div class="stats-row" data-reveal-stagger aria-label="Key statistics" style="margin-bottom:clamp(3rem,6vw,5rem);">
         <div class="stat-cell">
-          <span class="stat-num">2.1h</span>
+          <span class="stat-num"><span data-count>2.1</span>h</span>
           <span class="stat-desc">focus time lost daily per person</span>
         </div>
         <div class="stat-cell">
-          <span class="stat-num">23m</span>
+          <span class="stat-num"><span data-count>23</span>m</span>
           <span class="stat-desc">to regain focus after one interruption</span>
         </div>
         <div class="stat-cell">
-          <span class="stat-num">40%</span>
+          <span class="stat-num"><span data-count>40</span>%</span>
           <span class="stat-desc">drop in productivity from task-switching</span>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- PROBLEM -->
-  <section class="section" id="problem" aria-labelledby="problem-heading">
-    <div class="container">
-      <div class="section-head">
-        <p class="kicker">The problem</p>
-        <h2 id="problem-heading" class="display-sm">Time gets lost in small moments</h2>
-        <p>Distractions, wrong purchases, waiting rooms, admin work and slow systems all create the same cost: wasted time.</p>
-      </div>
-      <div class="grid-4">
-        {[
-          { title: 'Attention lost',     body: 'Small interruptions break focus and drain momentum before meaningful work begins.' },
-          { title: 'Decisions delayed',  body: 'Unclear choices create hesitation and slow action across personal and professional life.' },
-          { title: 'Returns & rework',   body: 'Mistakes turn into extra time, cost and repeated effort that compounds over time.' },
-          { title: 'Operations slowed',  body: 'Manual workflows create drag inside everyday systems, from clinics to warehouses.' },
-        ].map(({ title, body }) => (
-          <article class="card card-p">
-            <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">{title}</h3>
+      <SectionHead kicker="The problem" title="Time gets lost in small moments" id="problem-heading"
+        intro="Distractions, wrong purchases, waiting rooms, admin work and slow systems all create the same cost: wasted time." />
+
+      <div class="friction-field" data-reveal-stagger>
+        {frictionZones.map(({ icon, title, body }) => (
+          <article class="card card-p friction-node">
+            <span class="friction-icon" aria-hidden="true">
+              <img src={`/assets/icons/${icon}.svg`} alt="" width="18" height="18" loading="lazy" />
+            </span>
+            <h3 class="u-draw" style="font-size:1.05rem;margin-bottom:0.6rem;">{title}</h3>
             <p style="font-size:0.9rem;">{body}</p>
           </article>
         ))}
       </div>
     </div>
-  </section>
+  </Scene>
 
-  <!-- PRINCIPLE -->
-  <section class="section" id="principle" aria-labelledby="principle-heading" style="background:var(--surface);">
+  <!-- SCENE 3 — FRICTION TO FLOW: principle -->
+  <Scene class="section flow-scene" id="principle" aria-labelledby="principle-heading" scrub sceneLen={1.5} style="background:var(--surface);">
+    <Fragment slot="far">
+      <div class="glow-field accent" style="width:55vw;height:45vh;top:20%;left:50%;translate:-50% 0;opacity:0.5;"></div>
+    </Fragment>
     <div class="container">
-      <div class="section-head">
-        <p class="kicker">Our principle</p>
-        <h2 id="principle-heading" class="display-sm">Find friction. Build the system that removes it.</h2>
-        <p>Every CogniElevate product starts with one question: where are people losing time, and what system would make that moment faster, clearer or automatic?</p>
+      <SectionHead kicker="Our principle" title="Find friction. Build the system that removes it." id="principle-heading"
+        intro="Every CogniElevate product starts with one question: where are people losing time, and what system would make that moment faster, clearer or automatic?" />
+
+      <div class="flow-visual" aria-hidden="true">
+        <FlowLine orientation="h" />
       </div>
-      <div class="process-flow">
-        <article class="card process-step">
+
+      <div class="process-flow flow-steps">
+        <article class="card process-step flow-step" style="--t:0;">
           <span class="process-num">01</span>
           <h3>Find wasted time</h3>
           <p style="font-size:0.9rem;">Identify the task, moment, or workflow that keeps slowing people down.</p>
         </article>
         <div class="process-arrow" aria-hidden="true">→</div>
-        <article class="card process-step">
+        <article class="card process-step flow-step" style="--t:0.4;">
           <span class="process-num">02</span>
           <h3>Build intelligent support</h3>
           <p style="font-size:0.9rem;">Use software, automation, or prediction to simplify the work.</p>
         </article>
         <div class="process-arrow" aria-hidden="true">→</div>
-        <article class="card process-step">
+        <article class="card process-step flow-step" style="--t:0.75;">
           <span class="process-num">03</span>
           <h3>Create a faster outcome</h3>
           <p style="font-size:0.9rem;">Turn friction into clarity, speed, and less wasted effort.</p>
         </article>
       </div>
     </div>
-  </section>
+  </Scene>
 
-  <!-- MARKETS -->
-  <section class="section" id="markets" aria-labelledby="markets-heading">
+  <!-- SCENE 4 — FIRST PROOF: COGNIFOCUS REVEAL -->
+  <Scene class="section reveal-scene" id="showcase" aria-labelledby="showcase-heading">
+    <Fragment slot="far">
+      <div class="glow-field primary" style="width:60vw;height:55vh;top:10%;left:50%;translate:-50% 0;"></div>
+    </Fragment>
     <div class="container">
-      <div class="section-head">
-        <p class="kicker">Markets</p>
-        <h2 id="markets-heading" class="display-sm">One mission across multiple markets</h2>
-        <p>CogniElevate is built to grow into the places where time is commonly lost.</p>
+      <SectionHead kicker="First product" title="First launched: CogniFocus" id="showcase-heading" align="center"
+        intro="CogniFocus is the first product CogniElevate shipped. It runs on the same principle as every product that follows: find friction, build the system that removes it." />
+      <ContainmentReveal>
+        <article class="card no-hover card-p-lg depth-panel" style="margin:0 auto;">
+          <div style="display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap;margin-bottom:1.5rem;">
+            <img src="https://cognifocus.app/assets/logo/app-logo.png" alt="CogniFocus app logo" class="product-logo" loading="lazy" />
+            <div>
+              <h3 style="font-size:1.4rem;margin-bottom:0.5rem;">CogniFocus</h3>
+              <p>A focus system that reacts to your behavior, calls you out when you slip and builds pressure to stay focused.</p>
+            </div>
+          </div>
+          <div class="product-pills">
+            <span class="outcome-pill">Protect attention</span>
+            <span class="outcome-pill">Block distractions</span>
+            <span class="outcome-pill">Build momentum</span>
+            <span class="outcome-pill">Streaks & XP</span>
+          </div>
+          <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="margin-top:1.5rem;">
+            Visit CogniFocus
+            <svg class="icon-sm" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 2h10m0 0v10m0-10L2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </article>
+      </ContainmentReveal>
+    </div>
+  </Scene>
+
+  <!-- SCENE 5 — THE ECOSYSTEM: markets -->
+  <Scene class="section ecosystem-scene" id="markets" aria-labelledby="markets-heading" style="background:var(--surface);">
+    <div class="container">
+      <SectionHead kicker="Markets" title="One mission across multiple markets" id="markets-heading"
+        intro="CogniElevate is built to grow into the places where time is commonly lost." />
+
+      <div data-reveal>
+        <OrbitMap variant="compact" class="mb-xl" />
       </div>
-      <div class="grid-4">
-        {[
-          { title: 'Focus & productivity', body: 'People lose hours to distraction. Building tools designed to protect attention and improve daily output.', live: true  },
-          { title: 'Clothing & shopping',  body: 'Shopping decisions are uncertain. Future direction: fit prediction and smarter buying support.',              live: false },
-          { title: 'Healthcare systems',   body: 'Time is lost across care delivery. Future direction: intelligent systems that reduce friction in healthcare workflows.', live: false },
-          { title: 'Robotics systems',     body: 'Time is lost in complex coordination. Future direction: systems that improve perception and efficiency in robotic operations.', live: false },
-        ].map(({ title, body, live }) => (
+
+      <div class="grid-4" data-reveal-stagger>
+        {markets.map(({ title, body, live }) => (
           <article class="card market-card card-p">
             <span class={`market-badge ${live ? '' : 'future'}`}>{live ? 'Live' : 'Future'}</span>
             <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">{title}</h3>
@@ -220,82 +277,26 @@ const schema = {
         ))}
       </div>
     </div>
-  </section>
-
-  <!-- COGNIFOCUS SHOWCASE -->
-  <section class="section" id="showcase" aria-labelledby="showcase-heading" style="background:var(--surface);">
-    <div class="container">
-      <div class="section-head">
-        <p class="kicker">First product</p>
-        <h2 id="showcase-heading" class="display-sm">First launched: CogniFocus</h2>
-        <p>CogniFocus is the first product CogniElevate shipped. It runs on the same principle as every product that follows: find friction, build the system that removes it.</p>
-      </div>
-      <article class="card card-p-lg" style="max-width:720px;margin:0 auto;">
-        <div style="display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap;margin-bottom:1.5rem;">
-          <img src="https://cognifocus.app/assets/logo/app-logo.png" alt="CogniFocus app logo" class="product-logo" loading="lazy" />
-          <div>
-            <h3 style="font-size:1.4rem;margin-bottom:0.5rem;">CogniFocus</h3>
-            <p>A focus system that reacts to your behavior, calls you out when you slip and builds pressure to stay focused.</p>
-          </div>
-        </div>
-        <div class="product-pills">
-          <span class="outcome-pill">Protect attention</span>
-          <span class="outcome-pill">Block distractions</span>
-          <span class="outcome-pill">Build momentum</span>
-          <span class="outcome-pill">Streaks & XP</span>
-        </div>
-        <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="margin-top:1.5rem;">
-          Visit CogniFocus
-          <svg class="icon-sm" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2 2h10m0 0v10m0-10L2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </a>
-      </article>
-    </div>
-  </section>
+  </Scene>
 
   <!-- FAQ -->
   <section class="section" id="faq" aria-labelledby="faq-heading">
     <div class="container" style="max-width:800px;">
-      <div class="section-head">
-        <p class="kicker">FAQ</p>
-        <h2 id="faq-heading" class="display-sm">Questions about CogniElevate</h2>
-      </div>
-      <div class="faq-list">
-        {[
-          {
-            q: 'What is CogniElevate?',
-            a: 'CogniElevate is a technology company building intelligent products and systems that reduce wasted time across several markets, starting with CogniFocus in the focus and productivity space.'
-          },
-          {
-            q: 'Is CogniElevate only CogniFocus?',
-            a: 'No. CogniFocus is the first launched product, but CogniElevate is building a wider ecosystem of intelligent products across productivity, shopping, healthcare and robotics.'
-          },
-          {
-            q: 'What is the long-term vision?',
-            a: 'The long-term vision is to create intelligent systems that remove friction and improve outcomes wherever people lose time, making everyday moments faster, clearer and more effective.'
-          },
-        ].map(({ q, a }) => (
-          <div class="faq-item">
-            <h3>{q}</h3>
-            <p>{a}</p>
-          </div>
-        ))}
-      </div>
+      <SectionHead kicker="FAQ" title="Questions about CogniElevate" id="faq-heading" />
+      <FaqList items={faqItems.map(({ question, answer }) => ({ q: question, a: answer }))} />
     </div>
   </section>
 
   <!-- PRESS -->
   <section class="section-sm" aria-label="Press coverage">
     <div class="container">
-      <div style="max-width:760px; margin:0 auto;">
-        <p class="kicker" style="text-align:center; margin-bottom:1.5rem;">As seen in</p>
+      <div style="max-width:760px; margin:0 auto;" data-reveal>
         <a
           href="https://startupfortune.com/qasim-built-cognifocus-because-most-focus-apps-keep-counting-while-your-brain-is-already-on-tiktok/"
           target="_blank"
           rel="noopener noreferrer"
           class="card card-p"
-          style="display:block; text-decoration:none; border-color:rgba(34,211,238,0.18); background:linear-gradient(135deg,var(--surface) 0%,rgba(34,211,238,0.03) 100%);"
+          style="display:block; text-decoration:none; border-color:rgba(100,254,218,0.18); background:linear-gradient(135deg,var(--surface) 0%,rgba(100,254,218,0.03) 100%);"
         >
           <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem;">
             <div style="width:36px;height:36px;border-radius:8px;background:var(--surface-3);border:1px solid var(--border-m);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -312,20 +313,89 @@ const schema = {
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section-sm">
-    <div class="container">
-      <div class="cta-panel card card-p-lg" style="border-radius:var(--radius-lg);">
-        <h2 class="display-sm" style="margin-bottom:0.75rem;">More than one product</h2>
-        <p>CogniFocus is the first product. The plan is to keep going: shopping, healthcare, robotics, anywhere people keep losing time to the same friction.</p>
-        <div class="cta-actions">
-          <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
-            Try CogniFocus
-          </a>
-          <a href="/contact/" class="btn btn-outline btn-lg">Get in touch</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- SCENE 6 — FINALE CTA -->
+  <CtaPanel
+    title="More than one product"
+    text="CogniFocus is the first product. The plan is to keep going: shopping, healthcare, robotics, anywhere people keep losing time to the same friction."
+  >
+    <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+      Try CogniFocus
+    </a>
+    <a href="/contact/" class="btn btn-outline btn-lg">Get in touch</a>
+  </CtaPanel>
 
 </BaseLayout>
+
+<style>
+  /* Hero layout rules live in global.css (.hero-scene) because these
+     elements render inside the Scene component, outside this page's scope. */
+  .tilt-panel { perspective: 900px; }
+  .tilt-panel .time-card { transform: rotateX(2deg) rotateY(-4deg); transition: transform 0.8s var(--ease-out); }
+  .tilt-panel:hover .time-card { transform: none; }
+
+  /* Scene 2: friction field — nodes along a central spine */
+  .friction-scene { position: relative; }
+  .friction-field {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gap);
+  }
+  .friction-field::before {
+    content: '';
+    position: absolute;
+    top: -2.5rem;
+    left: 4%;
+    right: 4%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(165,210,245,0.25), rgba(165,210,245,0.25), transparent);
+  }
+  .friction-node { position: relative; }
+  .friction-node::before {
+    content: '';
+    position: absolute;
+    top: -2.5rem;
+    left: 50%;
+    width: 1px;
+    height: 2.5rem;
+    background: linear-gradient(180deg, rgba(165,210,245,0.25), rgba(165,210,245,0.05));
+  }
+  .friction-node:nth-child(even) { transform: translateY(1.25rem); }
+  .friction-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--soft-dim);
+    border: 1px solid rgba(165,210,245,0.2);
+    margin-bottom: 0.9rem;
+  }
+  .friction-icon img {
+    filter: invert(88%) sepia(18%) saturate(642%) hue-rotate(177deg) brightness(102%);
+  }
+  @media (max-width: 900px) {
+    .friction-field { grid-template-columns: repeat(2, 1fr); }
+    .friction-node:nth-child(even) { transform: none; }
+  }
+  @media (max-width: 600px) {
+    .friction-field { grid-template-columns: 1fr; }
+    .friction-field::before, .friction-node::before { display: none; }
+  }
+
+  /* Scene 3: flow visual + step lighting */
+  .flow-visual { margin: 0 auto clamp(1.5rem, 4vw, 2.5rem); max-width: 900px; }
+  .flow-step {
+    opacity: clamp(0.35, calc((var(--p, 1) - var(--t)) * 5 + 0.35), 1);
+    transition: opacity 0.2s linear;
+    background: linear-gradient(160deg, var(--surface-2) 0%, var(--surface) 80%);
+  }
+
+  /* Scene 5 */
+  .ecosystem-scene :global(.orbit-wrap) { margin-bottom: clamp(2rem, 5vw, 3rem); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tilt-panel .time-card { transform: none; }
+  }
+</style>

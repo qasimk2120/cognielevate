@@ -1,0 +1,15 @@
+---
+/** FAQ list. Items passed in unchanged; text always in the DOM. */
+interface Props {
+  items: { q: string; a: string }[];
+}
+const { items } = Astro.props;
+---
+<div class="faq-list" data-reveal-stagger>
+  {items.map(({ q, a }) => (
+    <div class="faq-item">
+      <h3>{q}</h3>
+      <p>{a}</p>
+    </div>
+  ))}
+</div>

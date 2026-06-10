@@ -74,8 +74,7 @@ const schema = {
   <section class="hero bg-dots" aria-labelledby="blog-title">
     <div class="glow-top" aria-hidden="true"></div>
     <div class="container" style="position:relative;">
-      <div style="max-width:700px;" class="fade-up">
-        <p class="kicker" style="margin-bottom:1rem;">Blog</p>
+      <div style="max-width:760px;" class="fade-up hero-center">
         <h1 id="blog-title" class="hero-title">Insights on focus, productivity and intelligent systems</h1>
         <p class="lead" style="margin-top:1.25rem;">
           From the team building CogniFocus and the CogniElevate ecosystem - practical thinking on attention, time, and technology that helps.
@@ -86,7 +85,7 @@ const schema = {
 
   <section class="section" aria-label="Blog posts">
     <div class="container" style="max-width:820px;">
-      <div style="display:flex;flex-direction:column;gap:1rem;">
+      <div style="display:flex;flex-direction:column;gap:1rem;" data-reveal-stagger>
         {posts.map(({ href, date, readTime, title, excerpt, tags }) => (
           <a href={href} class="card card-p post-card">
             <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.75rem;">
@@ -100,7 +99,6 @@ const schema = {
         ))}
 
         <div class="card card-p text-center" style="border-style:dashed;border-color:var(--border-m);">
-          <p class="kicker" style="margin-bottom:0.5rem;">Coming soon</p>
           <h3 style="font-size:1rem;margin-bottom:0.5rem;">More articles on the way</h3>
           <p style="font-size:0.9rem;">Next: best focus apps for Android, how to build a deep work routine, and the science behind distraction.</p>
           <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm" style="margin-top:1rem;display:inline-flex;">

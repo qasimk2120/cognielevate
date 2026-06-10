@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Scene from '../components/Scene.astro';
+import SectionHead from '../components/SectionHead.astro';
+import CtaPanel from '../components/CtaPanel.astro';
 import {
   coreKeywords,
   organizationSchema,
@@ -71,28 +74,38 @@ const schema = {
   schema={schema}
 >
 
-  <section class="hero bg-dots" aria-labelledby="resources-title">
-    <div class="glow-top" aria-hidden="true"></div>
+  <Scene class="hero bg-dots" aria-labelledby="resources-title">
+    <Fragment slot="far">
+      <div class="glow-top"></div>
+      <div class="glow-field soft" style="width:45vw;height:40vh;top:0;right:-10%;"></div>
+    </Fragment>
+    <Fragment slot="mid">
+      <svg class="knowledge-web" viewBox="0 0 600 400" fill="none" aria-hidden="true">
+        <path d="M80 320 L220 180 L420 240 L540 90" stroke="rgba(165,210,245,0.15)" stroke-width="1" />
+        <path d="M220 180 L380 80 L540 90" stroke="rgba(100,254,218,0.12)" stroke-width="1" stroke-dasharray="3 7" />
+        <circle cx="80" cy="320" r="4" fill="rgba(165,210,245,0.5)" />
+        <circle cx="220" cy="180" r="5" fill="rgba(100,254,218,0.6)" class="node-pulse" />
+        <circle cx="420" cy="240" r="4" fill="rgba(165,210,245,0.4)" />
+        <circle cx="380" cy="80" r="3.5" fill="rgba(165,210,245,0.35)" />
+        <circle cx="540" cy="90" r="4.5" fill="rgba(100,254,218,0.45)" />
+      </svg>
+    </Fragment>
     <div class="container" style="position:relative;">
-      <div style="max-width:700px;" class="fade-up">
-        <p class="kicker" style="margin-bottom:1rem;">Resources</p>
+      <div style="max-width:760px;" class="fade-up hero-center">
         <h1 id="resources-title" class="hero-title">Focus guides from the CogniElevate ecosystem</h1>
         <p class="lead" style="margin-top:1.25rem;">
           Practical reads from CogniFocus, the first public product from CogniElevate, built to help people reduce app switching, protect attention, and recover wasted time.
         </p>
       </div>
     </div>
-  </section>
+  </Scene>
 
-  <section class="section" aria-labelledby="guides-heading">
+  <Scene class="section" aria-labelledby="guides-heading">
     <div class="container">
-      <div class="section-head">
-        <p class="kicker">CogniFocus guides</p>
-        <h2 id="guides-heading" class="display-sm">Practical reads</h2>
-      </div>
-      <div class="grid-3">
+      <SectionHead kicker="CogniFocus guides" title="Practical reads" id="guides-heading" />
+      <div class="grid-3 knowledge-grid" data-reveal-stagger>
         {guides.map(({ title, excerpt, href }) => (
-          <article class="card card-p" style="display:flex;flex-direction:column;">
+          <article class="card card-p knowledge-card" style="display:flex;flex-direction:column;">
             <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">{title}</h3>
             <p style="font-size:0.9rem;flex:1;">{excerpt}</p>
             <a
@@ -108,19 +121,15 @@ const schema = {
         ))}
       </div>
     </div>
-  </section>
+  </Scene>
 
-  <section class="section" style="background:var(--surface);" aria-labelledby="blog-res-heading">
+  <Scene class="section" style="background:var(--surface);" aria-labelledby="blog-res-heading">
     <div class="container">
-      <div class="section-head">
-        <p class="kicker">CogniElevate blog</p>
-        <h2 id="blog-res-heading" class="display-sm">From us directly</h2>
-        <p>Insights on productivity, focus, and intelligent systems from the CogniElevate team.</p>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;">
+      <SectionHead kicker="CogniElevate blog" title="From us directly" id="blog-res-heading"
+        intro="Insights on productivity, focus, and intelligent systems from the CogniElevate team." />
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;" data-reveal-stagger>
         {localPosts.map(({ title, excerpt, href }, index) => (
-          <a href={href} class="card card-p" style="display:block;text-decoration:none;">
-            <p class="kicker" style="margin-bottom:0.5rem;">{index === 0 ? 'Latest post' : 'Popular post'}</p>
+          <a href={href} class="card card-p knowledge-card" style="display:block;text-decoration:none;">
             <h3 style="font-size:1.15rem;color:var(--text);margin-bottom:0.5rem;">{title}</h3>
             <p style="font-size:0.9rem;">{excerpt}</p>
             <span class="read-more" style="margin-top:0.75rem;">Read article -></span>
@@ -128,18 +137,35 @@ const schema = {
         ))}
       </div>
     </div>
-  </section>
+  </Scene>
 
-  <section class="section-sm">
-    <div class="container">
-      <div class="cta-panel card card-p-lg" style="border-radius:var(--radius-lg);">
-        <h2 class="display-sm" style="margin-bottom:0.75rem;">See the product behind the guides</h2>
-        <p>CogniFocus turns focus sessions into a reactive system with app blocking, streaks, XP, recovery nudges, and accountability.</p>
-        <div class="cta-actions">
-          <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Visit CogniFocus</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <CtaPanel
+    title="See the product behind the guides"
+    text="CogniFocus turns focus sessions into a reactive system with app blocking, streaks, XP, recovery nudges, and accountability."
+  >
+    <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Visit CogniFocus</a>
+  </CtaPanel>
 
 </BaseLayout>
+
+<style>
+  .knowledge-web {
+    position: absolute;
+    right: 0;
+    top: 10%;
+    width: min(600px, 55vw);
+    height: auto;
+    opacity: 0.8;
+  }
+  .knowledge-card {
+    position: relative;
+    background: linear-gradient(165deg, var(--surface-2) 0%, var(--surface) 75%);
+  }
+  .knowledge-card:hover {
+    border-color: rgba(100,254,218,0.25);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 0 24px rgba(100,254,218,0.07);
+  }
+  @media (max-width: 700px) {
+    .knowledge-web { display: none; }
+  }
+</style>

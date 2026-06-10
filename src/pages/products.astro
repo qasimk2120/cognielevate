@@ -1,5 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Scene from '../components/Scene.astro';
+import Fragments from '../components/Fragments.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ContainmentReveal from '../components/ContainmentReveal.astro';
+import OrbitMap from '../components/OrbitMap.astro';
+import CtaPanel from '../components/CtaPanel.astro';
 import {
   coreKeywords,
   organizationSchema,
@@ -67,62 +73,98 @@ const markets = [
   schema={schema}
 >
 
-  <section class="hero bg-dots" aria-labelledby="products-title">
-    <div class="glow-top" aria-hidden="true"></div>
+  <!-- HERO -->
+  <Scene class="hero bg-dots" aria-labelledby="products-title">
+    <Fragment slot="far">
+      <div class="glow-top"></div>
+      <div class="glow-field primary" style="width:55vw;height:45vh;top:-10%;right:-15%;"></div>
+    </Fragment>
+    <Fragment slot="mid">
+      <Fragments density="sparse" />
+    </Fragment>
     <div class="container" style="position:relative;">
-      <div style="max-width:700px;" class="fade-up">
-        <p class="kicker" style="margin-bottom:1rem;">Products</p>
+      <div style="max-width:760px;" class="fade-up hero-center">
         <h1 id="products-title" class="hero-title">Products built to reduce wasted time</h1>
         <p class="lead" style="margin-top:1.25rem;">
           CogniElevate is starting with productivity and expanding toward markets where better systems can save time, reduce friction, and improve outcomes.
         </p>
       </div>
     </div>
-  </section>
+  </Scene>
 
   <!-- COGNIFOCUS -->
-  <section class="section" id="cognifocus" aria-labelledby="cf-heading">
+  <Scene class="section" id="cognifocus" aria-labelledby="cf-heading">
+    <Fragment slot="far">
+      <div class="glow-field primary" style="width:60vw;height:50vh;top:5%;left:50%;translate:-50% 0;"></div>
+    </Fragment>
     <div class="container">
-      <div class="section-head">
-        <p class="kicker">First launched product</p>
-        <h2 id="cf-heading" class="display-sm">CogniFocus</h2>
-        <p>The first public product from CogniElevate, built to test the core belief that software should reduce friction and help people recover wasted time.</p>
-      </div>
+      <SectionHead kicker="First launched product" title="CogniFocus" id="cf-heading"
+        intro="The first public product from CogniElevate, built to test the core belief that software should reduce friction and help people recover wasted time." />
 
-      <article class="card card-p-lg" style="max-width:780px;">
-        <div style="display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap;margin-bottom:1.5rem;">
-          <img src="https://cognifocus.app/assets/logo/app-logo.png" alt="CogniFocus app logo" class="product-logo" loading="lazy" />
-          <div style="flex:1;min-width:220px;">
-            <h3 style="font-size:1.4rem;margin-bottom:0.5rem;">What CogniFocus includes</h3>
-            <p>Focus system that reacts to user behavior, Distraction Shield app blocking, streaks and XP, recovery nudges, and character-driven accountability.</p>
+      <ContainmentReveal>
+        <article class="card no-hover card-p-lg depth-panel">
+          <div style="display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap;margin-bottom:1.5rem;">
+            <img src="https://cognifocus.app/assets/logo/app-logo.png" alt="CogniFocus app logo" class="product-logo" loading="lazy" />
+            <div style="flex:1;min-width:220px;">
+              <h3 style="font-size:1.4rem;margin-bottom:0.5rem;">What CogniFocus includes</h3>
+              <p>Focus system that reacts to user behavior, Distraction Shield app blocking, streaks and XP, recovery nudges, and character-driven accountability.</p>
+            </div>
           </div>
-        </div>
-        <div class="product-pills">
-          <span class="outcome-pill">Protect attention</span>
-          <span class="outcome-pill">Block distractions</span>
-          <span class="outcome-pill">Build momentum</span>
-          <span class="outcome-pill">Streaks & XP</span>
-          <span class="outcome-pill">Recovery nudges</span>
-        </div>
-        <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="margin-top:1.5rem;">
-          Visit CogniFocus
-          <svg class="icon-sm" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2 2h10m0 0v10m0-10L2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </a>
-      </article>
+          <div class="product-pills">
+            <span class="outcome-pill">Protect attention</span>
+            <span class="outcome-pill">Block distractions</span>
+            <span class="outcome-pill">Build momentum</span>
+            <span class="outcome-pill">Streaks & XP</span>
+            <span class="outcome-pill">Recovery nudges</span>
+          </div>
+          <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="margin-top:1.5rem;">
+            Visit CogniFocus
+            <svg class="icon-sm" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 2h10m0 0v10m0-10L2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </article>
+      </ContainmentReveal>
+
+      <!-- Second product: in development -->
+      <div class="next-product card no-hover card-p" data-reveal>
+        <span class="market-badge future">In development</span>
+        <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">Second product — In development</h3>
+        <p style="font-size:0.9rem;">Another CogniElevate product is being shaped under the same principle: finding friction and building systems that remove it.</p>
+        <span class="next-product-note muted" style="font-size:0.82rem;display:block;margin-top:0.9rem;">Details coming later.</span>
+      </div>
     </div>
-  </section>
+  </Scene>
 
   <!-- MARKETS -->
-  <section class="section" id="markets" aria-labelledby="markets-heading" style="background:var(--surface);">
+  <Scene class="section" id="markets" aria-labelledby="markets-heading" style="background:var(--surface);">
     <div class="container">
-      <div class="section-head">
-        <p class="kicker">Markets we are exploring</p>
-        <h2 id="markets-heading" class="display-sm">Where we are building next</h2>
-        <p>CogniElevate is building a model that can move across categories wherever time is commonly lost.</p>
+      <SectionHead kicker="Markets we are exploring" title="Where we are building next" id="markets-heading"
+        intro="CogniElevate is building a model that can move across categories wherever time is commonly lost." />
+
+      <div data-reveal>
+        <OrbitMap variant="full" class="mb-xl" />
       </div>
-      <div class="grid-4">
+
+      <!-- Horizon timeline -->
+      <div class="horizon" data-reveal aria-label="Product horizon">
+        <div class="horizon-track" aria-hidden="true"></div>
+        <div class="horizon-col">
+          <span class="horizon-tag now">Now</span>
+          <span class="horizon-item">Focus & productivity</span>
+        </div>
+        <div class="horizon-col">
+          <span class="horizon-tag">Exploring</span>
+          <span class="horizon-item">Clothing & shopping</span>
+          <span class="horizon-item">Healthcare systems</span>
+        </div>
+        <div class="horizon-col">
+          <span class="horizon-tag">Long-term</span>
+          <span class="horizon-item">Robotics systems</span>
+        </div>
+      </div>
+
+      <div class="grid-4" data-reveal-stagger>
         {markets.map(({ title, body, status, product, link }) => (
           <article class="card market-card card-p">
             <span class={`market-badge ${status === 'live' ? '' : 'future'}`}>
@@ -139,20 +181,59 @@ const markets = [
         ))}
       </div>
     </div>
-  </section>
+  </Scene>
 
   <!-- CTA -->
-  <section class="section-sm">
-    <div class="container">
-      <div class="cta-panel card card-p-lg" style="border-radius:var(--radius-lg);">
-        <h2 class="display-sm" style="margin-bottom:0.75rem;">Follow the first product</h2>
-        <p>CogniFocus is live now and represents the first step in the CogniElevate product ecosystem.</p>
-        <div class="cta-actions">
-          <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Visit CogniFocus</a>
-          <a href="/contact/" class="btn btn-outline btn-lg">Partner with us</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <CtaPanel
+    title="Follow the first product"
+    text="CogniFocus is live now and represents the first step in the CogniElevate product ecosystem."
+  >
+    <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Visit CogniFocus</a>
+    <a href="/contact/" class="btn btn-outline btn-lg">Partner with us</a>
+  </CtaPanel>
 
 </BaseLayout>
+
+<style>
+  .next-product {
+    max-width: 760px;
+    margin: clamp(1.5rem, 4vw, 2.5rem) auto 0;
+    border-style: dashed;
+    border-color: rgba(165,210,245,0.25);
+    background: linear-gradient(160deg, rgba(15,76,130,0.12) 0%, var(--surface) 70%);
+  }
+
+  .horizon {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap);
+    margin-bottom: clamp(2rem, 5vw, 3rem);
+    padding-top: 1.25rem;
+  }
+  .horizon-track {
+    position: absolute;
+    top: 0;
+    left: 2%;
+    right: 2%;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-soft) 45%, rgba(15,76,130,0.8) 100%);
+    opacity: 0.6;
+  }
+  .horizon-col { display: flex; flex-direction: column; gap: 0.4rem; }
+  .horizon-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-bottom: 0.2rem;
+  }
+  .horizon-tag.now { color: var(--accent); }
+  .horizon-item { font-size: 0.9rem; color: var(--text-2); }
+  @media (max-width: 600px) {
+    .horizon { grid-template-columns: 1fr; gap: 1.25rem; }
+    .horizon-track { display: none; }
+  }
+</style>

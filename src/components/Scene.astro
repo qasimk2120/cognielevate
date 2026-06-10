@@ -1,0 +1,22 @@
+---
+/** Depth-stack scene wrapper: far / mid layers behind near content.
+ *  Pass scrub + sceneLen to expose a scroll progress var --p (0..1). */
+interface Props {
+  as?: string;
+  class?: string;
+  scrub?: boolean;
+  sceneLen?: number;   // viewport-heights of scroll mapped to progress
+  [key: string]: any;
+}
+const { as: Tag = 'section', class: className = '', scrub = false, sceneLen = 1, ...rest } = Astro.props;
+const attrs: Record<string, any> = { ...rest };
+if (scrub) {
+  attrs['data-scene'] = '';
+  attrs['data-scene-len'] = String(sceneLen);
+}
+---
+<Tag class={`scene ${className}`} {...attrs}>
+  {Astro.slots.has('far') && <div class="scene-far" aria-hidden="true"><slot name="far" /></div>}
+  {Astro.slots.has('mid') && <div class="scene-mid" aria-hidden="true"><slot name="mid" /></div>}
+  <div class="scene-near"><slot /></div>
+</Tag>

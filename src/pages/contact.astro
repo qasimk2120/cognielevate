@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Scene from '../components/Scene.astro';
+import SectionHead from '../components/SectionHead.astro';
+import CtaPanel from '../components/CtaPanel.astro';
 import {
   coreKeywords,
   organizationSchema,
@@ -30,13 +33,22 @@ const schema = {
   ]
 };
 
+const socialLinks = [
+  { href: 'https://www.tiktok.com/@cognielevate',        icon: 'tiktok',    label: 'TikTok'    },
+  { href: 'https://www.instagram.com/cognifocus.app/',   icon: 'instagram', label: 'Instagram' },
+  { href: 'https://www.facebook.com/share/1Am7kCzkjG/', icon: 'facebook',  label: 'Facebook'  },
+  { href: 'https://x.com/iqasim_explores',                  icon: 'x',         label: 'X'         },
+  { href: 'https://discord.gg/HbU3XYyFCz',              icon: 'discord',   label: 'Discord'   },
+  { href: 'https://wa.me/923262878356',                  icon: 'whatsapp',  label: 'WhatsApp'  },
+];
+
 const topics = [
-  'Partnerships',
-  'Product feedback',
-  'CogniFocus support or interest',
-  'Future solution ideas',
-  'Media or listing requests',
-  'General enquiries',
+  { label: 'Partnerships',                  icon: 'users'   },
+  { label: 'Product feedback',              icon: 'star'    },
+  { label: 'CogniFocus support or interest', icon: 'focus'  },
+  { label: 'Future solution ideas',         icon: 'brain'   },
+  { label: 'Media or listing requests',     icon: 'monitor' },
+  { label: 'General enquiries',             icon: 'bell'    },
 ];
 ---
 
@@ -49,28 +61,35 @@ const topics = [
   schema={schema}
 >
 
-  <section class="hero bg-dots" aria-labelledby="contact-title">
-    <div class="glow-top" aria-hidden="true"></div>
+  <Scene class="hero bg-dots" aria-labelledby="contact-title">
+    <Fragment slot="far">
+      <div class="glow-top"></div>
+      <div class="glow-field accent" style="width:40vw;height:40vh;top:5%;right:0;opacity:0.5;"></div>
+    </Fragment>
+    <Fragment slot="mid">
+      <svg class="portal-ring" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+        <circle cx="200" cy="200" r="170" stroke="rgba(100,254,218,0.14)" stroke-width="1.5" stroke-dasharray="40 18" class="ring-spin" style="--spin-dur:50s;" />
+        <circle cx="200" cy="200" r="130" stroke="rgba(165,210,245,0.16)" stroke-width="1" class="ring-spin reverse" style="--spin-dur:70s;" />
+        <circle cx="200" cy="200" r="90" stroke="rgba(15,76,130,0.6)" stroke-width="1.5" stroke-dasharray="3 10" />
+        <circle cx="200" cy="30" r="5" fill="#64FEDA" class="node-pulse" />
+      </svg>
+    </Fragment>
     <div class="container" style="position:relative;">
-      <div style="max-width:700px;" class="fade-up">
-        <p class="kicker" style="margin-bottom:1rem;">Contact</p>
+      <div style="max-width:760px;" class="fade-up hero-center">
         <h1 id="contact-title" class="hero-title">Contact CogniElevate</h1>
         <p class="lead" style="margin-top:1.25rem;">
           Reach out for partnerships, feedback, product interest, or future solution ideas. We read everything.
         </p>
       </div>
     </div>
-  </section>
+  </Scene>
 
   <!-- EMAIL -->
-  <section class="section" aria-labelledby="email-heading">
+  <Scene class="section" aria-labelledby="email-heading">
     <div class="container" style="max-width:700px;">
-      <div class="section-head">
-        <p class="kicker">Get in touch</p>
-        <h2 id="email-heading" class="display-sm">Drop us a message</h2>
-      </div>
+      <SectionHead kicker="Get in touch" title="Drop us a message" id="email-heading" />
 
-      <div class="card card-p-lg no-hover" style="display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap;">
+      <div class="card card-p-lg no-hover depth-panel" data-reveal style="display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap;">
         <div class="contact-icon-wrap" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M3.75 6.75h16.5a1.5 1.5 0 0 1 1.5 1.5v7.5a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3v-7.5a1.5 1.5 0 0 1 1.5-1.5Z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
@@ -78,7 +97,6 @@ const topics = [
           </svg>
         </div>
         <div>
-          <p class="kicker" style="margin-bottom:0.4rem;">Email</p>
           <a href="mailto:cognielevate@gmail.com" style="font-size:1.15rem;font-weight:600;color:var(--accent);text-decoration:none;">
             cognielevate@gmail.com
           </a>
@@ -88,60 +106,76 @@ const topics = [
         </div>
       </div>
     </div>
-  </section>
+  </Scene>
 
   <!-- TOPICS -->
-  <section class="section" style="background:var(--surface);" aria-labelledby="topics-heading">
+  <Scene class="section" style="background:var(--surface);" aria-labelledby="topics-heading">
     <div class="container" style="max-width:700px;">
-      <div class="section-head">
-        <p class="kicker">What to contact us about</p>
-        <h2 id="topics-heading" class="display-sm">Ways we can collaborate</h2>
-      </div>
-      <div class="grid-2">
-        {topics.map((topic) => (
-          <div class="card card-p" style="font-size:0.92rem;font-weight:500;color:var(--text-2);">
-            {topic}
+      <SectionHead kicker="What to contact us about" title="Ways we can collaborate" id="topics-heading" />
+      <div class="grid-2" data-reveal-stagger>
+        {topics.map(({ label, icon }) => (
+          <div class="card card-p topic-card" style="font-size:0.92rem;font-weight:500;color:var(--text-2);">
+            <span class="topic-icon" aria-hidden="true">
+              <img src={`/assets/icons/${icon}.svg`} alt="" width="16" height="16" loading="lazy" />
+            </span>
+            {label}
           </div>
         ))}
       </div>
     </div>
-  </section>
+  </Scene>
 
   <!-- SOCIAL -->
-  <section class="section" aria-labelledby="social-heading">
+  <Scene class="section" aria-labelledby="social-heading">
     <div class="container" style="max-width:700px;">
-      <div class="section-head">
-        <p class="kicker">Social links</p>
-        <h2 id="social-heading" class="display-sm">Connect with CogniElevate</h2>
-      </div>
-      <div class="socials">
-        {[
-          { href: 'https://www.tiktok.com/@cognielevate',        icon: 'tiktok',    label: 'TikTok'    },
-          { href: 'https://www.instagram.com/cognifocus.app/',   icon: 'instagram', label: 'Instagram' },
-          { href: 'https://www.facebook.com/share/1Am7kCzkjG/', icon: 'facebook',  label: 'Facebook'  },
-          { href: 'https://x.com/iqasim_explores',                  icon: 'x',         label: 'X'         },
-          { href: 'https://discord.gg/HbU3XYyFCz',              icon: 'discord',   label: 'Discord'   },
-          { href: 'https://wa.me/923262878356',                  icon: 'whatsapp',  label: 'WhatsApp'  },
-        ].map(({ href, icon, label }) => (
+      <SectionHead kicker="Social links" title="Connect with CogniElevate" id="social-heading" />
+      <div class="socials" data-reveal-stagger>
+        {socialLinks.map(({ href, icon, label }) => (
           <a href={href} target="_blank" rel="noopener noreferrer" class="social-link" aria-label={label}>
-            <img src={`https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/${icon}.svg`} alt="" width="16" height="16" aria-hidden="true" />
+            <img src={`/assets/icons/${icon}.svg`} alt="" width="16" height="16" aria-hidden="true" />
           </a>
         ))}
       </div>
     </div>
-  </section>
+  </Scene>
 
   <!-- CTA -->
-  <section class="section-sm">
-    <div class="container">
-      <div class="cta-panel card card-p-lg" style="border-radius:var(--radius-lg);">
-        <h2 class="display-sm" style="margin-bottom:0.75rem;">Want to see what we have built first?</h2>
-        <div class="cta-actions">
-          <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Visit CogniFocus</a>
-          <a href="/products/" class="btn btn-outline btn-lg">All products</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <CtaPanel title="Want to see what we have built first?">
+    <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Visit CogniFocus</a>
+    <a href="/products/" class="btn btn-outline btn-lg">All products</a>
+  </CtaPanel>
 
 </BaseLayout>
+
+<style>
+  .portal-ring {
+    position: absolute;
+    right: -4%;
+    top: 50%;
+    translate: 0 -50%;
+    width: min(400px, 42vw);
+    height: auto;
+  }
+  .topic-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .topic-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--accent-dim);
+    border: 1px solid rgba(100,254,218,0.18);
+    flex-shrink: 0;
+  }
+  .topic-icon img {
+    filter: invert(85%) sepia(32%) saturate(1374%) hue-rotate(110deg) brightness(103%);
+  }
+  @media (max-width: 800px) {
+    .portal-ring { display: none; }
+  }
+</style>

@@ -1,5 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Scene from '../components/Scene.astro';
+import Fragments from '../components/Fragments.astro';
+import SectionHead from '../components/SectionHead.astro';
+import FaqList from '../components/FaqList.astro';
+import CtaPanel from '../components/CtaPanel.astro';
 import {
   coreKeywords,
   organizationSchema,
@@ -46,6 +51,31 @@ const schema = {
     faqSchema(faqItems),
   ]
 };
+
+const problemCards = [
+  { title: 'Attention lost',    body: 'Small interruptions break focus and drain momentum before meaningful work begins.' },
+  { title: 'Decisions delayed', body: 'Unclear choices create hesitation and slow action across personal and professional life.' },
+  { title: 'Returns & rework',  body: 'Mistakes turn into extra time, cost and repeated effort that compounds over time.' },
+  { title: 'Operations slowed', body: 'Manual workflows create drag inside everyday systems, from clinics to warehouses.' },
+];
+
+const outcomeCards = [
+  { title: 'Faster decisions',             body: 'Less hesitation, clearer next steps, faster momentum.' },
+  { title: 'Fewer repeated mistakes',      body: 'Systems can prevent the same error from happening again.' },
+  { title: 'More attention for real work', body: 'People spend time on important work instead of drag.' },
+];
+
+const faqListItems = [
+  { q: 'What is CogniElevate?', a: 'CogniElevate is a technology company building intelligent products and systems that reduce wasted time across several markets.' },
+  { q: 'Is CogniElevate only CogniFocus?', a: 'No. CogniFocus is the first launched product, but CogniElevate is building a wider company platform for future markets.' },
+  { q: 'What is the long-term vision?', a: 'The long-term vision is to create intelligent systems that remove friction and improve outcomes wherever people lose time.' },
+];
+
+const principleSteps = [
+  { num: '01', title: 'Observe the real cost',            body: "We don't start with features. We start with the exact moment where time is being lost and ask what's actually causing it." },
+  { num: '02', title: 'Build the system around it',       body: "The product isn't a workaround. It's a system designed specifically to stop that friction from happening." },
+  { num: '03', title: 'Measure whether time came back',   body: "A product that doesn't save real time isn't finished. We keep building until the outcome is real." },
+];
 ---
 
 <BaseLayout
@@ -58,131 +88,154 @@ const schema = {
 >
 
   <!-- PAGE HERO -->
-  <section class="hero bg-dots" aria-labelledby="about-title">
-    <div class="glow-top" aria-hidden="true"></div>
+  <Scene class="hero bg-dots" aria-labelledby="about-title">
+    <Fragment slot="far">
+      <div class="glow-top"></div>
+      <div class="glow-field primary" style="width:50vw;height:40vh;top:-10%;right:-10%;"></div>
+    </Fragment>
+    <Fragment slot="mid">
+      <Fragments density="sparse" />
+    </Fragment>
     <div class="container" style="position:relative;">
-      <div style="max-width:700px;" class="fade-up">
-        <p class="kicker" style="margin-bottom:1rem;">About CogniElevate</p>
+      <div style="max-width:760px;" class="fade-up hero-center">
         <h1 id="about-title" class="hero-title">The company building intelligent time-saving systems</h1>
         <p class="lead" style="margin-top:1.25rem;">
           CogniElevate creates intelligent products that remove friction, speed up decisions and reduce wasted time across everyday life and complex industries.
         </p>
       </div>
     </div>
-  </section>
+  </Scene>
 
   <!-- PROBLEM -->
-  <section class="section" id="problem" aria-labelledby="problem-heading">
+  <Scene class="section bg-grid" id="problem" aria-labelledby="problem-heading">
     <div class="container">
-      <div class="section-head">
-        <p class="kicker">The problem</p>
-        <h2 id="problem-heading" class="display-sm">Time gets lost in small moments</h2>
-        <p>Distractions, wrong purchases, waiting rooms, admin work and slow systems all create the same cost: wasted time.</p>
-      </div>
-      <div class="grid-4">
-        {[
-          { title: 'Attention lost',    body: 'Small interruptions break focus and drain momentum before meaningful work begins.' },
-          { title: 'Decisions delayed', body: 'Unclear choices create hesitation and slow action across personal and professional life.' },
-          { title: 'Returns & rework',  body: 'Mistakes turn into extra time, cost and repeated effort that compounds over time.' },
-          { title: 'Operations slowed', body: 'Manual workflows create drag inside everyday systems, from clinics to warehouses.' },
-        ].map(({ title, body }) => (
+      <SectionHead kicker="The problem" title="Time gets lost in small moments" id="problem-heading"
+        intro="Distractions, wrong purchases, waiting rooms, admin work and slow systems all create the same cost: wasted time." />
+      <div class="grid-4" data-reveal-stagger>
+        {problemCards.map(({ title, body }) => (
           <article class="card card-p">
-            <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">{title}</h3>
+            <h3 class="u-draw" style="font-size:1.05rem;margin-bottom:0.6rem;">{title}</h3>
             <p style="font-size:0.9rem;">{body}</p>
           </article>
         ))}
       </div>
     </div>
-  </section>
+  </Scene>
 
-  <!-- PRINCIPLE -->
-  <section class="section" id="principle" style="background:var(--surface);" aria-labelledby="principle-heading">
+  <!-- PRINCIPLE — vertical philosophy spine -->
+  <Scene class="section" id="principle" style="background:var(--surface);" aria-labelledby="principle-heading">
+    <Fragment slot="far">
+      <div class="glow-field accent" style="width:45vw;height:60vh;top:15%;left:50%;translate:-50% 0;opacity:0.4;"></div>
+    </Fragment>
     <div class="container">
-      <div class="section-head">
-        <p class="kicker">Our principle</p>
-        <h2 id="principle-heading" class="display-sm">We look for friction, then build the system that removes it</h2>
-        <p>Every CogniElevate product starts with a simple question: where are people losing time, and what system would make that moment faster, clearer or automatic?</p>
-      </div>
-      <div class="process-flow">
-        <article class="card process-step">
-          <span class="process-num">01</span>
-          <h3>Observe the real cost</h3>
-          <p style="font-size:0.9rem;">We don't start with features. We start with the exact moment where time is being lost and ask what's actually causing it.</p>
-        </article>
-        <div class="process-arrow" aria-hidden="true">→</div>
-        <article class="card process-step">
-          <span class="process-num">02</span>
-          <h3>Build the system around it</h3>
-          <p style="font-size:0.9rem;">The product isn't a workaround. It's a system designed specifically to stop that friction from happening.</p>
-        </article>
-        <div class="process-arrow" aria-hidden="true">→</div>
-        <article class="card process-step">
-          <span class="process-num">03</span>
-          <h3>Measure whether time came back</h3>
-          <p style="font-size:0.9rem;">A product that doesn't save real time isn't finished. We keep building until the outcome is real.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+      <SectionHead kicker="Our principle" title="We look for friction, then build the system that removes it" id="principle-heading"
+        intro="Every CogniElevate product starts with a simple question: where are people losing time, and what system would make that moment faster, clearer or automatic?" />
 
-  <!-- OUTCOMES -->
-  <section class="section" id="outcomes" aria-labelledby="outcomes-heading">
-    <div class="container">
-      <div class="section-head">
-        <p class="kicker">Outcomes</p>
-        <h2 id="outcomes-heading" class="display-sm">Less wasted time means better outcomes</h2>
-      </div>
-      <div class="grid-3">
-        {[
-          { title: 'Faster decisions',             body: 'Less hesitation, clearer next steps, faster momentum.' },
-          { title: 'Fewer repeated mistakes',      body: 'Systems can prevent the same error from happening again.' },
-          { title: 'More attention for real work', body: 'People spend time on important work instead of drag.' },
-        ].map(({ title, body }) => (
-          <article class="card card-p">
-            <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">{title}</h3>
-            <p style="font-size:0.9rem;">{body}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section" id="faq" aria-labelledby="faq-about-heading" style="background:var(--surface);">
-    <div class="container" style="max-width:800px;">
-      <div class="section-head">
-        <p class="kicker">FAQ</p>
-        <h2 id="faq-about-heading" class="display-sm">Questions about CogniElevate</h2>
-      </div>
-      <div class="faq-list">
-        {[
-          { q: 'What is CogniElevate?', a: 'CogniElevate is a technology company building intelligent products and systems that reduce wasted time across several markets.' },
-          { q: 'Is CogniElevate only CogniFocus?', a: 'No. CogniFocus is the first launched product, but CogniElevate is building a wider company platform for future markets.' },
-          { q: 'What is the long-term vision?', a: 'The long-term vision is to create intelligent systems that remove friction and improve outcomes wherever people lose time.' },
-        ].map(({ q, a }) => (
-          <div class="faq-item">
-            <h3>{q}</h3>
-            <p>{a}</p>
+      <div class="spine">
+        <div class="spine-line" aria-hidden="true"></div>
+        {principleSteps.map(({ num, title, body }) => (
+          <div class="spine-station" data-reveal>
+            <span class="spine-marker" aria-hidden="true">
+              <span class="spine-dot"></span>
+            </span>
+            <article class="card no-hover card-p spine-card depth-panel">
+              <span class="process-num">{num}</span>
+              <h3>{title}</h3>
+              <p style="font-size:0.9rem;">{body}</p>
+            </article>
           </div>
         ))}
       </div>
     </div>
-  </section>
+  </Scene>
 
-  <!-- CTA -->
-  <section class="section-sm">
+  <!-- OUTCOMES -->
+  <Scene class="section" id="outcomes" aria-labelledby="outcomes-heading">
     <div class="container">
-      <div class="cta-panel card card-p-lg" style="border-radius:var(--radius-lg);">
-        <h2 class="display-sm" style="margin-bottom:0.75rem;">See what we have built first</h2>
-        <p>CogniFocus is live now and represents the first step in the CogniElevate product ecosystem.</p>
-        <div class="cta-actions">
-          <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Visit CogniFocus</a>
-          <a href="/products/" class="btn btn-outline btn-lg">See all products</a>
-          <a href="/founder/" class="btn btn-ghost btn-lg">The founder</a>
-        </div>
+      <SectionHead kicker="Outcomes" title="Less wasted time means better outcomes" id="outcomes-heading" />
+      <div class="grid-3" data-reveal-stagger>
+        {outcomeCards.map(({ title, body }) => (
+          <article class="card card-p outcome-card">
+            <span class="outcome-node" aria-hidden="true"></span>
+            <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">{title}</h3>
+            <p style="font-size:0.9rem;">{body}</p>
+          </article>
+        ))}
       </div>
+    </div>
+  </Scene>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" aria-labelledby="faq-about-heading" style="background:var(--surface);">
+    <div class="container" style="max-width:800px;">
+      <SectionHead kicker="FAQ" title="Questions about CogniElevate" id="faq-about-heading" />
+      <FaqList items={faqListItems} />
     </div>
   </section>
 
+  <!-- CTA -->
+  <CtaPanel
+    title="See what we have built first"
+    text="CogniFocus is live now and represents the first step in the CogniElevate product ecosystem."
+  >
+    <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Visit CogniFocus</a>
+    <a href="/products/" class="btn btn-outline btn-lg">See all products</a>
+    <a href="/founder/" class="btn btn-ghost btn-lg">The founder</a>
+  </CtaPanel>
+
 </BaseLayout>
 
+<style>
+  /* Philosophy spine */
+  .spine {
+    position: relative;
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+    padding-left: 2.25rem;
+  }
+  .spine-line {
+    position: absolute;
+    left: 8px;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--primary), var(--accent-soft), var(--accent));
+    opacity: 0.5;
+  }
+  .spine-station { position: relative; }
+  .spine-marker {
+    position: absolute;
+    left: -2.25rem;
+    top: 1.6rem;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .spine-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px rgba(100,254,218,0.6);
+  }
+  .spine-card { border-left: 1px solid rgba(100,254,218,0.15); }
+
+  .outcome-card { position: relative; }
+  .outcome-node {
+    position: absolute;
+    top: 1.1rem;
+    right: 1.1rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.6;
+    box-shadow: 0 0 10px rgba(100,254,218,0.5);
+  }
+</style>

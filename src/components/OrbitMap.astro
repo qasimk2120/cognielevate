@@ -1,0 +1,86 @@
+---
+/** Ecosystem orbit map. Core principle at center, CogniFocus lit on the
+ *  inner orbit, future directions dim on dashed outer orbits.
+ *  Decorative (aria-hidden): the real information lives in page text.
+ *  variant: "compact" (homepage) | "full" (products page) */
+interface Props {
+  variant?: 'compact' | 'full';
+  class?: string;
+}
+const { variant = 'compact', class: className = '' } = Astro.props;
+const full = variant === 'full';
+---
+<div class={`orbit-wrap ${className}`} aria-hidden="true">
+  <svg viewBox="0 0 900 520" fill="none" class="orbit-svg">
+    <!-- orbits -->
+    <g class="orbit-rings">
+      <ellipse cx="450" cy="270" rx="150" ry="70"  stroke="rgba(100,254,218,0.28)" stroke-width="1.2" />
+      <ellipse cx="450" cy="270" rx="260" ry="122" stroke="rgba(165,210,245,0.16)" stroke-width="1" stroke-dasharray="5 9" class="ring-spin-slow" />
+      <ellipse cx="450" cy="270" rx="360" ry="172" stroke="rgba(165,210,245,0.11)" stroke-width="1" stroke-dasharray="3 11" />
+      <ellipse cx="450" cy="270" rx="430" ry="210" stroke="rgba(15,76,130,0.45)"  stroke-width="1" stroke-dasharray="2 14" />
+    </g>
+
+    <!-- core -->
+    <circle cx="450" cy="270" r="34" fill="rgba(15,76,130,0.45)" stroke="rgba(100,254,218,0.4)" stroke-width="1.5" />
+    <circle cx="450" cy="270" r="12" fill="#64FEDA" class="node-pulse" opacity="0.9" />
+    <text x="450" y="330" text-anchor="middle" class="orbit-label core-label">CogniElevate</text>
+
+    <!-- live node: CogniFocus, inner orbit -->
+    <g class="node live">
+      <line x1="450" y1="270" x2="600" y2="240" stroke="rgba(100,254,218,0.3)" stroke-width="1" />
+      <circle cx="600" cy="240" r="11" fill="#0A1930" stroke="#64FEDA" stroke-width="2" />
+      <circle cx="600" cy="240" r="4.5" fill="#64FEDA" class="node-pulse" />
+      <text x="600" y="212" text-anchor="middle" class="orbit-label live-label">CogniFocus · Live</text>
+    </g>
+
+    <!-- future nodes -->
+    <g class="node future">
+      <circle cx="240" cy="200" r="8" fill="#0A1930" stroke="rgba(165,210,245,0.65)" stroke-width="1.5" />
+      <text x="240" y="174" text-anchor="middle" class="orbit-label future-label">Fashion &amp; fit</text>
+      {full && <text x="240" y="228" text-anchor="middle" class="orbit-label tag-label">Future</text>}
+    </g>
+    <g class="node future">
+      <circle cx="660" cy="390" r="8" fill="#0A1930" stroke="rgba(165,210,245,0.65)" stroke-width="1.5" />
+      <text x="660" y="364" text-anchor="middle" class="orbit-label future-label">Healthcare</text>
+      {full && <text x="660" y="418" text-anchor="middle" class="orbit-label tag-label">Future</text>}
+    </g>
+    <g class="node future far-node">
+      <circle cx="180" cy="400" r="7" fill="#0A1930" stroke="rgba(15,76,130,0.9)" stroke-width="1.5" />
+      <text x="180" y="374" text-anchor="middle" class="orbit-label far-label">Robotics</text>
+      {full && <text x="180" y="428" text-anchor="middle" class="orbit-label tag-label">Long-term</text>}
+    </g>
+  </svg>
+</div>
+
+<style>
+  .orbit-wrap {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .orbit-svg { width: 100%; height: auto; overflow: visible; }
+  .orbit-label {
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    fill: rgba(255,255,255,0.72);
+  }
+  .core-label { fill: rgba(255,255,255,0.85); font-size: 16px; font-weight: 700; }
+  .live-label { fill: #64FEDA; }
+  .future-label { fill: rgba(165,210,245,0.8); }
+  .far-label { fill: rgba(165,210,245,0.55); }
+  .tag-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; fill: rgba(255,255,255,0.4); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .ring-spin-slow {
+      transform-origin: 450px 270px;
+      animation: orbit-rot 60s linear infinite;
+    }
+    @keyframes orbit-rot { to { transform: rotate(360deg); } }
+  }
+  @media (max-width: 600px) {
+    .orbit-label { font-size: 19px; }
+    .tag-label { font-size: 14px; }
+  }
+</style>
