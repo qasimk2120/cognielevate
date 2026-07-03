@@ -10,7 +10,7 @@ interface Props {
 const { variant = 'compact', class: className = '' } = Astro.props;
 const full = variant === 'full';
 ---
-<div class={`orbit-wrap ${className}`} aria-hidden="true">
+<div class={`orbit-wrap ${full ? 'orbit-wrap--full' : 'orbit-wrap--compact'} ${className}`} aria-hidden="true">
   <svg viewBox="0 0 900 520" fill="none" class="orbit-svg">
     <!-- orbits -->
     <g class="orbit-rings">
@@ -57,6 +57,9 @@ const full = variant === 'full';
     position: relative;
     max-width: 900px;
     margin: 0 auto;
+  }
+  .orbit-wrap--compact {
+    max-width: 680px;
   }
   .orbit-svg { width: 100%; height: auto; overflow: visible; }
   .orbit-label {

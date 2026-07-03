@@ -50,7 +50,7 @@
   --shadow:       0 1px 3px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.3);
   --shadow-lg:    0 4px 24px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3);
   --trans:        0.2s ease;
-  --section:      clamp(4.5rem, 8vw, 7rem);
+  --section:      clamp(3rem, 5vw, 4.75rem);
   --container:    1240px;
   --gap:          clamp(1rem, 3vw, 1.5rem);
 }
@@ -323,10 +323,14 @@ p { color: var(--text-2); line-height: 1.75; }
 .card-p-lg { padding: clamp(1.75rem, 4vw, 3rem); }
 
 /* ---------- Section header ---------- */
-.section-head { margin-bottom: clamp(2.5rem, 4vw, 3.5rem); }
+.section-head { margin-bottom: clamp(1.75rem, 3vw, 2.75rem); }
 .section-head .kicker { margin-bottom: 0.75rem; }
 .section-head h2 { margin-bottom: 1rem; }
 .section-head p { max-width: 60ch; }
+.section-head.text-center p {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /* ---------- Hero ---------- */
 .hero {
@@ -365,18 +369,21 @@ p { color: var(--text-2); line-height: 1.75; }
    large screens — text + card side by side, the pair centered as one block;
    small screens — single column, text first, card below, both centered. */
 .hero-scene {
-  min-height: 92vh;
+  min-height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: clamp(3.25rem, 6vw, 5.75rem);
+  padding-bottom: clamp(3.5rem, 6vw, 5.75rem);
 }
 .hero-scene .scene-near {
   width: 100%;
 }
 .hero-scene .hero-grid {
-  max-width: 1080px;
+  width: min(100%, 1160px);
+  max-width: none;
   margin: 0 auto;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
   align-items: center;
 }
 .hero-scene .hero-visual {
@@ -385,6 +392,10 @@ p { color: var(--text-2); line-height: 1.75; }
   justify-self: center;
 }
 @media (max-width: 900px) {
+  .hero-scene {
+    padding-top: clamp(4rem, 9vw, 5.5rem);
+    padding-bottom: clamp(3.5rem, 9vw, 5rem);
+  }
   .hero-scene .hero-grid {
     grid-template-columns: 1fr;
     justify-items: center;
