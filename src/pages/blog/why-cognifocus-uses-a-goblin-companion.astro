@@ -7,6 +7,7 @@ import {
   webPageSchema,
   breadcrumbSchema,
   faqSchema,
+  founderPersonSchema,
 } from '../../data/seo.js';
 
 const articleUrl = 'https://cognielevate.co/blog/why-cognifocus-uses-a-goblin-companion/';
@@ -29,6 +30,7 @@ const schema = {
   "@context": "https://schema.org",
   "@graph": [
     organizationSchema,
+    founderPersonSchema,
     websiteSchema,
     webPageSchema({
       id: `${articleUrl}#webpage`,
@@ -53,7 +55,7 @@ const schema = {
       "image": "https://cognielevate.co/assets/og-image.png",
       "datePublished": "2026-05-27T00:00:00Z",
       "dateModified": "2026-05-27T00:00:00Z",
-      "author": { "@id": "https://cognielevate.co/#organization" },
+      "author": { "@id": "https://cognielevate.co/founder/#person" },
       "publisher": { "@id": "https://cognielevate.co/#organization" },
       "mainEntityOfPage": { "@id": `${articleUrl}#webpage` },
       "keywords": ["CogniFocus Goblin", "focus companion app", "focus timer", "app blocker", "digital accountability"],
@@ -92,7 +94,7 @@ const schema = {
         <h1 style="font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;line-height:1.1;margin-bottom:1rem;">
           Why CogniFocus Uses a Goblin Companion Instead of a Plain Timer
         </h1>
-        <p class="post-meta" style="margin-bottom:1rem;">By CogniElevate &nbsp;|&nbsp; <time datetime="2026-05-27">May 27, 2026</time> &nbsp;|&nbsp; 5 min read</p>
+        <p class="post-meta" style="margin-bottom:1rem;">By <a href="/founder/" style="color:var(--accent);">Qasim Khan</a>, founder of CogniElevate &nbsp;|&nbsp; <time datetime="2026-05-27">May 27, 2026</time> &nbsp;|&nbsp; 5 min read</p>
         <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
           {['CogniFocus','Goblin','Focus companion','App blocking','Accountability'].map((t) => <span class="tag">{t}</span>)}
         </div>
@@ -188,7 +190,7 @@ const schema = {
         <hr />
 
         <p style="font-size:0.88rem;color:var(--muted);">
-          Written by <a href="/" style="color:var(--accent);">CogniElevate</a>. CogniFocus is built by CogniElevate and available now on Android. &nbsp;|&nbsp;
+          Written by <a href="/founder/" style="color:var(--accent);">Qasim Khan</a>, founder of CogniElevate. CogniFocus is built by CogniElevate and available now on Android. &nbsp;|&nbsp;
           <a href="/blog/" style="color:var(--accent);">More articles</a>
         </p>
       </div>

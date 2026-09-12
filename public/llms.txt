@@ -1,0 +1,25 @@
+# CogniElevate
+> CogniElevate builds intelligent products and systems that reduce wasted time across productivity, shopping, healthcare, robotics and future markets.
+
+## Core pages
+- [Home](https://cognielevate.co/): Company overview, mission, products and the friction-reduction model.
+- [About CogniElevate](https://cognielevate.co/about/): Company background, principles, outcomes and product ecosystem.
+- [Products](https://cognielevate.co/products/): CogniFocus, Aptelle and the markets CogniElevate is exploring.
+- [Founder](https://cognielevate.co/founder/): Qasim Khan, founder of CogniElevate.
+- [Contact](https://cognielevate.co/contact/): Partnerships, feedback, product interest and future solution ideas.
+
+## Products
+- [CogniFocus](https://cognifocus.app/): An Android focus system with behavior-aware focus sessions, Distraction Shield app blocking, recovery nudges, streaks and XP.
+- [Aptelle](https://aptelle.com/): CogniElevate's fit-intelligence product for finding the right size across clothing brands using body profile and fit data.
+
+## Editorial content
+- [Blog](https://cognielevate.co/blog/): Focus, productivity and intelligent-systems insights from the CogniElevate team.
+- [Resources](https://cognielevate.co/resources/): Practical CogniFocus guides and early Aptelle resources.
+
+## Entity facts
+- Organization: CogniElevate
+- Founder: Qasim Khan
+- Primary product: CogniFocus, available for Android
+- Next product: Aptelle, launching soon for clothing and shopping fit intelligence
+- Contact: cognielevate@gmail.com
+- Canonical domain: https://cognielevate.co/

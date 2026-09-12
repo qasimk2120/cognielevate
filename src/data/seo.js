@@ -107,6 +107,27 @@ export const cognifocusSoftwareSchema = {
   },
 };
 
+export const founderPersonSchema = {
+  "@type": "Person",
+  "@id": `${SITE_URL}founder/#person`,
+  name: "Qasim Khan",
+  jobTitle: "Founder",
+  worksFor: { "@id": ORG_ID },
+  url: `${SITE_URL}founder/`,
+  image: `${SITE_URL}assets/founder-image.jpeg`,
+  sameAs: [
+    "https://x.com/iqasim_explores",
+    "https://own.page/iqasimexplores",
+  ],
+  knowsAbout: [
+    "Productivity software",
+    "Mobile app development",
+    "Focus systems",
+    "Intelligent product design",
+    "Android development",
+  ],
+};
+
 export const webPageSchema = ({ id, url, name, description, breadcrumb }) => ({
   "@type": "WebPage",
   "@id": id,

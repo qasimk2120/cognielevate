@@ -7,6 +7,7 @@ import {
   webPageSchema,
   breadcrumbSchema,
   faqSchema,
+  founderPersonSchema,
 } from '../../data/seo.js';
 
 const articleUrl = 'https://cognielevate.co/blog/how-to-stay-focused-at-work/';
@@ -29,6 +30,7 @@ const schema = {
   "@context": "https://schema.org",
   "@graph": [
     organizationSchema,
+    founderPersonSchema,
     websiteSchema,
     webPageSchema({
       id: `${articleUrl}#webpage`,
@@ -53,7 +55,7 @@ const schema = {
       "image": "https://cognielevate.co/assets/og-image.png",
       "datePublished": "2026-05-26T00:00:00Z",
       "dateModified": "2026-05-27T00:00:00Z",
-      "author": { "@id": "https://cognielevate.co/#organization" },
+      "author": { "@id": "https://cognielevate.co/founder/#person" },
       "publisher": { "@id": "https://cognielevate.co/#organization" },
       "mainEntityOfPage": { "@id": `${articleUrl}#webpage` },
       "keywords": ["how to stay focused at work", "focus app", "block distractions", "productivity", "CogniFocus"],
@@ -94,7 +96,7 @@ const schema = {
         <h1 style="font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em;margin-bottom:1rem;">
           How to Stay Focused at Work and Stop Getting Distracted
         </h1>
-        <p class="post-meta" style="margin-bottom:1rem;">By CogniElevate &nbsp;·&nbsp; <time datetime="2026-05-26">May 26, 2026</time> &nbsp;·&nbsp; 7 min read</p>
+        <p class="post-meta" style="margin-bottom:1rem;">By <a href="/founder/" style="color:var(--accent);">Qasim Khan</a>, founder of CogniElevate &nbsp;·&nbsp; <time datetime="2026-05-26">May 26, 2026</time> &nbsp;·&nbsp; 7 min read</p>
         <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
           {['Productivity','Focus','Distractions','Deep work','CogniFocus'].map((t) => <span class="tag">{t}</span>)}
         </div>
@@ -222,7 +224,7 @@ const schema = {
         <hr />
 
         <p style="font-size:0.88rem;color:var(--muted);">
-          Written by <a href="/" style="color:var(--accent);">CogniElevate</a>, building intelligent systems that give people their time back. &nbsp;·&nbsp;
+          Written by <a href="/founder/" style="color:var(--accent);">Qasim Khan</a>, founder of CogniElevate, building intelligent systems that give people their time back. &nbsp;·&nbsp;
           <a href="/blog/" style="color:var(--accent);">More articles ↗</a>
         </p>
 
