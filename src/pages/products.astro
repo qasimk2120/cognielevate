@@ -184,7 +184,15 @@ const markets = [
   .market-list .market-card:nth-child(n + 3) { border-top: 0; }
   @media (max-width: 760px) {
     .product-proof, .market-list { grid-template-columns: 1fr; }
-    .product-proof-media { justify-self: start; max-width: 210px; }
+    .product-proof-copy,
+    .next-product,
+    .market-card { text-align: center; }
+    .product-proof-copy { margin: 0 auto; }
+    .product-proof-copy .product-logo { margin-left: auto; margin-right: auto; }
+    .product-proof-copy .product-pills { justify-content: center; }
+    .product-proof-media { justify-self: center; max-width: 210px; }
+    .next-product .read-more,
+    .market-card .read-more { display: inline-block; }
     .market-list .market-card:nth-child(n + 3) { border-top: 1px solid var(--border); }
   }
 </style>
