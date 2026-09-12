@@ -87,11 +87,15 @@ const schema = {
 
   <section class="section resource-product-note" aria-labelledby="aptelle-resource-heading">
     <div class="container">
-      <div class="resource-product-note-inner">
-        <p class="kicker">Launching soon</p>
-        <h2 id="aptelle-resource-heading">Aptelle helps you find your right size in any brand</h2>
-        <p>Aptelle is CogniElevate's fit-intelligence product, powered by your body profile and real fit data so online fashion feels more certain before you buy</p>
-        <a href="https://aptelle.com/" target="_blank" rel="noopener" class="read-more">Explore Aptelle <span aria-hidden="true">↗</span></a>
+      <SectionHead
+        kicker="Launching soon"
+        title="Aptelle helps you find your right size in any brand"
+        id="aptelle-resource-heading"
+        align="center"
+        intro="Aptelle is CogniElevate's fit-intelligence product, powered by your body profile and real fit data so online fashion feels more certain before you buy"
+      />
+      <div class="resource-product-note-action">
+        <a href="https://aptelle.com/" target="_blank" rel="noopener" class="btn btn-outline btn-lg">Explore Aptelle <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
@@ -149,10 +153,7 @@ const schema = {
   .knowledge-grid, .resource-list { display: grid; gap: 0; margin: 0 auto; max-width: 880px; }
   .knowledge-grid { border-top: 1px solid var(--border); }
   .resource-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--gap); }
-  .resource-product-note-inner { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 0 auto; max-width: 880px; padding: 1.5rem 0; }
-  .resource-product-note-inner h2 { font-size: clamp(2rem, 4vw, 3.5rem); margin: .35rem 0 .75rem; max-width: 16ch; }
-  .resource-product-note-inner p:not(.kicker) { max-width: 62ch; }
-  .resource-product-note-inner .read-more { display: inline-block; margin-top: 1rem; }
+  .resource-product-note-action { display: flex; justify-content: center; }
   @media (max-width: 700px) {
     .resource-list { grid-template-columns: 1fr; }
   }
