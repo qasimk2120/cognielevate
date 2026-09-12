@@ -66,10 +66,10 @@ const building = [
   },
   {
     label: 'Next',
-    title: 'The CogniElevate Ecosystem',
-    body: 'CogniElevate is the parent organization behind CogniFocus. Future products in the ecosystem will reduce wasted time across shopping decisions, healthcare workflows and more.',
-    href: '/products/',
-    tag: 'Products in development',
+    title: 'Aptelle',
+    body: 'A fit-intelligence product launching soon for clothing and shopping, helping people find their right size in any brand with more confidence.',
+    href: 'https://aptelle.com/',
+    tag: 'Launching soon',
     accent: false,
   },
 ];
@@ -86,7 +86,7 @@ const building = [
 >
 
   <!-- HERO -->
-  <section class="hero bg-dots founder-hero" aria-labelledby="founder-name">
+  <section class="hero founder-hero" aria-labelledby="founder-name">
     <div class="glow-top" aria-hidden="true"></div>
     <div class="container">
       <div class="founder-hero-inner">
@@ -113,7 +113,7 @@ const building = [
             Qasim Khan
           </h1>
           <p class="lead" style="max-width:44ch; margin-bottom:2rem;">
-            CogniElevate started with a simple question: where are people losing time, and what system would take that problem away?
+            CogniElevate started with a simple question: where are people losing time, and what system would take that problem away
           </p>
 
           <!-- Social links -->
@@ -124,8 +124,7 @@ const building = [
               rel="noopener noreferrer"
               class="btn btn-primary"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M3 21v-2a7 7 0 0 1 14 0v2"/></svg>
-              own.page / iqasimexplores
+              own.page / iqasimexplores <span aria-hidden="true">↗</span>
             </a>
             <a
               href="https://x.com/iqasim_explores"
@@ -133,8 +132,7 @@ const building = [
               rel="noopener noreferrer"
               class="btn btn-outline"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              @iqasim_explores
+              @iqasim_explores <span aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
@@ -146,9 +144,9 @@ const building = [
   <!-- WHAT I BUILD -->
   <section class="section" id="building" aria-labelledby="building-heading">
     <div class="container">
-      <div class="section-head fade-up">
+      <div class="section-head text-center fade-up">
         <h2 id="building-heading" class="display-sm">Products built around a real friction</h2>
-        <p>Every CogniElevate product starts with the same question: where are people losing time? Then we build the system that removes it.</p>
+        <p>Every CogniElevate product starts with the same question: where are people losing time? Then we build the system that removes it</p>
       </div>
       <div class="grid-2 fade-up fade-up-1">
         {building.map(({ label, title, body, href, tag, accent }) => (
@@ -159,7 +157,7 @@ const building = [
             <h3 style="font-size:1.4rem; margin-bottom:0.75rem;">{title}</h3>
             <p style="font-size:0.93rem;">{body}</p>
             <div style="margin-top:1.5rem; display:flex; align-items:center; gap:0.4rem; font-size:0.875rem; font-weight:600; color:var(--accent);">
-              {href.startsWith('http') ? 'Visit →' : 'Learn more →'}
+              {href.startsWith('http') ? 'Visit ↗' : 'Learn more ↗'}
             </div>
           </a>
         ))}
@@ -170,25 +168,25 @@ const building = [
   <!-- APPROACH -->
   <section class="section" id="approach" style="background:var(--surface);" aria-labelledby="approach-heading">
     <div class="container">
-      <div class="section-head fade-up">
-        <h2 id="approach-heading" class="display-sm">Find friction. Build the fix. Ship it.</h2>
+      <div class="section-head text-center fade-up">
+        <h2 id="approach-heading" class="display-sm">Find friction. Build the fix. Ship it</h2>
       </div>
-      <div class="grid-3 fade-up fade-up-1">
+      <div class="grid-3 founder-approach fade-up fade-up-1">
         {[
           {
             num: '01',
             title: 'Spot the wasted moment',
-            body: 'Start where people keep losing time: focus sessions that collapse, decisions that stall, workflows that drag.',
+            body: 'Start where people keep losing time: focus sessions that collapse, decisions that stall, workflows that drag',
           },
           {
             num: '02',
             title: 'Build the intelligent layer',
-            body: 'Software that reacts and adapts. Active systems that push back, not passive tools that sit there.',
+            body: 'Software that reacts and adapts. Active systems that push back instead of passive tools that sit there',
           },
           {
             num: '03',
             title: 'Ship, learn, iterate',
-            body: 'Get it live fast. Real users show what actually matters. Then improve until people rely on it.',
+            body: 'Get it live fast. Real users show what actually matters. Then improve until people rely on it',
           },
         ].map(({ num, title, body }) => (
           <article class="card card-p">
@@ -204,15 +202,15 @@ const building = [
   <!-- STATS / PROOF -->
   <section class="section" id="proof" aria-labelledby="proof-heading">
     <div class="container">
-      <div class="section-head fade-up">
+      <div class="section-head text-center fade-up">
         <h2 id="proof-heading" class="display-sm">Early, but moving fast</h2>
       </div>
-      <div class="grid-4 fade-up fade-up-1">
+      <div class="grid-4 founder-proof fade-up fade-up-1">
         {[
           { stat: '1',      label: 'Product shipped',         sub: 'CogniFocus on Android' },
           { stat: '5.0★',   label: 'Average rating',          sub: 'Across early reviews'  },
           { stat: '2026',   label: 'Year founded',            sub: 'CogniElevate incorporated' },
-          { stat: '∞',      label: 'Products planned',        sub: 'Productivity → Healthcare → Beyond' },
+          { stat: '∞',      label: 'Products planned',        sub: 'Productivity / Healthcare / Beyond' },
         ].map(({ stat, label, sub }) => (
           <article class="card card-p text-center no-hover">
             <div style="font-size:2rem; font-weight:800; color:var(--accent); letter-spacing:-0.03em; margin-bottom:0.5rem;">{stat}</div>
@@ -231,19 +229,13 @@ const building = [
         href="https://startupfortune.com/qasim-built-cognifocus-because-most-focus-apps-keep-counting-while-your-brain-is-already-on-tiktok/"
         target="_blank"
         rel="noopener noreferrer"
-        class="card card-p"
-        style="display:block; text-decoration:none; border-color:rgba(100,254,218,0.18); background:linear-gradient(135deg,var(--surface) 0%,rgba(100,254,218,0.03) 100%);"
+        class="founder-press"
       >
-        <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem;">
-          <div style="width:36px;height:36px;border-radius:8px;background:var(--surface-3);border:1px solid var(--border-m);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8z"/></svg>
-          </div>
-          <span style="font-size:0.8rem; font-weight:700; color:var(--text-2);">Startup Fortune</span>
-        </div>
+        <span class="market-badge">Startup Fortune</span>
         <p style="font-size:1.05rem; font-weight:600; color:var(--text); line-height:1.45; margin-bottom:0.75rem;">
-          "CogniFocus Catches You Mid-Scroll During a Focus Session — That Is the Entire Point"
+          "CogniFocus Catches You Mid-Scroll During a Focus Session: That Is the Entire Point"
         </p>
-        <span style="font-size:0.85rem; font-weight:600; color:var(--accent);">Read the story →</span>
+          <span style="font-size:0.85rem; font-weight:600; color:var(--accent);">Read the story ↗</span>
       </a>
     </div>
   </section>
@@ -256,11 +248,11 @@ const building = [
           Partnerships, ideas, or a friction problem worth solving
         </h2>
         <p style="max-width:52ch; margin:0 auto 2rem;">
-          If you're building something interesting or want to work with CogniElevate, reach out.
+          If you're building something interesting or want to work with CogniElevate, reach out
         </p>
         <div class="cta-actions">
-          <a href="/contact/" class="btn btn-primary btn-lg">Contact CogniElevate</a>
-          <a href="/products/" class="btn btn-outline btn-lg">See our products</a>
+          <a href="/contact/" class="btn btn-primary btn-lg">Contact CogniElevate <span aria-hidden="true">↗</span></a>
+          <a href="/products/" class="btn btn-outline btn-lg">See our products <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </div>
@@ -270,12 +262,14 @@ const building = [
 
 <style>
 /* Founder hero layout */
-.founder-hero { padding-bottom: clamp(4rem, 8vw, 7rem); }
+.founder-hero { background-blend-mode: multiply; background-color: #0b1c2d; background-image: url('/assets/photos/night-sky.jpg'); background-position: center; background-size: cover; padding-bottom: clamp(4rem, 8vw, 7rem); }
 .founder-hero-inner {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: clamp(2.5rem, 6vw, 5rem);
   align-items: center;
+  margin: 0 auto;
+  max-width: 900px;
 }
 @media (max-width: 700px) {
   .founder-hero-inner {
@@ -295,9 +289,10 @@ const building = [
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  padding: 3px;
-  background: linear-gradient(135deg, rgba(100,254,218,0.6) 0%, rgba(165,210,245,0.4) 50%, rgba(100,254,218,0.1) 100%);
-  box-shadow: 0 0 40px rgba(100,254,218,0.2), 0 0 80px rgba(100,254,218,0.08);
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--border-m);
+  box-shadow: none;
 }
 .founder-photo {
   width: 100%;
@@ -308,14 +303,7 @@ const building = [
   display: block;
   background: var(--surface-2);
 }
-.founder-photo-glow {
-  position: absolute;
-  inset: -20px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(100,254,218,0.12) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: -1;
-}
+.founder-photo-glow { display: none; }
 @media (max-width: 700px) {
   .founder-photo-ring { width: 160px; height: 160px; margin: 0 auto; }
 }
@@ -334,14 +322,12 @@ const building = [
   color: inherit;
   display: block;
 }
-.founder-product-card--accent {
-  border-color: rgba(100,254,218,0.25);
-  background: linear-gradient(135deg, var(--surface) 0%, rgba(100,254,218,0.04) 100%);
-}
-.founder-product-card--accent:hover {
-  border-color: rgba(100,254,218,0.5);
-  box-shadow: 0 0 32px rgba(100,254,218,0.1), var(--shadow-lg);
-}
+.founder-product-card { border-bottom: 1px solid var(--border); border-top: 1px solid var(--border); padding: 1.5rem 0; }
+.founder-product-card--accent { background: transparent; }
+.founder-approach { border-top: 1px solid var(--border); gap: 0; grid-template-columns: 1fr; margin: 0 auto; max-width: 720px; }
+.founder-proof { border-top: 1px solid var(--border); gap: 0 var(--gap); }
+.founder-approach article, .founder-proof article { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
+.founder-press { border-bottom: 1px solid var(--border-m); border-top: 1px solid var(--border-m); display: block; padding: 1.5rem 0; text-decoration: none; }
 
 /* Process number */
 .process-num {

@@ -14,7 +14,7 @@ const posts = [
     date: 'May 27, 2026',
     readTime: '5 min',
     title: 'Why CogniFocus Uses a Goblin Companion Instead of a Plain Timer',
-    excerpt: 'CogniFocus uses a reactive companion because focus apps work better when they notice drift, respond in the moment, and help you recover quickly.',
+    excerpt: 'CogniFocus uses a reactive companion because focus apps work better when they notice drift, respond in the moment, and help you recover quickly',
     tags: ['CogniFocus', 'Goblin', 'Focus companion'],
   },
   {
@@ -22,7 +22,7 @@ const posts = [
     date: 'May 26, 2026',
     readTime: '7 min',
     title: 'How to Stay Focused at Work and Stop Getting Distracted',
-    excerpt: 'The average person loses nearly half an hour of deep focus after a single interruption. Learn the structural changes, not willpower tricks, that protect your attention and help you get your best work done.',
+    excerpt: 'The average person loses nearly half an hour of deep focus after a single interruption. Learn the structural changes that protect your attention and help you get your best work done',
     tags: ['Productivity', 'Focus', 'CogniFocus'],
   },
 ];
@@ -71,20 +71,19 @@ const schema = {
   schema={schema}
 >
 
-  <section class="hero bg-dots" aria-labelledby="blog-title">
-    <div class="glow-top" aria-hidden="true"></div>
+  <section class="hero blog-hero" aria-labelledby="blog-title">
     <div class="container" style="position:relative;">
       <div style="max-width:760px;" class="fade-up hero-center">
         <h1 id="blog-title" class="hero-title">Insights on focus, productivity and intelligent systems</h1>
         <p class="lead" style="margin-top:1.25rem;">
-          From the team building CogniFocus and the CogniElevate ecosystem - practical thinking on attention, time, and technology that helps.
+          From the team building CogniFocus and Aptelle: practical thinking on attention, time, fit, and technology that helps
         </p>
       </div>
     </div>
   </section>
 
   <section class="section" aria-label="Blog posts">
-    <div class="container" style="max-width:820px;">
+    <div class="container blog-reading">
       <div style="display:flex;flex-direction:column;gap:1rem;" data-reveal-stagger>
         {posts.map(({ href, date, readTime, title, excerpt, tags }) => (
           <a href={href} class="card card-p post-card">
@@ -94,15 +93,15 @@ const schema = {
             <p class="post-meta">{date} | {readTime} read</p>
             <h2 class="post-title">{title}</h2>
             <p class="post-excerpt">{excerpt}</p>
-            <span class="read-more">Read article -></span>
+            <span class="read-more">Read article <span aria-hidden="true">↗</span></span>
           </a>
         ))}
 
         <div class="card card-p text-center" style="border-style:dashed;border-color:var(--border-m);">
           <h3 style="font-size:1rem;margin-bottom:0.5rem;">More articles on the way</h3>
-          <p style="font-size:0.9rem;">Next: best focus apps for Android, how to build a deep work routine, and the science behind distraction.</p>
+          <p style="font-size:0.9rem;">Next: best focus apps for Android, how to build a deep work routine, and the science behind distraction</p>
           <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm" style="margin-top:1rem;display:inline-flex;">
-            Try CogniFocus in the meantime ->
+            Try CogniFocus in the meantime <span aria-hidden="true">↗</span>
           </a>
         </div>
       </div>
@@ -110,3 +109,22 @@ const schema = {
   </section>
 
 </BaseLayout>
+
+<style>
+  .blog-hero {
+    background-blend-mode: multiply;
+    background-color: #0b1c2d;
+    background-image: url('/assets/photos/earthrise.jpg');
+    background-position: center;
+    background-size: cover;
+    isolation: isolate;
+    position: relative;
+  }
+  .blog-hero::before { background: rgba(5, 20, 33, .64); content: ''; inset: 0; position: absolute; z-index: 0; }
+  .blog-hero > .container { position: relative; z-index: 1; }
+  .blog-hero .hero-title { font-size: clamp(3rem, 5.8vw, 5.5rem); margin-left: auto; margin-right: auto; max-width: 16ch; }
+  .blog-hero .lead { color: var(--text); margin-left: auto; margin-right: auto; max-width: 48ch; }
+  .blog-reading { max-width: 1120px; }
+  .blog-reading > div { margin: 0 auto; max-width: none; }
+  .blog-reading .post-excerpt { max-width: 72ch; }
+</style>

@@ -1,12 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Scene from '../components/Scene.astro';
-import Fragments from '../components/Fragments.astro';
 import SectionHead from '../components/SectionHead.astro';
-import FlowLine from '../components/FlowLine.astro';
-import ContainmentReveal from '../components/ContainmentReveal.astro';
-import OrbitMap from '../components/OrbitMap.astro';
-import FaqList from '../components/FaqList.astro';
 import CtaPanel from '../components/CtaPanel.astro';
 import {
   coreKeywords,
@@ -57,18 +52,20 @@ const schema = {
 };
 
 const frictionZones = [
-  { icon: 'bell-off',   title: 'Attention lost',    body: 'Small interruptions break focus and drain momentum before meaningful work begins.' },
-  { icon: 'timer',      title: 'Decisions delayed', body: 'Unclear choices create hesitation and slow action across personal and professional life.' },
-  { icon: 'rotate-ccw', title: 'Returns & rework',  body: 'Mistakes turn into extra time, cost and repeated effort that compounds over time.' },
-  { icon: 'activity',   title: 'Operations slowed', body: 'Manual workflows create drag inside everyday systems, from clinics to warehouses.' },
+  { icon: 'bell-off',   title: 'Attention lost',    body: 'Small interruptions break focus and drain momentum before meaningful work begins' },
+  { icon: 'timer',      title: 'Decisions delayed', body: 'Unclear choices create hesitation and slow action across personal and professional life' },
+  { icon: 'rotate-ccw', title: 'Returns & rework',  body: 'Mistakes turn into extra time, cost and repeated effort that compounds over time' },
+  { icon: 'activity',   title: 'Operations slowed', body: 'Manual workflows create drag inside everyday systems, from clinics to warehouses' },
 ];
 
 const markets = [
-  { title: 'Focus & productivity', body: 'People lose hours to distraction. Building tools designed to protect attention and improve daily output.', live: true  },
-  { title: 'Clothing & shopping',  body: 'Shopping decisions are uncertain. Future direction: fit prediction and smarter buying support.',              live: false },
-  { title: 'Healthcare systems',   body: 'Time is lost across care delivery. Future direction: intelligent systems that reduce friction in healthcare workflows.', live: false },
-  { title: 'Robotics systems',     body: 'Time is lost in complex coordination. Future direction: systems that improve perception and efficiency in robotic operations.', live: false },
+  { title: 'Focus & productivity', body: 'People lose hours to distraction. Building tools designed to protect attention and improve daily output', status: 'live' },
+  { title: 'Fit & shopping',       body: 'Sizing is guesswork and returns waste time. Aptelle is our fit-intelligence product, now in early build', status: 'building' },
+  { title: 'Healthcare systems',   body: 'Time is lost across care delivery. Future direction: intelligent systems that reduce friction in healthcare workflows', status: 'future' },
+  { title: 'Robotics systems',     body: 'Time is lost in complex coordination. Future direction: systems that improve perception and efficiency in robotic operations', status: 'future' },
 ];
+
+const marketBadge = { live: 'Live', building: 'Building', future: 'Future' };
 ---
 
 <BaseLayout
@@ -80,81 +77,48 @@ const markets = [
   schema={schema}
 >
 
-  <!-- SCENE 1 — OPENING: HERO -->
-  <Scene class="hero hero-scene bg-dots" aria-labelledby="hero-title" scrub sceneLen={1.3}>
-    <Fragment slot="far">
-      <div class="glow-field primary" style="width:70vw;height:50vh;top:-15%;left:-10%;"></div>
-      <div class="glow-field accent" style="width:40vw;height:35vh;top:5%;right:-5%;"></div>
-    </Fragment>
-    <Fragment slot="mid">
-      <Fragments density="full" />
-    </Fragment>
-    <div class="container" style="position:relative;">
-      <div class="hero-grid">
-        <div class="hero-content fade-up">
-          <h1 class="hero-title" id="hero-title">
-            Building systems that give people their
-            <span class="accent"> time back</span>
-          </h1>
-          <p class="lead hero-lead">
-            CogniElevate creates intelligent products that remove friction,
-            speed up decisions and reduce wasted time across everyday life
-            and complex industries.
-          </p>
-          <div class="hero-actions">
-            <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
-              Try CogniFocus
-              <svg class="icon-sm" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M2 2h10m0 0v10m0-10L2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              </svg>
-            </a>
-            <a href="/about/" class="btn btn-outline btn-lg">Our vision</a>
-          </div>
-        </div>
-
-        <!-- Time Waste Dashboard Card -->
-        <div class="hero-visual tilt-panel fade-up fade-up-2" aria-hidden="true">
-          <div class="time-card">
-            <div class="time-card-header">
-              <span class="status-dot warn"></span>
-              Daily cost of distraction
-            </div>
-            <div style="margin-bottom:0.25rem;">
-              <span class="time-big">2.1</span>
-              <span class="time-unit">hrs / day</span>
-            </div>
-            <p class="time-label">Average focus time lost to interruptions</p>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width:52%"></div>
-            </div>
-            <div class="time-metrics">
-              <div class="metric-box">
-                <span class="metric-val">23 min</span>
-                <span class="metric-lbl">recovery per interruption</span>
-              </div>
-              <div class="metric-box">
-                <span class="metric-val">40%</span>
-                <span class="metric-lbl">productivity lost</span>
-              </div>
-            </div>
-            <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="time-card-cta">
-              <span style="display:flex;align-items:center;gap:0.5rem;">
-                <img src="https://cognifocus.app/assets/logo/app-logo.png" alt="" width="20" height="20" style="border-radius:5px;" aria-hidden="true" />
-                CogniFocus recovers this
-              </span>
-              <span class="arrow">→</span>
-            </a>
-          </div>
+  <!-- SCENE 1 — OPENING: IMMERSIVE HERO -->
+  <section class="hero-immersive" aria-labelledby="hero-title">
+    <div class="hero-immersive-photo" aria-hidden="true">
+      <img src="/assets/photos/night-sky.jpg" alt="" width="1600" height="485" loading="eager" fetchpriority="high" />
+    </div>
+    <div class="hero-immersive-overlay" aria-hidden="true"></div>
+    <div class="container hero-immersive-inner fade-up">
+      <div class="hero-copy">
+        <h1 class="hero-title" id="hero-title">
+          Building systems that give people their
+          <span class="accent"> time back</span>
+        </h1>
+        <p class="lead hero-lead">
+          CogniElevate creates intelligent products that remove friction,
+          speed up decisions and reduce wasted time across everyday life
+          and complex industries
+        </p>
+        <div class="hero-actions">
+          <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Try CogniFocus <span aria-hidden="true">↗</span></a>
+          <a href="/about/" class="btn btn-outline btn-lg">Our vision</a>
         </div>
       </div>
+
+      <div class="hero-media-wall" aria-hidden="true">
+        <figure class="media-tile media-tile-product">
+          <img src="/assets/products/cf-phone-wins.png" alt="" width="1080" height="1920" fetchpriority="high" />
+        </figure>
+        <figure class="media-tile media-tile-k2">
+          <img src="/assets/photos/mountain-k2.jpg" alt="" width="1920" height="1274" loading="eager" />
+        </figure>
+        <figure class="media-tile media-tile-earth">
+          <img src="/assets/photos/earthrise.jpg" alt="" width="1200" height="945" loading="eager" />
+        </figure>
+        <figure class="media-tile media-tile-session">
+          <img src="/assets/products/cf-left-session.png" alt="" width="270" height="480" loading="eager" />
+        </figure>
+      </div>
     </div>
-  </Scene>
+  </section>
 
   <!-- SCENE 2 — THE FRICTION FIELD: stats + problem -->
-  <Scene class="section friction-scene bg-grid" id="problem" aria-labelledby="problem-heading">
-    <Fragment slot="far">
-      <div class="glow-field primary" style="width:50vw;height:40vh;bottom:-10%;right:-15%;opacity:0.4;"></div>
-    </Fragment>
+  <Scene class="section friction-scene" id="problem" aria-labelledby="problem-heading">
     <div class="container">
       <div class="stats-row" data-reveal-stagger aria-label="Key statistics">
         <div class="stat-cell">
@@ -172,7 +136,7 @@ const markets = [
       </div>
 
       <SectionHead kicker="The problem" title="Time gets lost in small moments" id="problem-heading" align="center"
-        intro="Distractions, wrong purchases, waiting rooms, admin work and slow systems all create the same cost: wasted time." />
+        intro="Distractions, wrong purchases, waiting rooms, admin work and slow systems all create the same cost: wasted time" />
 
       <div class="friction-field" data-reveal-stagger>
         {frictionZones.map(({ icon, title, body }) => (
@@ -189,88 +153,134 @@ const markets = [
   </Scene>
 
   <!-- SCENE 3 — FRICTION TO FLOW: principle -->
-  <Scene class="section flow-scene" id="principle" aria-labelledby="principle-heading" scrub sceneLen={1.5} style="background:var(--surface);">
-    <Fragment slot="far">
-      <div class="glow-field accent" style="width:55vw;height:45vh;top:20%;left:50%;translate:-50% 0;opacity:0.5;"></div>
-    </Fragment>
+  <Scene class="section flow-scene" id="principle" aria-labelledby="principle-heading" scrub sceneLen={1.5}>
     <div class="container">
-      <SectionHead kicker="Our principle" title="Find friction. Build the system that removes it." id="principle-heading" align="center"
+      <SectionHead kicker="Our principle" title="Find friction. Build the system that removes it" id="principle-heading" align="center"
         intro="Every CogniElevate product starts with one question: where are people losing time, and what system would make that moment faster, clearer or automatic?" />
-
-      <div class="flow-visual" aria-hidden="true">
-        <FlowLine orientation="h" />
-      </div>
 
       <div class="process-flow flow-steps">
         <article class="card process-step flow-step" style="--t:0;">
           <span class="process-num">01</span>
           <h3>Find wasted time</h3>
-          <p style="font-size:0.9rem;">Identify the task, moment, or workflow that keeps slowing people down.</p>
+          <p style="font-size:0.9rem;">Identify the task, moment, or workflow that keeps slowing people down</p>
         </article>
         <div class="process-arrow" aria-hidden="true">→</div>
         <article class="card process-step flow-step" style="--t:0.4;">
           <span class="process-num">02</span>
           <h3>Build intelligent support</h3>
-          <p style="font-size:0.9rem;">Use software, automation, or prediction to simplify the work.</p>
+          <p style="font-size:0.9rem;">Use software, automation, or prediction to simplify the work</p>
         </article>
         <div class="process-arrow" aria-hidden="true">→</div>
         <article class="card process-step flow-step" style="--t:0.75;">
           <span class="process-num">03</span>
           <h3>Create a faster outcome</h3>
-          <p style="font-size:0.9rem;">Turn friction into clarity, speed, and less wasted effort.</p>
+          <p style="font-size:0.9rem;">Turn friction into clarity, speed, and less wasted effort</p>
         </article>
       </div>
     </div>
   </Scene>
+
+  <!-- GROUNDED MISSION BAND -->
+  <section class="mission-band" aria-labelledby="mission-heading">
+    <div class="mission-photo">
+      <img
+        src="/assets/photos/mountain-k2.jpg"
+        alt="K2 in the Karakoram range, northern Pakistan"
+        width="1920" height="1274" loading="lazy"
+      />
+    </div>
+    <div class="mission-overlay"></div>
+    <div class="container mission-inner" data-reveal>
+      <h2 id="mission-heading" class="mission-title">
+        Real problems. Real systems
+      </h2>
+      <p class="mission-text">
+        We started in Pakistan with a simple idea: find where people lose time
+        and build the system that gives it back. Software today, and hardware
+        and robotics as we grow. The same mission across every product
+      </p>
+    </div>
+  </section>
 
   <!-- SCENE 4 — FIRST PROOF: COGNIFOCUS REVEAL -->
   <Scene class="section reveal-scene" id="showcase" aria-labelledby="showcase-heading">
-    <Fragment slot="far">
-      <div class="glow-field primary" style="width:60vw;height:55vh;top:10%;left:50%;translate:-50% 0;"></div>
-    </Fragment>
     <div class="container">
-      <SectionHead kicker="First product" title="First launched: CogniFocus" id="showcase-heading" align="center"
-        intro="CogniFocus is the first product CogniElevate shipped. It runs on the same principle as every product that follows: find friction, build the system that removes it." />
-      <ContainmentReveal>
-        <article class="card no-hover card-p-lg depth-panel" style="margin:0 auto;">
-          <div style="display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap;margin-bottom:1.5rem;">
-            <img src="https://cognifocus.app/assets/logo/app-logo.png" alt="CogniFocus app logo" class="product-logo" loading="lazy" />
-            <div>
-              <h3 style="font-size:1.4rem;margin-bottom:0.5rem;">CogniFocus</h3>
-              <p>A focus system that reacts to your behavior, calls you out when you slip and builds pressure to stay focused.</p>
+      <SectionHead kicker="What we're building" title="Live now, and building next" id="showcase-heading" align="center"
+        intro="CogniFocus is the first product we shipped. Aptelle is the one we are building now. Both run on the same principle: find friction, build the system that removes it" />
+      <div class="product-duo">
+          <article class="card no-hover card-p-lg depth-panel product-panel">
+            <div class="product-panel-head">
+              <div class="product-panel-copy">
+                <span class="market-badge" style="margin-bottom:0.5rem;">Live</span>
+                <h3 style="font-size:1.4rem;margin:0.35rem 0 0.5rem;">CogniFocus</h3>
+                <p>A focus system that reacts to your behavior, calls you out when you slip and builds pressure to stay focused</p>
+              </div>
+              <img src="https://cognifocus.app/assets/logo/app-logo.png" alt="CogniFocus app logo" class="product-logo" loading="lazy" />
             </div>
-          </div>
-          <div class="product-pills">
-            <span class="outcome-pill">Protect attention</span>
-            <span class="outcome-pill">Block distractions</span>
-            <span class="outcome-pill">Build momentum</span>
-            <span class="outcome-pill">Streaks & XP</span>
-          </div>
-          <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="margin-top:1.5rem;">
-            Visit CogniFocus
-            <svg class="icon-sm" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M2 2h10m0 0v10m0-10L2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-            </svg>
-          </a>
-        </article>
-      </ContainmentReveal>
+            <div class="product-pills">
+              <span class="outcome-pill">Protect attention</span>
+              <span class="outcome-pill">Block distractions</span>
+              <span class="outcome-pill">Build momentum</span>
+              <span class="outcome-pill">Streaks &amp; XP</span>
+            </div>
+            <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="margin-top:1.5rem;">
+              Visit CogniFocus <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+
+          <article class="card no-hover card-p-lg depth-panel product-panel">
+            <div class="product-panel-head">
+              <div class="product-panel-copy">
+                <span class="market-badge building" style="margin-bottom:0.5rem;">Building</span>
+                <h3 style="font-size:1.4rem;margin:0.35rem 0 0.5rem;">Aptelle</h3>
+                <p>Fit intelligence for clothing. Aptelle predicts how something will actually fit so people stop guessing sizes and stop wasting time on returns</p>
+              </div>
+              <span class="product-logo product-logo-ph" aria-hidden="true">A</span>
+            </div>
+            <div class="product-pills">
+              <span class="outcome-pill">Predict fit</span>
+              <span class="outcome-pill">Cut returns</span>
+              <span class="outcome-pill">Buy with confidence</span>
+            </div>
+            <a href="https://aptelle.com/" target="_blank" rel="noopener" class="btn btn-outline btn-lg" style="margin-top:1.5rem;">
+              Explore Aptelle <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+      </div>
     </div>
   </Scene>
 
+  <!-- IMMERSIVE BAND — VISION -->
+  <section class="mission-band band-vision" aria-labelledby="vision-heading">
+    <div class="mission-photo">
+      <img
+        src="/assets/photos/earthrise.jpg"
+        alt="Earth rising over the surface of the Moon"
+        width="1200" height="945" loading="lazy"
+      />
+    </div>
+    <div class="mission-overlay"></div>
+    <div class="container mission-inner" data-reveal>
+      <h2 id="vision-heading" class="mission-title">
+        Start small. Aim far
+      </h2>
+      <p class="mission-text">
+        Focus and fit are the start. The same idea reaches into healthcare and
+        robotics next. We give people their time back wherever it gets lost
+      </p>
+    </div>
+  </section>
+
   <!-- SCENE 5 — THE ECOSYSTEM: markets -->
-  <Scene class="section ecosystem-scene" id="markets" aria-labelledby="markets-heading" style="background:var(--surface);">
+  <Scene class="section ecosystem-scene" id="markets" aria-labelledby="markets-heading">
     <div class="container">
       <SectionHead kicker="Markets" title="One mission across multiple markets" id="markets-heading" align="center"
-        intro="CogniElevate is built to grow into the places where time is commonly lost." />
-
-      <div data-reveal>
-        <OrbitMap variant="compact" class="mb-xl" />
-      </div>
+        intro="CogniElevate is built to grow into the places where time is commonly lost" />
 
       <div class="grid-4" data-reveal-stagger>
-        {markets.map(({ title, body, live }) => (
+        {markets.map(({ title, body, status }) => (
           <article class="card market-card card-p">
-            <span class={`market-badge ${live ? '' : 'future'}`}>{live ? 'Live' : 'Future'}</span>
+            <span class={`market-badge ${status === 'live' ? '' : status}`}>{marketBadge[status]}</span>
             <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">{title}</h3>
             <p style="font-size:0.88rem;">{body}</p>
           </article>
@@ -279,35 +289,21 @@ const markets = [
     </div>
   </Scene>
 
-  <!-- FAQ -->
-  <section class="section" id="faq" aria-labelledby="faq-heading">
-    <div class="container" style="max-width:800px;">
-      <SectionHead kicker="FAQ" title="Questions about CogniElevate" id="faq-heading" />
-      <FaqList items={faqItems.map(({ question, answer }) => ({ q: question, a: answer }))} />
-    </div>
-  </section>
-
   <!-- PRESS -->
-  <section class="section-sm" aria-label="Press coverage">
+  <section class="press-section" aria-label="Press coverage">
     <div class="container">
       <div style="max-width:760px; margin:0 auto;" data-reveal>
         <a
           href="https://startupfortune.com/qasim-built-cognifocus-because-most-focus-apps-keep-counting-while-your-brain-is-already-on-tiktok/"
           target="_blank"
           rel="noopener noreferrer"
-          class="card card-p"
-          style="display:block; text-decoration:none; border-color:rgba(100,254,218,0.18); background:linear-gradient(135deg,var(--surface) 0%,rgba(100,254,218,0.03) 100%);"
+          class="press-link"
         >
-          <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem;">
-            <div style="width:36px;height:36px;border-radius:8px;background:var(--surface-3);border:1px solid var(--border-m);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8z"/></svg>
-            </div>
-            <span style="font-size:0.8rem; font-weight:700; color:var(--text-2);">Startup Fortune</span>
-          </div>
+          <span class="market-badge">Startup Fortune</span>
           <p style="font-size:1.05rem; font-weight:600; color:var(--text); line-height:1.45; margin-bottom:0.75rem;">
-            "CogniFocus Catches You Mid-Scroll During a Focus Session — That Is the Entire Point"
+            "CogniFocus Catches You Mid-Scroll During a Focus Session: That Is the Entire Point"
           </p>
-          <span style="font-size:0.85rem; font-weight:600; color:var(--accent);">Read the story →</span>
+          <span style="font-size:0.85rem; font-weight:600; color:var(--accent);">Read the story ↗</span>
         </a>
       </div>
     </div>
@@ -316,10 +312,10 @@ const markets = [
   <!-- SCENE 6 — FINALE CTA -->
   <CtaPanel
     title="More than one product"
-    text="CogniFocus is the first product. The plan is to keep going: shopping, healthcare, robotics, anywhere people keep losing time to the same friction."
+    text="CogniFocus is the first product. The plan is to keep going: shopping, healthcare, robotics, anywhere people keep losing time to the same friction"
   >
     <a href="https://cognifocus.app/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
-      Try CogniFocus
+      Try CogniFocus <span aria-hidden="true">↗</span>
     </a>
     <a href="/contact/" class="btn btn-outline btn-lg">Get in touch</a>
   </CtaPanel>
@@ -329,9 +325,234 @@ const markets = [
 <style>
   /* Hero layout rules live in global.css (.hero-scene) because these
      elements render inside the Scene component, outside this page's scope. */
-  .tilt-panel { perspective: 900px; }
-  .tilt-panel .time-card { transform: rotateX(2deg) rotateY(-4deg); transition: transform 0.8s var(--ease-out); }
-  .tilt-panel:hover .time-card { transform: none; }
+
+  /* Immersive full-bleed hero */
+  .hero-immersive {
+    position: relative;
+    isolation: isolate;
+    min-height: clamp(560px, 82vh, 820px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-immersive-photo { position: absolute; inset: 0; z-index: -2; }
+  .hero-immersive-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+  }
+  .hero-immersive-overlay {
+    position: absolute; inset: 0; z-index: -1;
+    background:
+      linear-gradient(90deg, rgba(10,25,48,0.95) 0%, rgba(10,25,48,0.78) 42%, rgba(10,25,48,0.42) 100%),
+      linear-gradient(180deg, rgba(10,25,48,0.35) 0%, rgba(10,25,48,0.15) 40%, rgba(10,25,48,0.9) 100%);
+  }
+  .hero-immersive-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(500px, 1.08fr) minmax(420px, 0.92fr);
+    align-items: center;
+    gap: clamp(2rem, 4vw, 4.5rem);
+    padding-top: clamp(4rem, 9vw, 6rem);
+    padding-bottom: clamp(4rem, 9vw, 6rem);
+  }
+  .hero-copy { max-width: 640px; }
+  .hero-immersive .hero-title { text-shadow: 0 2px 24px rgba(0,0,0,0.45); }
+  .hero-immersive .hero-lead { color: rgba(255,255,255,0.82); max-width: 46ch; }
+
+  /* Editorial media wall: current proof, origin, and future vision in one composition. */
+  .hero-media-wall {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: clamp(0.75rem, 1.2vw, 1rem);
+    width: 100%;
+    height: clamp(440px, 34vw, 540px);
+    min-height: 0;
+    justify-self: end;
+    margin-right: min(0px, calc((100vw - var(--container)) / -2));
+  }
+  .media-tile {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    min-height: 0;
+    border-radius: 14px;
+    background: var(--primary);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.22);
+  }
+  .media-tile::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(150deg, rgba(100,254,218,0.14), transparent 42%, rgba(10,25,48,0.32));
+    pointer-events: none;
+  }
+  .media-tile img { width: 100%; height: 100%; object-fit: cover; }
+  .media-tile-product { grid-column: 1; grid-row: 1; }
+  .media-tile-product img { object-position: center 20%; }
+  .media-tile-k2 { grid-column: 2; grid-row: 1; }
+  .media-tile-k2 img { object-position: 52% 44%; }
+  .media-tile-earth { grid-column: 1; grid-row: 2; }
+  .media-tile-earth img { object-position: center 45%; }
+  .media-tile-session {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .media-tile-session img { object-position: center 35%; }
+  .media-tile-session::after { background: linear-gradient(160deg, rgba(10,25,48,0.08), rgba(10,25,48,0.42)); }
+  .media-origin-mark {
+    position: absolute;
+    top: clamp(0.65rem, 1.5vw, 1rem);
+    right: clamp(0.65rem, 1.5vw, 1rem);
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(10,25,48,0.7);
+    backdrop-filter: blur(8px);
+  }
+  .media-origin-mark img { width: 24px; height: 16px; object-fit: cover; }
+  @media (max-width: 1050px) and (min-width: 721px) {
+    .hero-immersive-inner { grid-template-columns: minmax(0, 0.9fr) minmax(360px, 0.8fr); }
+    .hero-media-wall { width: min(100%, 530px); height: 420px; margin-right: 0; }
+  }
+  @media (max-width: 720px) {
+    .hero-immersive { min-height: clamp(520px, 88vh, 720px); }
+    .hero-immersive-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-media-wall {
+      width: min(100%, 430px);
+      height: 248px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      justify-self: start;
+    }
+    .hero-immersive-overlay {
+      background: linear-gradient(180deg, rgba(10,25,48,0.55) 0%, rgba(10,25,48,0.35) 35%, rgba(10,25,48,0.92) 100%);
+    }
+  }
+  @media (max-width: 430px) {
+    .hero-immersive-inner { padding-top: 5rem; }
+    .hero-media-wall { height: 215px; gap: 0.5rem; }
+    .media-tile { border-radius: 10px; }
+    .media-origin-mark { top: 0.5rem; right: 0.5rem; width: 34px; height: 30px; }
+    .media-origin-mark img { width: 20px; height: 13px; }
+  }
+
+  /* Grounded mission band */
+  .mission-band {
+    position: relative;
+    isolation: isolate;
+    min-height: clamp(300px, 34vw, 420px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .mission-photo { position: absolute; inset: 0; z-index: -2; }
+  .mission-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+  .mission-overlay {
+    position: absolute; inset: 0; z-index: -1;
+    background:
+      linear-gradient(90deg, rgba(10,25,48,0.92) 0%, rgba(10,25,48,0.72) 45%, rgba(10,25,48,0.35) 100%),
+      linear-gradient(180deg, rgba(10,25,48,0.55), rgba(10,25,48,0.65));
+  }
+  .mission-inner { padding: clamp(2rem, 5vw, 3.5rem) var(--container-pad, 1.25rem); max-width: 640px; }
+  .mission-title {
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .mission-text { font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--text-2); line-height: 1.7; max-width: 52ch; }
+
+  /* Product duo */
+  .product-duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+    align-items: start;
+  }
+  .product-duo .card {
+    display: flex;
+    flex-direction: column;
+    padding: clamp(1.5rem, 2.4vw, 2rem);
+  }
+  .product-duo .card .btn { margin-top: 1.25rem; align-self: flex-start; }
+  .product-duo .product-pills { margin: 1rem 0 0; }
+  .product-logo-ph {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: var(--accent);
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-mid);
+    border-radius: 14px;
+  }
+  .market-badge.building {
+    background: var(--accent-dim);
+    border-color: var(--accent-mid);
+    color: var(--accent);
+  }
+  @media (max-width: 760px) {
+    .product-duo { grid-template-columns: 1fr; }
+  }
+
+  /* Vision band: Earth sits open on the right, text stays left */
+  .mission-band.band-vision .mission-photo img { object-position: 82% 42%; }
+  .mission-band.band-vision .mission-overlay {
+    background:
+      linear-gradient(90deg, rgba(10,25,48,0.94) 0%, rgba(10,25,48,0.68) 45%, rgba(10,25,48,0.28) 100%),
+      linear-gradient(180deg, rgba(10,25,48,0.4), rgba(10,25,48,0.55));
+  }
+
+  /* ---- Open, less-boxy homepage sections ---- */
+  /* More air between the immersive bands and the card blocks */
+  .friction-scene, .flow-scene, .reveal-scene, .ecosystem-scene {
+    padding-top: clamp(4rem, 8vw, 7rem);
+    padding-bottom: clamp(4rem, 8vw, 7rem);
+  }
+  .friction-field { gap: clamp(1.5rem, 3.5vw, 2.75rem); }
+  .grid-4 { gap: clamp(1.25rem, 3vw, 2.25rem); }
+
+  /* Cards blend into the section instead of sitting in hard boxes */
+  .friction-node,
+  .ecosystem-scene .market-card,
+  .flow-step,
+  .process-step {
+    background: linear-gradient(165deg, rgba(255,255,255,0.045), rgba(255,255,255,0.012));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 16px;
+    padding: clamp(1.25rem, 1.8vw, 1.6rem);
+    box-shadow: none;
+  }
+  /* Stats sit open, no bordered panel */
+  .friction-scene .stats-row {
+    background: none;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+  }
+  .friction-node:hover,
+  .ecosystem-scene .market-card:hover,
+  .process-step:hover {
+    border-color: var(--accent-mid);
+    box-shadow: 0 18px 44px rgba(0,0,0,0.35), 0 0 0 1px rgba(100,254,218,0.06);
+    transform: translateY(-3px);
+  }
+  /* Stats sit open on the background, no boxes */
+  .stats-row { gap: clamp(1.5rem, 4vw, 3rem); }
+  .stats-row .stat-cell {
+    background: transparent;
+    padding: 0.5rem 0.75rem;
+  }
+  /* Product cards a touch airier */
+  .product-duo .card { border-radius: 22px; }
 
   /* Scene 2: friction field — nodes along a central spine */
   .friction-scene { position: relative; }
@@ -341,26 +562,7 @@ const markets = [
     grid-template-columns: repeat(4, 1fr);
     gap: var(--gap);
   }
-  .friction-field::before {
-    content: '';
-    position: absolute;
-    top: -2.5rem;
-    left: 4%;
-    right: 4%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(165,210,245,0.25), rgba(165,210,245,0.25), transparent);
-  }
   .friction-node { position: relative; }
-  .friction-node::before {
-    content: '';
-    position: absolute;
-    top: -2.5rem;
-    left: 50%;
-    width: 1px;
-    height: 2.5rem;
-    background: linear-gradient(180deg, rgba(165,210,245,0.25), rgba(165,210,245,0.05));
-  }
-  .friction-node:nth-child(even) { transform: translateY(1.25rem); }
   .friction-icon {
     display: inline-flex;
     align-items: center;
@@ -399,4 +601,63 @@ const markets = [
   @media (prefers-reduced-motion: reduce) {
     .tilt-panel .time-card { transform: none; }
   }
+
+  /* The image wall is a photographic sequence, not a dashboard. */
+  .hero-immersive-overlay, .mission-overlay { background: rgba(11, 28, 45, .66); }
+  .hero-immersive .hero-title { text-shadow: none; }
+  .hero-media-wall { gap: .7rem; }
+  .media-tile { border-radius: 4px; box-shadow: none; }
+  .media-tile::after, .media-tile-session::after, .media-origin-mark { display: none; }
+  .friction-node, .ecosystem-scene .market-card, .flow-step, .process-step {
+    background: transparent; border: 0; border-top: 1px solid var(--border); border-radius: 0; box-shadow: none; padding: 1rem 0;
+  }
+  .friction-node:hover, .ecosystem-scene .market-card:hover, .process-step:hover { border-color: var(--border); box-shadow: none; transform: none; }
+  .friction-icon, .flow-visual { display: none; }
+  .process-flow {
+    border-top: 0;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin: 0 auto;
+    max-width: 720px;
+  }
+  .process-arrow { display: none; }
+  .flow-step { opacity: 1; padding: 1.35rem 0; transition: none; }
+  .flow-step:last-of-type { border-bottom: 1px solid var(--border); }
+  .product-duo { gap: clamp(2rem, 7vw, 7rem); }
+  .product-duo .product-panel {
+    border: 0;
+    border-radius: 0;
+    min-height: 340px;
+    padding: clamp(1.25rem, 3vw, 2.25rem);
+    position: relative;
+  }
+  .product-panel-head {
+    align-items: start;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .product-panel-copy { max-width: 34ch; }
+  .product-panel .product-logo {
+    align-self: center;
+    height: 64px;
+    margin-left: clamp(1.25rem, 2.5vw, 2.25rem);
+    position: static;
+    transform: none;
+    width: 64px;
+  }
+  .product-panel .product-pills { margin-top: auto; }
+  .product-logo-ph { background: transparent; border: 0; border-radius: 0; }
+  .ecosystem-scene { padding-bottom: clamp(2.25rem, 4vw, 3.5rem); }
+  .press-section { padding: clamp(.75rem, 2vw, 1.5rem) 0 clamp(1rem, 2.5vw, 2rem); }
+  .press-section .press-link { max-width: 760px; margin: 0 auto; }
+  .press-section .press-link p { color: var(--text) !important; font-size: clamp(1.1rem, 2vw, 1.3rem) !important; }
+  :global(.press-section + .section-sm) { padding-top: clamp(1.5rem, 3vw, 2.5rem); }
+  @media (max-width: 760px) {
+    .product-duo { gap: 1rem; }
+    .product-duo .product-panel { min-height: 0; padding: 1.25rem 0; }
+    .product-panel .product-logo { margin-left: 1rem; }
+  }
+  .press-link { border-top: 1px solid var(--border-m); display: block; padding: 1.5rem 0; text-decoration: none; }
+  @media (max-width: 760px) { .process-flow { grid-template-columns: 1fr; } }
 </style>
