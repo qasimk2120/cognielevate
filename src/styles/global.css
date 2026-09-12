@@ -17,7 +17,7 @@
   --display: 'Barlow Condensed', Arial Narrow, sans-serif;
   --radius: 3px;
   --radius-lg: 6px;
-  --section: clamp(2.75rem, 6vw, 6rem);
+  --section: clamp(2rem, 6vw, 6rem);
   --container: 1240px;
   --gap: clamp(1.25rem, 4vw, 3.5rem);
 }
@@ -42,7 +42,7 @@ p { color: var(--text-2); line-height: 1.7; margin: 0; text-wrap: pretty; }
 
 .container { margin: 0 auto; max-width: var(--container); padding: 0 clamp(1.25rem, 5vw, 4rem); }
 .section { padding: var(--section) 0; }
-.section-sm { padding: clamp(2.25rem, 5vw, 4.5rem) 0; }
+.section-sm { padding: clamp(1.75rem, 5vw, 4.5rem) 0; }
 .grid-2, .grid-3, .grid-4 { display: grid; gap: var(--gap); }
 .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
